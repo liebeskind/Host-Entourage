@@ -6,3 +6,4 @@
 2014-06-11 23:25:02.889 HelloCordova[14209:70b] [CDVTimer][TotalPluginStartup] 1.285970ms
 2014-06-11 23:25:03.004 HelloCordova[14209:70b] Resetting plugins due to page load.
 2014-06-11 23:25:03.163 HelloCordova[14209:70b] Finished load of: file:///Users/dliebeskind/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/791D406C-37D2-4112-BA87-9C8217B5CF02/HelloCordova.app/www/index.html#/tab/dash
+Terminating in response to SpringBoard's termination.
