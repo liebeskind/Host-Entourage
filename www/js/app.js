@@ -77,6 +77,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.party-detail', {
+      url: '/party/:hostId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/party-detail.html',
+          controller: 'PartyCtrl'
+        }
+      }
+    })    
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
