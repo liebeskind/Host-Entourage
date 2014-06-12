@@ -19,4 +19,8 @@ angular.module('starter.controllers', [])
 .controller('PartyCtrl', function($scope, $stateParams, Hosted) {
   $scope.party = Hosted.get($stateParams.hostId);
 })
+
+.controller('AttendedPartyCtrl', function($scope, $stateParams, Attended) {
+  $scope.attendedparty = Attended.get($stateParams.attendeeId);
+})
 ;

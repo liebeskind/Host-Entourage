@@ -87,6 +87,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })    
 
+    .state('tab.attended-party-detail', {
+      url: '/attendedparty/:attendeeId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/attended-party-detail.html',
+          controller: 'AttendedPartyCtrl'
+        }
+      }
+    })    
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/account');
 

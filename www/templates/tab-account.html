@@ -13,8 +13,9 @@
 		<div class="partyListFormat">
 	    <h3>Past Parties Attended</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="party in attended" type="item-text-wrap" href="#/tab/party/{{party.id}}">
-	        {{party.name}}
+	      <ion-item ng-repeat="attendedparty in attended" type="item-text-wrap" href="#/tab/attendedparty/{{attendedparty.id}}">
+	        <img src="img/{{attendedparty.imgUrl}}" class = "smallImg">
+	        {{attendedparty.name}}
 	      </ion-item>
 	    </ion-list>
 	   </div>
