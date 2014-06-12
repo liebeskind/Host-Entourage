@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
-.has-header {
-	border: 20px solid rgb(192,192,192);
-	border-bottom: none;
+.partyListFormat {
+	border: 10px solid #DCDCDC;
+	/*border-bottom: none;*/
 }
 
 h3 {
