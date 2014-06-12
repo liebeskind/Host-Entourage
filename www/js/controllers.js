@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('CreatePartyCtrl', function($scope) {
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
