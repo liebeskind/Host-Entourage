@@ -39,4 +39,21 @@ angular.module('starter.services', [])
       return hosted[hostId];
     }
   }
+})
+
+.factory('Attended', function() {
+  var attended = [
+    { id: 0, name: 'Crazy St. Pattys Day Shindig' },
+    { id: 1, name: 'Epic Warehouse Party' }
+  ];
+
+  return {
+    all: function() {
+      return attended;
+    },
+    get: function(attendeeId) {
+      return attended[attendeeId];
+    }
+  }
 });
+

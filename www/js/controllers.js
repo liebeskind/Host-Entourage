@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($scope, Hosted) {
+.controller('AccountCtrl', function($scope, Hosted, Attended) {
 	$scope.hosted = Hosted.all();
+	$scope.attended = Attended.all();
 });
