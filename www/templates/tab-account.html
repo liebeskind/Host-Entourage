@@ -1,17 +1,20 @@
-<ion-view title="Account">
+<ion-view title="Daniel's Account">
   <ion-content class="has-header padding">
-    <h1>Daniel's Profile</h1>
     <h3>Past Parties Hosted</h3>
+    
     <ion-list>
       <ion-item ng-repeat="party in hosted" type="item-text-wrap" href="#/tab/party/{{party.id}}">
+        <img src="img/{{party.imgUrl}}">
         {{party.name}}
       </ion-item>
     </ion-list>
+    
     <h3>Past Parties Attended</h3>
     <ion-list>
       <ion-item ng-repeat="party in attended" type="item-text-wrap" href="#/tab/party/{{party.id}}">
         {{party.name}}
       </ion-item>
     </ion-list>
+  
   </ion-content>
 </ion-view>

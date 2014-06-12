@@ -1,4 +1,4 @@
-Ionic App Base
+HOST-ENTOURAGE
 =====================
 
 Mobile app for party hosting and attending written with Ionic and Angular.js.

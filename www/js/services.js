@@ -27,8 +27,8 @@ angular.module('starter.services', [])
 
 .factory('Hosted', function() {
   var hosted = [
-    { id: 0, name: 'Top Of The Hill June Party' },
-    { id: 1, name: 'Fort Mason Party' }
+    { id: 0, name: 'Top Of The Hill June Party', attendees: 53, address: '1902 Leavenworth, San Francisco, CA', type: 'party', theme: 'British', imgUrl: 'russianhillalcatraz.jpeg' },
+    { id: 1, name: 'Fort Mason Party', attendees: 36, address: 'Fort Mason, San Francisco, CA', type: 'barbeque', theme: 'Cowboy', imgUrl: 'ftmason.jpeg' }
   ];
 
   return {
