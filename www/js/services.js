@@ -23,4 +23,20 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
+})
+
+.factory('Hosted', function() {
+  var hosted = [
+    { id: 0, name: 'Top Of The Hill June Party' },
+    { id: 1, name: 'Fort Mason Party' }
+  ];
+
+  return {
+    all: function() {
+      return hosted;
+    },
+    get: function(hostId) {
+      return hosted[hostId];
+    }
+  }
 });
