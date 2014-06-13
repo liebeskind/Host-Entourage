@@ -60,5 +60,36 @@ angular.module('starter.services', [])
       return attended[attendeeId];
     }
   }
-});
+})
 
+.factory('PendingParties', function() {
+  var pendingparties = [
+    { id: 0, name: 'Sick Upcoming Party', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+  ];
+
+  return {
+    all: function() {
+      return pendingparties;
+    },
+    get: function(partyId) {
+      return pendingparties[pendingpartyId];
+    }
+  }
+})
+
+.factory('ExistingParties', function() {
+  var existingparties = [
+    { id: 0, name: 'Party I Created a Week Ago', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+  ];
+
+  return {
+    all: function() {
+      return existingparties;
+    },
+    get: function(partyId) {
+      return existingparties[existingpartyId];
+    }
+  }
+})
+
+;

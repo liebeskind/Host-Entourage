@@ -24,6 +24,8 @@ angular.module('starter.controllers', [])
   $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
 
-.controller('ViewPartiesCtrl', function($scope) {
+.controller('ViewPartiesCtrl', function($scope, PendingParties, ExistingParties) {
+	$scope.pendingparties = PendingParties.all();
+	$scope.existingparties = ExistingParties.all();
 })
 ;

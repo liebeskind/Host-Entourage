@@ -1,0 +1,24 @@
+<ion-view title="Daniel's Parties">
+  <ion-content class="has-header">
+    <div class="partyListFormat">
+	    <h3>Waiting for Co-Hosts</h3>
+	    <ion-list>
+	      <ion-item ng-repeat="party in pendingparties" type="item-text-wrap" href="#/tab/party/{{party.id}}">
+	        <img src="img/{{party.imgUrl}}" class = "smallImg">
+	        {{party.name}}
+	      </ion-item>
+	    </ion-list>
+  	</div>
+    
+		<div class="partyListFormat">
+	    <h3>Existing Parties</h3>
+	    <ion-list>
+	      <ion-item ng-repeat="party in existingparties" type="item-text-wrap" href="#/tab/party/{{party.id}}">
+	        <img src="img/{{party.imgUrl}}" class = "smallImg">
+	        {{party.name}}
+	      </ion-item>
+	    </ion-list>
+	   </div>
+  
+  </ion-content>
+</ion-view>
