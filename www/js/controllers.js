@@ -3,6 +3,9 @@ angular.module('starter.controllers', [])
 .controller('CreatePartyCtrl', function($scope) {
 })
 
+.controller('CreateParty2Ctrl', function($scope) {
+})
+
 .controller('FindEntouragesCtrl', function($scope, Friends) {
   $scope.friends = Friends.all();
 })

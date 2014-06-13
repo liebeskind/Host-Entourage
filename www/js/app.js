@@ -48,6 +48,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.createparty2', {
+      url: '/createparty2',
+      views: {
+        'tab-createparty': {
+          templateUrl: 'templates/createparty2.html',
+          controller: 'CreateParty2Ctrl'
+        }
+      }
+    })
+
     .state('tab.findentourages', {
       url: '/findentourages',
       views: {
@@ -57,6 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
     .state('tab.entourage-detail', {
       url: '/friend/:friendId',
       views: {
