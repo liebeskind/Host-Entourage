@@ -1,47 +1,59 @@
-<ion-view title="Create Party 2">
+<ion-view title="Create Party Step 2">
   <ion-content class="has-header padding">
     <h3>2. Make Your Party Awesome</h3>
     
-	  <ul class="list">
+	  <div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Party Name</span>
+		    <input type="text">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Date</span>
+		    <input type="Date">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Time</span>
+		    <input type="Time">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Address</span>
+		    <input type="text">
+		  </label>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      # Attendees Expected
+		    </div>
+		    <select>
+		      <option>10-20</option>
+		      <option>21-30</option>
+		      <option selected>31-40</option>
+		      <option>41-50</option>
+		      <option>51-60</option>
+		      <option>61-100</option>
+		      <option>101-200</option>
+		      <option>201-500</option>
+		      <option>500+</option>
+		   	</select>
+  		</label>
+  		<label class="item item-input item-select">
+		    <div class="input-label">
+		      Type of Party
+		    </div>
+		    <select>
+		      <option>Birthday</option>
+		      <option>Apartment</option>
+		      <option selected>Dinner</option>
+		      <option>Rave</option>
+		      <option>Outdoor</option>
+		   	</select>
+  		</label>
+  		<label class="item item-input">
+		    <span class="input-label">Theme (Optional)</span>
+		    <input type="text">
+		  </label>
+		</div>
 
-		  <li class="item item-checkbox">
-		     <label class="checkbox">
-		       <input type="checkbox">
-		     </label>
-		     Dickboy
-		  </li>
-
-		  <li class="item item-checkbox">
-		     <label class="checkbox">
-		       <input type="checkbox">
-		     </label>
-		     Tonya Reed
-		  </li>
-
-		  <li class="item item-checkbox">
-		     <label class="checkbox">
-		       <input type="checkbox">
-		     </label>
-		     Rayna Roumie
-		  </li>		  
-
-		  <li class="item item-checkbox">
-		     <label class="checkbox">
-		       <input type="checkbox">
-		     </label>
-		     Danielle Diamond
-		  </li>
-
-		  <li class="item item-checkbox">
-		     <label class="checkbox">
-		       <input type="checkbox">
-		     </label>
-		     Meaghan Barbin
-		  </li>
-
-		</ul>
-
-		<button class="button button-block button-positive">
+		<button class="button button-block button-positive" onclick="location.href='#/tab/viewparties'">
   	<h4 style="color: white;">CREATE MY PARTY!</h4>
 		</button>
   </ion-content>

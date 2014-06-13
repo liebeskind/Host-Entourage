@@ -38,22 +38,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     // Each tab has its own nav history stack:
 
-    .state('tab.createparty', {
-      url: '/createparty',
-      views: {
-        'tab-createparty': {
-          templateUrl: 'templates/tab-createparty.html',
-          controller: 'CreatePartyCtrl'
-        }
-      }
-    })
-
     .state('tab.createparty2', {
       url: '/createparty2',
       views: {
         'tab-createparty': {
           templateUrl: 'templates/createparty2.html',
           controller: 'CreateParty2Ctrl'
+        }
+      }
+    })
+
+    .state('tab.createparty', {
+      url: '/createparty',
+      views: {
+        'tab-createparty': {
+          templateUrl: 'templates/tab-createparty.html',
+          controller: 'CreatePartyCtrl'
         }
       }
     })
