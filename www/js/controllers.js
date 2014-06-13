@@ -23,4 +23,7 @@ angular.module('starter.controllers', [])
 .controller('AttendedPartyCtrl', function($scope, $stateParams, Attended) {
   $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
+
+.controller('ViewPartiesCtrl', function($scope) {
+})
 ;

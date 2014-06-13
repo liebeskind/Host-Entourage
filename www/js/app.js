@@ -97,6 +97,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })    
 
+    .state('tab.viewparties', {
+      url: '/viewparties',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/tab-viewparties.html',
+          controller: 'ViewPartiesCtrl'
+        }
+      }
+    })    
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/account');
 });
