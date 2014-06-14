@@ -78,17 +78,17 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('ExistingParties', function() {
-  var existingparties = [
+.factory('CreatedParties', function() {
+  var createdparties = [
     { id: 0, name: 'Party I Created a Week Ago', date: '6/28/14', time: '8:15PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
   ];
 
   return {
     all: function() {
-      return existingparties;
+      return createdparties;
     },
     get: function(partyId) {
-      return existingparties[partyId];
+      return createdparties[partyId];
     }
   }
 })

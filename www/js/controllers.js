@@ -27,13 +27,16 @@ angular.module('starter.controllers', [])
   $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
 
-.controller('ViewPartiesCtrl', function($scope, PendingParties, ExistingParties) {
+.controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties) {
 	$scope.pendingparties = PendingParties.all();
-	$scope.existingparties = ExistingParties.all();
+	$scope.createdparties = CreatedParties.all();
 })
 
-.controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, PendingParties, ExistingParties) {
+.controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
 	$scope.pendingparties = PendingParties.get($stateParams.partyId);
-	$scope.existingparties = ExistingParties.get($stateParams.partyId);
+})
+
+.controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
+	$scope.createdparties = CreatedParties.get($stateParams.partyId);
 })
 ;

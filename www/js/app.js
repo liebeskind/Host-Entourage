@@ -98,12 +98,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.createparty-detail', {
+    .state('tab.createdparty-detail', {
       url: '/createdparty/:partyId',
       views: {
         'tab-viewparties': {
           templateUrl: 'templates/createdparty-detail.html',
           controller: 'CreatedPartyDetailsCtrl'
+        }
+      }
+    })
+
+    .state('tab.pendingparty-detail', {
+      url: '/pendingparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/pendingparty-detail.html',
+          controller: 'PendingPartyDetailsCtrl'
         }
       }
     })
