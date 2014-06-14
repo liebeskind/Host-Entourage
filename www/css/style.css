@@ -10,7 +10,7 @@ h3 {
 }
 
 .smallImg {
-	width: 1em;
+	width: 2em;
 }
 
 .detailedImg {
@@ -18,4 +18,8 @@ h3 {
 	margin-left: auto;
 	margin-right: auto;
 	width: 10em;
+}
+
+.lineHeight {
+	line-height: 10px;
 }

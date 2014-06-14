@@ -31,4 +31,9 @@ angular.module('starter.controllers', [])
 	$scope.pendingparties = PendingParties.all();
 	$scope.existingparties = ExistingParties.all();
 })
+
+.controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, PendingParties, ExistingParties) {
+	$scope.pendingparties = PendingParties.get($stateParams.partyId);
+	$scope.existingparties = ExistingParties.get($stateParams.partyId);
+})
 ;

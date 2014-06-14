@@ -8,10 +8,11 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
+    { id: 0, name: 'Rando McGee' },
+    { id: 1, name: 'Your Friend' },
+    { id: 2, name: 'Guy' },
+    { id: 3, name: 'Bill Gates' },
+    { id: 4, name: 'Steve Jobs' }
   ];
 
   return {
@@ -64,7 +65,7 @@ angular.module('starter.services', [])
 
 .factory('PendingParties', function() {
   var pendingparties = [
-    { id: 0, name: 'Sick Upcoming Party', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+    { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
   ];
 
   return {
@@ -72,14 +73,14 @@ angular.module('starter.services', [])
       return pendingparties;
     },
     get: function(partyId) {
-      return pendingparties[pendingpartyId];
+      return pendingparties[partyId];
     }
   }
 })
 
 .factory('ExistingParties', function() {
   var existingparties = [
-    { id: 0, name: 'Party I Created a Week Ago', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+    { id: 0, name: 'Party I Created a Week Ago', date: '6/28/14', time: '8:15PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
   ];
 
   return {
@@ -87,7 +88,7 @@ angular.module('starter.services', [])
       return existingparties;
     },
     get: function(partyId) {
-      return existingparties[existingpartyId];
+      return existingparties[partyId];
     }
   }
 })

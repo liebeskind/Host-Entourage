@@ -2,8 +2,8 @@
   <ion-content class="has-header">
     <div class="partyListFormat">
 	    <h3>Past Parties Hosted</h3>
-	    <ion-list>
-	      <ion-item ng-repeat="party in hosted" type="item-text-wrap" href="#/tab/party/{{party.id}}">
+	    <ion-list class = "lineHeight">
+	      <ion-item ng-repeat="party in hosted" href="#/tab/party/{{party.id}}">
 	        <img src="img/{{party.imgUrl}}" class = "smallImg">
 	        {{party.name}}
 	      </ion-item>
@@ -13,7 +13,7 @@
 		<div class="partyListFormat">
 	    <h3>Past Parties Attended</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="attendedparty in attended" type="item-text-wrap" href="#/tab/attendedparty/{{attendedparty.id}}">
+	      <ion-item ng-repeat="attendedparty in attended" href="#/tab/attendedparty/{{attendedparty.id}}">
 	        <img src="img/{{attendedparty.imgUrl}}" class = "smallImg">
 	        {{attendedparty.name}}
 	      </ion-item>

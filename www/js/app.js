@@ -96,7 +96,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'PartyCtrl'
         }
       }
-    })    
+    })
+
+    .state('tab.createparty-detail', {
+      url: '/createdparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/createdparty-detail.html',
+          controller: 'CreatedPartyDetailsCtrl'
+        }
+      }
+    })
 
     .state('tab.attended-party-detail', {
       url: '/attendedparty/:attendeeId',
