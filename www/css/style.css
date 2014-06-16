@@ -11,6 +11,8 @@ h3 {
 
 .smallImg {
 	width: 2em;
+	display:inline-block;
+	vertical-align: middle;
 }
 
 .detailedImg {
@@ -23,3 +25,4 @@ h3 {
 .lineHeight {
 	line-height: 10px;
 }
+

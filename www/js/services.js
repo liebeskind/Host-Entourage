@@ -8,11 +8,10 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Rando McGee' },
-    { id: 1, name: 'Your Friend' },
-    { id: 2, name: 'Guy' },
-    { id: 3, name: 'Bill Gates' },
-    { id: 4, name: 'Steve Jobs' }
+    { id: 0, name: 'Rando McGee', numMembers: 3 },
+    { id: 1, name: 'Guy', numMembers: 5 },
+    { id: 2, name: 'Bill Gates', numMembers: 2 },
+    { id: 3, name: 'Steve Jobs', numMembers: 4 }
   ];
 
   return {
@@ -31,11 +30,7 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Rando McGee' },
-    { id: 1, name: 'Your Friend' },
-    { id: 2, name: 'Guy' },
-    { id: 3, name: 'Bill Gates' },
-    { id: 4, name: 'Steve Jobs' }
+    { id: 0, name: 'Your Friend', numMembers: 3 }
   ];
 
   return {
