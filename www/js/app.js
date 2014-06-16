@@ -68,12 +68,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.entourage-detail', {
-      url: '/friend/:friendId',
+    .state('tab.acceptedentourage-detail', {
+      url: '/acceptedentourage/:entourageId',
       views: {
         'tab-findentourages': {
-          templateUrl: 'templates/entourage-detail.html',
-          controller: 'EntourageDetailCtrl'
+          templateUrl: 'templates/acceptedentourage-detail.html',
+          controller: 'AcceptedEntourageDetailCtrl'
+        }
+      }
+    })
+
+    .state('tab.waitingentourage-detail', {
+      url: '/waitingentourage/:entourageId',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/waitingentourage-detail.html',
+          controller: 'WaitingEntourageDetailCtrl'
         }
       }
     })

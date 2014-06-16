@@ -6,12 +6,17 @@ angular.module('starter.controllers', [])
 .controller('CreateParty2Ctrl', function($scope) {
 })
 
-.controller('FindEntouragesCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
+.controller('FindEntouragesCtrl', function($scope, AcceptedEntourages, WaitingEntourages) {
+  $scope.acceptedentourages = AcceptedEntourages.all();
+  $scope.waitingentourages = WaitingEntourages.all();
 })
 
-.controller('EntourageDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
+.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, AcceptedEntourages) {
+  $scope.entourage = AcceptedEntourages.get($stateParams.entourageId);
+})
+
+.controller('WaitingEntourageDetailCtrl', function($scope, $stateParams, WaitingEntourages) {
+  $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
 })
 
 .controller('AccountCtrl', function($scope, Hosted, Attended) {

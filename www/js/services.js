@@ -3,11 +3,11 @@ angular.module('starter.services', [])
 /**
  * A simple example service that returns some data.
  */
-.factory('Friends', function() {
+.factory('AcceptedEntourages', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var friends = [
+  var entourages = [
     { id: 0, name: 'Rando McGee' },
     { id: 1, name: 'Your Friend' },
     { id: 2, name: 'Guy' },
@@ -17,11 +17,34 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      return friends;
+      return entourages;
     },
-    get: function(friendId) {
+    get: function(entourageId) {
       // Simple index lookup
-      return friends[friendId];
+      return entourages[entourageId];
+    }
+  }
+})
+
+.factory('WaitingEntourages', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var entourages = [
+    { id: 0, name: 'Rando McGee' },
+    { id: 1, name: 'Your Friend' },
+    { id: 2, name: 'Guy' },
+    { id: 3, name: 'Bill Gates' },
+    { id: 4, name: 'Steve Jobs' }
+  ];
+
+  return {
+    all: function() {
+      return entourages;
+    },
+    get: function(entourageId) {
+      // Simple index lookup
+      return entourages[entourageId];
     }
   }
 })

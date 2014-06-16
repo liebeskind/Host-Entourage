@@ -1,17 +1,17 @@
 <ion-view title="Find Entourages">
   <ion-content class="has-header">
     
-    <h3>Already Accepted</h3>
+    <h3>Awaiting Reply</h3>
     <ion-list>
-      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
-        {{friend.name}}
+      <ion-item ng-repeat="entourage in waitingentourages" type="item-text-wrap" href="#/tab/waitingentourage/{{entourage.id}}">
+        {{entourage.name}}
       </ion-item>
     </ion-list>
 
-    <h3>Awaiting Reply</h3>
+    <h3>Already Accepted</h3>
     <ion-list>
-      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
-        {{friend.name}}
+      <ion-item ng-repeat="entourage in acceptedentourages" type="item-text-wrap" href="#/tab/acceptedentourage/{{entourage.id}}">
+        {{entourage.name}}
       </ion-item>
     </ion-list>
 
