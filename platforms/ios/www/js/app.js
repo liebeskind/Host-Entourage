@@ -29,40 +29,66 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    // setup an abstract state for the tabs directive
+    .state('menu', {
+      url: "/menu",
+      abstract: true,
+      templateUrl: "templates/menu.html",
+      controller: 'AppCtrl'
+    })
+
     .state('tab', {
       url: "/tab",
-      abstract: true,
       templateUrl: "templates/tabs.html"
     })
 
     // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-      url: '/dash',
+    .state('tab.createparty2', {
+      url: '/createparty2',
       views: {
-        'tab-dash': {
-          templateUrl: 'templates/tab-dash.html',
-          controller: 'DashCtrl'
+        'tab-createparty': {
+          templateUrl: 'templates/createparty2.html',
+          controller: 'CreateParty2Ctrl'
         }
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.createparty', {
+      url: '/createparty',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-createparty': {
+          templateUrl: 'templates/tab-createparty.html',
+          controller: 'CreatePartyCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+
+    .state('tab.findentourages', {
+      url: '/findentourages',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+        'tab-findentourages': {
+          templateUrl: 'templates/tab-findentourages.html',
+          controller: 'FindEntouragesCtrl'
+        }
+      }
+    })
+
+    .state('tab.acceptedentourage-detail', {
+      url: '/acceptedentourage/:entourageId',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/acceptedentourage-detail.html',
+          controller: 'AcceptedEntourageDetailCtrl'
+        }
+      }
+    })
+
+    .state('tab.waitingentourage-detail', {
+      url: '/waitingentourage/:entourageId',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/waitingentourage-detail.html',
+          controller: 'WaitingEntourageDetailCtrl'
         }
       }
     })
@@ -77,8 +103,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+    .state('tab.party-detail', {
+      url: '/party/:hostId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/party-detail.html',
+          controller: 'PartyCtrl'
+        }
+      }
+    })
 
+    .state('tab.createdparty-detail', {
+      url: '/createdparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/createdparty-detail.html',
+          controller: 'CreatedPartyDetailsCtrl'
+        }
+      }
+    })
+
+    .state('tab.pendingparty-detail', {
+      url: '/pendingparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/pendingparty-detail.html',
+          controller: 'PendingPartyDetailsCtrl'
+        }
+      }
+    })
+
+    .state('tab.attended-party-detail', {
+      url: '/attendedparty/:attendeeId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/attended-party-detail.html',
+          controller: 'AttendedPartyCtrl'
+        }
+      }
+    })    
+
+    .state('tab.viewparties', {
+      url: '/viewparties',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/tab-viewparties.html',
+          controller: 'ViewPartiesCtrl'
+        }
+      }
+    })    
+
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/tab/account');
 });
 
