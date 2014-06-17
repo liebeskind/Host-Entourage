@@ -8,14 +8,20 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Rando McGee', numMembers: 3, imgUrl: 'zoe.jpg',
+    { id: 0, name: 'Zoe Diamond-Liebeskind', numMembers: 4, imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind',
       members: [
         { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
         { id: 1, name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/Derekewingg'},
-        { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+        { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'fb://profile/9505194'}
       ]
     },
-    { id: 1, name: 'Guy', numMembers: 5, imgUrl: 'danliebeskind.jpg'},
+    { id: 1, name: 'Guy', numMembers: 3, imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind',
+      members: [
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
+        { id: 3, name: 'Zoe Diamond-Liebeskind', imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind'}
+
+      ]
+    },
     { id: 2, name: 'Frederique', numMembers: 2, imgUrl: 'frederica.jpg'},
     { id: 3, name: 'Buck Wallander', numMembers: 4, imgUrl: 'buckwallander.jpg'}
   ];
@@ -36,7 +42,12 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Becca Liebeskind', numMembers: 3, imgUrl: 'beccaliebeskind.jpg' },
+    { id: 0, name: 'Becca Liebeskind', numMembers: 3, imgUrl: 'beccaliebeskind.jpg', facebook: 'https://www.facebook.com/rebecca.liebeskind' ,
+      members: [
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
+        { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+      ]
+    },
     { id: 1, name: 'Lauren Everitt', numMembers: 3, imgUrl: 'laureneveritt.jpg' }
   ];
 
