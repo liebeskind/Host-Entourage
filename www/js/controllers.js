@@ -3,11 +3,11 @@ angular.module('starter.controllers', [])
 .controller('CreatePartyCtrl', function($scope) {
 })
 
-.controller('MenuCtrl', function($scope, $ionicSideMenuDelegate) {
+.controller('SideMenusSimpleCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
-  };
-})
+ 	}
+ })
 
 .controller('CreateParty2Ctrl', function($scope) {
 })

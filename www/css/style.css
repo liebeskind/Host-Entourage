@@ -37,3 +37,7 @@ h3 {
 .lineHeight {
 	line-height: 10px;
 }
+
+.menu-left .scroll-content {
+  background-color: #f4f4f4;
+}

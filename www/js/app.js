@@ -38,7 +38,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab.menu', {
       url: "/menu",
       views: {
-        'tab-createparty': {
+        'menuContent': {
           templateUrl: "templates/menu.html",
           controller: 'MenuCtrl'
         }
