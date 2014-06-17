@@ -1,5 +1,21 @@
 <ion-view title="{{entourage.name}}">
   <ion-content has-header="true" padding="true">
-  <h1>{{entourage.name}}</h1>
+  	<div class="card">
+		  <div class="item item-text-wrap">
+		    <img src="img/{{entourage.imgUrl}}" class = "entouragebigImg">
+		    <p></p>
+		    <h3>{{entourage.name}}</h3>
+		    <p></p>
+		    <div class="partyListFormat">
+		      <h4>Others in Party</h4>
+		      <ion-list>
+		        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="member.facebook">
+		          <img src="img/{{member.imgUrl}}" class = "smallImg">
+		          {{member.name}}
+		        </ion-item>
+		      </ion-list>
+		    </div>
+		  </div>
+		</div>
   </ion-content>
 </ion-view>

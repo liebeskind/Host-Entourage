@@ -22,7 +22,18 @@ h3 {
 	width: 10em;
 }
 
+.entouragebigImg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 5em;
+}
+
+.entouragesmallImg {
+	display: block;
+	width: 3em;
+}
+
 .lineHeight {
 	line-height: 10px;
 }
-

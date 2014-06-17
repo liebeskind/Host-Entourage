@@ -8,10 +8,16 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Rando McGee', numMembers: 3, imgUrl: 'colinfarrell.jpg' },
-    { id: 1, name: 'Guy', numMembers: 5, imgUrl: 'christianbale.jpg'},
-    { id: 2, name: 'Bill Gates', numMembers: 2, imgUrl: 'billgates.jpg'},
-    { id: 3, name: 'Steve Jobs', numMembers: 4, imgUrl: 'stevejobs.jpg'}
+    { id: 0, name: 'Rando McGee', numMembers: 3, imgUrl: 'zoe.jpg',
+      members: [
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
+        { id: 1, name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/Derekewingg'},
+        { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+      ]
+    },
+    { id: 1, name: 'Guy', numMembers: 5, imgUrl: 'danliebeskind.jpg'},
+    { id: 2, name: 'Frederique', numMembers: 2, imgUrl: 'frederica.jpg'},
+    { id: 3, name: 'Buck Wallander', numMembers: 4, imgUrl: 'buckwallander.jpg'}
   ];
 
   return {
@@ -30,8 +36,8 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Your Friend', numMembers: 3, imgUrl: 'redheadwoman.jpg' },
-    { id: 1, name: 'Some chick', numMembers: 3, imgUrl: 'katebeckinsale.jpg' }
+    { id: 0, name: 'Becca Liebeskind', numMembers: 3, imgUrl: 'beccaliebeskind.jpg' },
+    { id: 1, name: 'Lauren Everitt', numMembers: 3, imgUrl: 'laureneveritt.jpg' }
   ];
 
   return {
