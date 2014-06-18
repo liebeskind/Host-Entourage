@@ -4,7 +4,7 @@
 	    <h3>Waiting for Co-Hosts</h3>
 	    <ion-list>
 	      <ion-item ng-repeat="party in pendingparties" type="item-text-wrap" href="#/tab/pendingparty/{{party.id}}">
-	        <img src="img/{{party.imgUrl}}" class = "smallImg">
+	        <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
 	        {{party.name}}
 	      </ion-item>
 	    </ion-list>
@@ -14,7 +14,7 @@
 	    <h3>Existing Parties</h3>
 	    <ion-list>
 	      <ion-item ng-repeat="party in createdparties" type="item-text-wrap" href="#/tab/createdparty/{{party.id}}">
-	        <img src="img/{{party.imgUrl}}" class = "smallImg">
+	        <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
 	        {{party.name}}
 	      </ion-item>
 	    </ion-list>
