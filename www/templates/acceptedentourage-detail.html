@@ -3,7 +3,7 @@
   	<div class="card">
 		  <div class="item">
 		    <a href="{{entourage.facebook}}">
-		    <img src="img/{{entourage.imgUrl}}" class = "entouragebigImg">
+		    <img ng-src="img/{{entourage.imgUrl}}" class = "entouragebigImg">
 		    </a>
 		    <p></p>
 		    <h3>{{entourage.name}}</h3>
@@ -12,7 +12,7 @@
 		      <h4>Others in Party</h4>
 		      <ion-list>
 		        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebook}}">
-		          <img src="img/{{member.imgUrl}}" class = "smallImg">
+		          <img ng-src="img/{{member.imgUrl}}" class = "smallImg">
 		          {{member.name}}
 		        </ion-item>
 		      </ion-list>
