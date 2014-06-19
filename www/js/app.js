@@ -52,7 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-createparty': {
           templateUrl: 'templates/createparty2.html',
-          controller: 'CreateParty2Ctrl'
+          controller: 'CreatePartyCtrl'
         }
       }
     })

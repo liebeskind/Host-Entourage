@@ -1,6 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('CreatePartyCtrl', function($scope) {
+.controller('CreatePartyCtrl', function($scope, PendingParties) {
+  $scope.addCohosts = function(people) {
+    console.log(people)
+    var newArray = [];
+    var newCohosts = [{}];
+    for (var prop in people) {
+      newArray.push(prop)
+    }
+
+    for (var i = 0; i < 4; i++) {
+      newCohosts[i] = {name: newArray[i], accepted: false};
+    }
+
+    PendingParties.createNew(newCohosts);
+  }
 })
 
 .controller('SideMenusSimpleCtrl', function($scope, $ionicSideMenuDelegate) {
@@ -8,9 +22,6 @@ angular.module('starter.controllers', [])
     $ionicSideMenuDelegate.toggleLeft();
  	}
  })
-
-.controller('CreateParty2Ctrl', function($scope) {
-})
 
 .controller('FindEntouragesCtrl', function($scope, AcceptedEntourages, WaitingEntourages) {
   $scope.acceptedentourages = AcceptedEntourages.all();
