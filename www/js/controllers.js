@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < newArray.length; i++) {
       newCohosts[i] = {name: newArray[i], accepted: false};
     };
-
+    $location.path('/tab/createparty2');
     PendingParties.addCohosts(newCohosts);
   }
 
