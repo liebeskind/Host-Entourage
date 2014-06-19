@@ -118,8 +118,7 @@ angular.module('starter.services', [])
     get: function(partyId) {
       return pendingparties[partyId];
     },
-    createNew: function(newCohosts) {
-      console.log(newCohosts);
+    addCohosts: function(newCohosts) {
       pendingparties.push({id: pendingparties.length, cohosts: newCohosts});
     }
   }

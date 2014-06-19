@@ -1,20 +1,26 @@
 angular.module('starter.controllers', [])
 
-.controller('CreatePartyCtrl', function($scope, PendingParties) {
+.controller('CreatePartyCtrl', function($scope, PendingParties, $location) {
   $scope.addCohosts = function(people) {
-    console.log(people)
     var newArray = [];
     var newCohosts = [{}];
     for (var prop in people) {
       newArray.push(prop)
-    }
+    };
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < newArray.length; i++) {
       newCohosts[i] = {name: newArray[i], accepted: false};
-    }
+    };
 
-    PendingParties.createNew(newCohosts);
+    PendingParties.addCohosts(newCohosts);
   }
+
+  $scope.createParty = function(party) {
+    console.log(party);
+    // PendingParties.createParty(newParty);
+    $location.path("/tab/viewparties")
+  }
+
 })
 
 .controller('SideMenusSimpleCtrl', function($scope, $ionicSideMenuDelegate) {
