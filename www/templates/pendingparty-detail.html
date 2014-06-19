@@ -25,7 +25,7 @@
 		    	<span ng-show="{{cohosts.accepted}}">
 		    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
 		    	</span>
-		    	<span ng-hide="{{cohosts.accepted}}">
+		    	<span ng-show="!{{cohosts.accepted}}">
 		    		<img ng-src="img/redX.png" class = 'acceptedImg'>
 		    	</span>
 		  	</ion-item>
