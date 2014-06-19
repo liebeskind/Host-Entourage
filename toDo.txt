@@ -1,0 +1,4 @@
+-Add male/female property to each member of entourage
+-Enable sorting for findEntourage (using ng-filter) using dropdown menu
+-Add time requested and time accepted to findentourage details
+-Add sorting to account page using drowndown menu
