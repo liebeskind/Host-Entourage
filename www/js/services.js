@@ -101,7 +101,14 @@ angular.module('starter.services', [])
 
 .factory('PendingParties', function() {
   var pendingparties = [
-    { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+    { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
+      cohosts: [
+        {name: 'Daniel Liebeskind', accepted: true},
+        {name: 'Danielle Diamond', accepted: true}, 
+        {name: 'Derek Gillaspy', accepted: false}, 
+        {name: 'Rayna Roumie', accepted: true}
+      ]
+    }
   ];
 
   return {

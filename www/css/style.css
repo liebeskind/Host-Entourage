@@ -45,3 +45,18 @@ h3 {
 .menu-left .scroll-content {
   background-color: #f4f4f4;
 }
+
+.acceptedtrue {
+	display: none;
+}
+
+.acceptedfalse {
+	display: none;
+}
+
+.acceptedImg {
+	width: 1em;
+	display:inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+}
