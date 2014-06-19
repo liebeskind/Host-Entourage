@@ -15,9 +15,8 @@ angular.module('starter.controllers', [])
     PendingParties.addCohosts(newCohosts);
   }
 
-  $scope.createParty = function(party) {
-    console.log(party);
-    // PendingParties.createParty(newParty);
+  $scope.addParty = function(party) {
+    PendingParties.createParty(party);
     $location.path("/tab/viewparties")
   }
 

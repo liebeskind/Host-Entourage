@@ -120,6 +120,12 @@ angular.module('starter.services', [])
     },
     addCohosts: function(newCohosts) {
       pendingparties.push({id: pendingparties.length, cohosts: newCohosts});
+    },
+    createParty: function(party) {
+      for (prop in party) {
+        pendingparties[pendingparties.length-1][prop] = party[prop]; 
+      }
+      pendingparties[pendingparties.length-1]['imgUrl'] = 'sickparty.jpg'
     }
   }
 })

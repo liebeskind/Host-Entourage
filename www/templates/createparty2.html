@@ -23,7 +23,7 @@
 		    <div class="input-label">
 		      # Attendees Expected
 		    </div>
-		    <select>
+		    <select ng-model = "party.attendeeRange">
 		      <option>10-20</option>
 		      <option>21-30</option>
 		      <option selected>31-40</option>
@@ -39,7 +39,7 @@
 		    <div class="input-label">
 		      Type of Party
 		    </div>
-		    <select>
+		    <select ng-model = "party.type">
 		      <option>Birthday</option>
 		      <option>Apartment</option>
 		      <option selected>Dinner</option>
@@ -53,7 +53,7 @@
 		  </label>
 		</div>
 
-		<button class="button button-block button-positive" ng-click="createParty(party)">
+		<button class="button button-block button-positive" ng-click="addParty(party)">
   	<h4 style="color: white;">CREATE MY PARTY!</h4>
 		</button>
   </ion-content>
