@@ -10,8 +10,8 @@ angular.module('starter.services', [])
   var entourages = [
     { id: 0, name: 'Zoe Diamond-Liebeskind', numMembers: 4, imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind',
       members: [
-        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
-        { id: 1, name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/Derekewingg'},
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'fb://danielle.deanne'},
+        { id: 1, name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'},
         { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'fb://profile/9505194'}
       ]
     },
@@ -42,7 +42,7 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Becca Liebeskind', numMembers: 3, imgUrl: 'beccaliebeskind.jpg', facebook: 'https://www.facebook.com/rebecca.liebeskind' ,
+    { id: 0, name: 'Becca Liebeskind', numMembers: 3, imgUrl: 'beccaliebeskind.jpg', facebook: 'https://www.facebook.com/rebecca.liebeskind' , partyToJoin: 'Party I Created a Week Ago',
       members: [
         { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
         { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
