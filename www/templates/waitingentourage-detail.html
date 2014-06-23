@@ -9,7 +9,7 @@
 		    <h3>{{entourage.name}}</h3>
 		    <p></p>
 		    <h4>Party To Join</h4>
-		    <span>{{entourage.partyToJoin}}</span>
+		    <h5>{{entourage.partyToJoin}}</h5>
 		    <p></p>
 		    <div class="partyListFormat">
 		      <h4>Others in Party</h4>
@@ -22,7 +22,7 @@
 		    </div>
 		  </div>
 		</div>
-		<button class="button button-block button-positive" onclick="location.href='#/tab/findentourages'">
+		<button class="button button-block button-positive" ng-click = "acceptEntourage(entourage)">
   	<h3 style="color: white;">Accept Entourage</h3>
 		</button>
   </ion-content>

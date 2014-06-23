@@ -37,8 +37,14 @@ angular.module('starter.controllers', [])
   $scope.entourage = AcceptedEntourages.get($stateParams.entourageId);
 })
 
-.controller('WaitingEntourageDetailCtrl', function($scope, $stateParams, WaitingEntourages) {
+.controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
   $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
+  $scope.acceptEntourage = function(entourage) {
+    console.log(entourage);
+    $location.path('tab/findentourages');
+    AcceptedEntourages.addToAccepted(entourage);
+    WaitingEntourages.removeAccepted(entourage);
+  }
 })
 
 .controller('AccountCtrl', function($scope, Hosted, Attended) {

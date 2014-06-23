@@ -8,22 +8,31 @@ angular.module('starter.services', [])
 
   // Some fake testing data
   var entourages = [
-    { id: 0, name: 'Zoe Diamond-Liebeskind', numMembers: 4, imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind',
+    { id: 0, name: 'Zoe Diamond-Liebeskind', numMembers: 4, imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind', partyToJoin: 'Party I Created a Week Ago',
       members: [
         { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'fb://danielle.deanne'},
         { id: 1, name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'},
         { id: 2, name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'fb://profile/9505194'}
       ]
     },
-    { id: 1, name: 'Guy', numMembers: 3, imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind',
+    { id: 1, name: 'Guy', numMembers: 3, imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind', partyToJoin: 'Party I Created a Week Ago',
       members: [
         { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
         { id: 3, name: 'Zoe Diamond-Liebeskind', imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind'}
-
       ]
     },
-    { id: 2, name: 'Frederique', numMembers: 2, imgUrl: 'frederica.jpg'},
-    { id: 3, name: 'Buck Wallander', numMembers: 4, imgUrl: 'buckwallander.jpg'}
+    { id: 2, name: 'Frederique', numMembers: 2, imgUrl: 'frederica.jpg', partyToJoin: 'Party I Created a Week Ago',
+      members: [
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
+        { id: 3, name: 'Zoe Diamond-Liebeskind', imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind'}
+      ]
+  },
+    { id: 3, name: 'Buck Wallander', numMembers: 4, imgUrl: 'buckwallander.jpg', partyToJoin: 'Party I Created a Week Ago',
+      members: [
+        { id: 0, name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
+        { id: 3, name: 'Zoe Diamond-Liebeskind', imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind'}
+      ]
+  }
   ];
 
   return {
@@ -33,6 +42,9 @@ angular.module('starter.services', [])
     get: function(entourageId) {
       // Simple index lookup
       return entourages[entourageId];
+    },
+    addToAccepted: function(entourageId) {
+      entourages.push(entourageId);
     }
   }
 })
@@ -58,6 +70,12 @@ angular.module('starter.services', [])
     get: function(entourageId) {
       // Simple index lookup
       return entourages[entourageId];
+    },
+    removeAccepted: function(entourageObject) {
+      var uniqueId = entourageObject.id;
+      console.log(uniqueId);
+      entourages.shift(); //Need to fix - this is not a legit way to do this
+      // entourageObject.id.remove();
     }
   }
 })
