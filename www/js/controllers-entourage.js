@@ -24,3 +24,7 @@ angular.module('entourage.controllers', [])
     $location.path("/main/entourage/viewentourages")
   };
 })
+
+.controller('ViewEntouragesCtrl', function($scope, $location, PendingEntourages) {
+	$scope.pendingentourages = PendingEntourages.all();
+})

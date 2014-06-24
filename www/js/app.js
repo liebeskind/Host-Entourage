@@ -122,7 +122,7 @@ angular.module('host-entourage', ['ionic',
     .state('main.entourage.viewEntourages', {
       url: '/viewentourages',
       views: {
-        'tab-createentourage': {
+        'tab-viewEntourages': {
           templateUrl: 'templates/entourage/tab-viewEntourages.html',
           controller: 'ViewEntouragesCtrl'
         }
