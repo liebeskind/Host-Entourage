@@ -13,3 +13,4 @@
 -Invite all attendees (not just entourages) through the app as well
 -For View Entourages and View Parties, break between things I've created and things where I'm a cohost/member
 -Button to lock-in Entourage once have at least one person accept.  Once an entourage is locked, nobody else can join.
+-Need to reset Create Tab state when hit Create My Party or Create my Entourage

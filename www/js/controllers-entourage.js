@@ -29,3 +29,8 @@ angular.module('entourage.controllers', [])
 	$scope.myentourages = MyEntourages.all();
 	$scope.memberentourages = MemberEntourages.all()
 })
+
+.controller('ViewMembersLockedCtrl', function($scope, $stateParams, MyEntourages) {
+  $scope.entourage = MyEntourages.get($stateParams.entourageId);
+  console.log($scope.entourage);
+})

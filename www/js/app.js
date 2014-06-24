@@ -129,6 +129,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.entourage.memberslocked', {
+      url: '/memberslocked/:entourageId',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/membersLocked-detail.html',
+          controller: 'ViewMembersLockedCtrl'
+        }
+      }
+    })
+
 /*****************************************/
 //HOST States
     .state('main.host.createparty', {
