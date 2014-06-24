@@ -7,14 +7,14 @@
 	    <h3>I'm the Captain</h3>
 	    <ion-list>
 	    	<h4> Waiting for Members</h4>
-	      <ion-item ng-repeat="entourage in myentourages" type="item-text-wrap" href="#/main/entourage/pendingentourage/{{entourage.id}}">
+	      <ion-item ng-repeat="entourage in myentourages" type="item-text-wrap" href="#/main/entourage/myentourage/{{entourage.id}}">
 	        <img ng-src="img/{{entourage.captain.imgUrl}}" class = "smallImg">
 	        {{entourage.name}}
 	      </ion-item>
 	    </ion-list>
 	    <ion-list>
 	    	<h4> Members Locked (Find Parties)</h4> 
-	      <ion-item ng-repeat="entourage in myentourages" type="item-text-wrap" href="#/main/entourage/pendingentourage/{{entourage.id}}">
+	      <ion-item ng-repeat="entourage in myentourages" type="item-text-wrap" href="#/main/entourage/myentourage/{{entourage.id}}">
 	        <img ng-src="img/{{entourage.captain.imgUrl}}" class = "smallImg">
 	        {{entourage.name}}
 	      </ion-item>
@@ -24,7 +24,7 @@
 		<div class="partyListFormat">
 	    <h3>I'm a Member</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="entourage in myentourages" type="item-text-wrap" href="#/main/entourage/createdentourage/{{entourage.id}}">
+	      <ion-item ng-repeat="entourage in memberentourages" type="item-text-wrap" href="#/main/entourage/memberentourage/{{entourage.id}}">
 	        <img ng-src="img/{{entourage.captain.imgUrl}}" class = "smallImg">
 	        {{entourage.name}}
 	      </ion-item>

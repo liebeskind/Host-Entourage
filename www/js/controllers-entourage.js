@@ -25,6 +25,7 @@ angular.module('entourage.controllers', [])
   };
 })
 
-.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages) {
+.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
 	$scope.myentourages = MyEntourages.all();
+	$scope.memberentourages = MemberEntourages.all()
 })

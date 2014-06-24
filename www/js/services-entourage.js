@@ -39,3 +39,33 @@ angular.module('entourage.services', [])
     }
   }
 })
+
+.factory('MemberEntourages', function() {
+  var memberentourages = [
+    { id: 0, name: "Derek's Entourage", date: '6/26/14', locked: false,
+      captain: {name: 'Derek Gillaspy', imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'},
+      members: [
+        {id: 0, name: 'Daniel Liebeskind', accepted: true, imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}, 
+        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
+        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ]
+    },
+    { id: 1, name: "Danielle's Entourage", date: '6/27/14', locked: true, 
+      captain: {name: 'Danielle Diamond', imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'},
+      members: [
+        {id: 0, name: 'Daniel Liebeskind', accepted: true, imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}, 
+        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
+        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ]
+    }
+  ];
+
+  return {
+    all: function() {
+      return memberentourages;
+    },
+    get: function(entourageId) {
+      return memberentourages[entourageId];
+    }
+  }
+})
