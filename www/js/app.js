@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       abstract: true,
       views: {
         'menu-content': {
-          templateUrl: "templates/host.html"  
+          templateUrl: "templates/host/host.html"  
         }
       }
     })
@@ -50,28 +50,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       abstract: true,
       views: {
         'menu-content': {
-          templateUrl: "templates/entourage.html"  
+          templateUrl: "templates/entourage/entourage.html"  
         }
       }
     })
 
     // Each tab has its own nav history stack:
 
+//Entourage States
     .state('main.entourage.createentourage', {
       url: '/createentourage',
       views: {
         'tab-createentourage': {
-          templateUrl: 'templates/tab-createentourage.html',
+          templateUrl: 'templates/entourage/tab-createentourage.html',
           controller: 'CreateEntourageCtrl'
         }
       }
     })
 
+
+//HOST States
     .state('main.host.createparty2', {
       url: '/createparty2',
       views: {
         'tab-createparty': {
-          templateUrl: 'templates/createparty2.html',
+          templateUrl: 'templates/host/createparty2.html',
           controller: 'CreatePartyCtrl'
         }
       }
@@ -81,7 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/createparty',
       views: {
         'tab-createparty': {
-          templateUrl: 'templates/tab-createparty.html',
+          templateUrl: 'templates/host/tab-createparty.html',
           controller: 'CreatePartyCtrl'
         }
       }
@@ -91,7 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/findentourages',
       views: {
         'tab-findentourages': {
-          templateUrl: 'templates/tab-findentourages.html',
+          templateUrl: 'templates/host/tab-findentourages.html',
           controller: 'FindEntouragesCtrl'
         }
       }
@@ -101,7 +104,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/acceptedentourage/:entourageId',
       views: {
         'tab-findentourages': {
-          templateUrl: 'templates/acceptedentourage-detail.html',
+          templateUrl: 'templates/host/acceptedentourage-detail.html',
           controller: 'AcceptedEntourageDetailCtrl'
         }
       }
@@ -111,7 +114,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/waitingentourage/:entourageId',
       views: {
         'tab-findentourages': {
-          templateUrl: 'templates/waitingentourage-detail.html',
+          templateUrl: 'templates/host/waitingentourage-detail.html',
           controller: 'WaitingEntourageDetailCtrl'
         }
       }
@@ -131,7 +134,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/party/:hostId',
       views: {
         'tab-account': {
-          templateUrl: 'templates/party-detail.html',
+          templateUrl: 'templates/host/party-detail.html',
           controller: 'PartyCtrl'
         }
       }
@@ -141,7 +144,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/attendedparty/:attendeeId',
       views: {
         'tab-account': {
-          templateUrl: 'templates/attended-party-detail.html',
+          templateUrl: 'templates/host/attended-party-detail.html',
           controller: 'AttendedPartyCtrl'
         }
       }
@@ -151,7 +154,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/createdparty/:partyId',
       views: {
         'tab-viewparties': {
-          templateUrl: 'templates/createdparty-detail.html',
+          templateUrl: 'templates/host/createdparty-detail.html',
           controller: 'CreatedPartyDetailsCtrl'
         }
       }
@@ -161,7 +164,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/pendingparty/:partyId',
       views: {
         'tab-viewparties': {
-          templateUrl: 'templates/pendingparty-detail.html',
+          templateUrl: 'templates/host/pendingparty-detail.html',
           controller: 'PendingPartyDetailsCtrl'
         }
       }
@@ -171,7 +174,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/viewparties',
       views: {
         'tab-viewparties': {
-          templateUrl: 'templates/tab-viewparties.html',
+          templateUrl: 'templates/host/tab-viewparties.html',
           controller: 'ViewPartiesCtrl'
         }
       }
