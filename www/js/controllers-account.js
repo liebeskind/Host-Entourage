@@ -1,4 +1,4 @@
-angular.module('general.controllers', [])
+angular.module('account.controllers', [])
 
 .controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.mainCtrl = {};

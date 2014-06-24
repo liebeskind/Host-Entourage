@@ -1,1 +1,1 @@
-angular.module('general.services', [])
+angular.module('account.services', [])

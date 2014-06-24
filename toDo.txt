@@ -8,3 +8,5 @@
 -Name possibilities = Host, Entourage, PartyMan
 -Fix time formatting to American-style
 -Add functionality to side menu so hides whichever option is currently active
+-Add image url and facebook url to createEntourage members and createParty cohosts
+-Add option to reuse previous entourage before picking entourage members.  Still have to wait for one other to confirm.

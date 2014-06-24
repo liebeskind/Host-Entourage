@@ -3,7 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controllers', 'entourage.controllers', 'host.services'])
+angular.module('host-entourage', ['ionic', 
+  'host.controllers', 'general.controllers', 'entourage.controllers', 'account.controllers', 
+  'host.services', 'general.services', 'entourage.services', 'account.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -97,12 +99,22 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       }
     })
 
+    .state('main.entourage.createentourage2', {
+      url: '/createentourage2',
+      views: {
+        'tab-createentourage': {
+          templateUrl: 'templates/entourage/createentourage2.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
+
     .state('main.entourage.findParties', {
       url: '/findparties',
       views: {
         'tab-findParties': {
           templateUrl: 'templates/entourage/tab-findParties.html',
-          controller: 'CreateEntourageCtrl'
+          controller: 'FindPartiesCtrl'
         }
       }
     })
@@ -112,7 +124,7 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       views: {
         'tab-createentourage': {
           templateUrl: 'templates/entourage/tab-viewEntourages.html',
-          controller: 'CreateEntourageCtrl'
+          controller: 'ViewEntouragesCtrl'
         }
       }
     })

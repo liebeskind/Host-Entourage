@@ -22,7 +22,6 @@ angular.module('host.controllers', [])
   };
 
   $scope.addParty = function(party) {
-    console.log(party);
     PendingParties.createParty(party);
     $location.path("/main/host/viewparties")
   };
@@ -47,14 +46,6 @@ angular.module('host.controllers', [])
     AcceptedEntourages.addToAccepted(entourage);
     WaitingEntourages.removeAccepted(entourage);
   }
-})
-
-.controller('PartyCtrl', function($scope, $stateParams, Hosted) {
-  $scope.party = Hosted.get($stateParams.hostId);
-})
-
-.controller('AttendedPartyCtrl', function($scope, $stateParams, Attended) {
-  $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
 
 .controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties) {
