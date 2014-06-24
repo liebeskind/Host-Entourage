@@ -147,7 +147,9 @@ angular.module('host.services', [])
       return pendingparties[partyId];
     },
     addCohosts: function(newCohosts) {
-      pendingparties.push({id: pendingparties.length, cohosts: newCohosts});
+      pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
+        host: { name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+      });
     },
     createParty: function(party) {
       for (prop in party) {
