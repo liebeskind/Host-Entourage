@@ -47,6 +47,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .state('main.entourage', {
       url: "/entourage",
+      abstract: true,
       views: {
         'menu-content': {
           templateUrl: "templates/entourage.html"  
