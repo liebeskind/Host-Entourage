@@ -18,14 +18,13 @@ angular.module('host.controllers', [])
     };
     $location.path('/main/host/createparty2');
     PendingParties.addCohosts(newCohosts);
-  }
+  };
 
   $scope.addParty = function(party) {
     console.log(party);
     PendingParties.createParty(party);
     $location.path("/main/host/viewparties")
-  }
-
+  };
 })
 
 .controller('CreateEntourageCtrl', function($scope) {
