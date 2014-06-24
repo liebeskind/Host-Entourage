@@ -2,11 +2,20 @@ angular.module('entourage.services', [])
 
 .factory('PendingEntourages', function() {
   var pendingentourages = [
-    { id: 0, name: "Daniel's Entourage", expires: '6/26/14', 
-      entourageMembers: [
-        {name: 'Danielle Diamond', accepted: true}, 
-        {name: 'Derek Gillaspy', accepted: false}, 
-        {name: 'Rayna Roumie', accepted: true}
+    { id: 0, name: "Daniel's Entourage", date: '6/26/14', 
+      captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
+      members: [
+        {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
+        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
+        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ]
+    },
+    { id: 1, name: "My Awesome Entourage", date: '6/27/14', 
+      captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
+      members: [
+        {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
+        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
+        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
       ]
     }
   ];
@@ -19,7 +28,9 @@ angular.module('entourage.services', [])
       return pendingentourages[entourageId];
     },
     addNewEntourage: function(newEntourage) {
-      pendingentourages.push({id: pendingentourages.length, entourageMembers: newEntourage});
+      pendingentourages.push({ id: pendingentourages.length, members: newEntourage, 
+      	captain: { name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+      });
     },
     createEntourage: function(entourage) {
       for (prop in entourage) {
@@ -27,4 +38,17 @@ angular.module('entourage.services', [])
       }
     }
   }
-});
+})
+
+.factory('PendingEntourages', function() {
+  var pendingentourages = [
+    { id: 0, name: "Daniel's Entourage", date: '6/26/14', 
+      captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
+      members: [
+        {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
+        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
+        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ]
+    }
+  ]
+})

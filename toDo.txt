@@ -10,3 +10,4 @@
 -Add functionality to side menu so hides whichever option is currently active
 -Add image url and facebook url to createEntourage members and createParty cohosts
 -Add option to reuse previous entourage before picking entourage members.  Still have to wait for one other to confirm.
+-Invite all attendees (not just entourages) through the app as well
