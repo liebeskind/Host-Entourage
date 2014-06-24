@@ -10,7 +10,7 @@ angular.module('entourage.services', [])
         {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
       ]
     },
-    { id: 1, name: "My Awesome Entourage", date: '6/27/14', locked: false, 
+    { id: 1, name: "My Awesome Entourage", date: '6/27/14', locked: true, 
       captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
       members: [
         {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
