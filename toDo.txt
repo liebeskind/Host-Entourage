@@ -6,4 +6,5 @@
 -Add ability to edit existing (or pending) parties and existing (or pending) entourages.
 -Move Account to sideMenu view
 -Name possibilities = Host, Entourage, PartyMan
-
+-Fix time formatting to American-style
+-Add functionality to side menu so hides whichever option is currently active

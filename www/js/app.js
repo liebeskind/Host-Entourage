@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'host.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -57,6 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     // Each tab has its own nav history stack:
 
+/*****************************************/
 //Entourage States
     .state('main.entourage.createentourage', {
       url: '/createentourage',
@@ -68,7 +69,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('main.entourage.findParties', {
+      url: '/findparties',
+      views: {
+        'tab-findParties': {
+          templateUrl: 'templates/entourage/tab-findParties.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
 
+    .state('main.entourage.viewEntourages', {
+      url: '/viewentourages',
+      views: {
+        'tab-createentourage': {
+          templateUrl: 'templates/entourage/tab-viewEntourages.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
+
+/*****************************************/
 //HOST States
     .state('main.host.createparty2', {
       url: '/createparty2',
