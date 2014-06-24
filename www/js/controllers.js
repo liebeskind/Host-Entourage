@@ -8,7 +8,12 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('CreatePartyCtrl', function($scope, PendingParties, $location) {
+.controller('CreatePartyCtrl', function($scope, $location, PendingParties) {
+  var recentParty = PendingParties.get(0)
+  $scope.party = {}
+  $scope.party.time = recentParty.time;
+  $scope.party.address = recentParty.address;
+
   $scope.addCohosts = function(people) {
     var newArray = [];
     var newCohosts = [{}];
@@ -24,6 +29,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.addParty = function(party) {
+    console.log(party);
     PendingParties.createParty(party);
     $location.path("/main/host/viewparties")
   }

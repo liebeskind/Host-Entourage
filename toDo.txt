@@ -5,4 +5,5 @@
 -Invite Friends from facebook on the Find Entourage tab.  Change tab name to Find Guests.  Send push notification to any invited friends (similar to cohosts) so that they download app as well.
 -Add ability to edit existing (or pending) parties and existing (or pending) entourages.
 -Move Account to sideMenu view
+-Name possibilities = Host, Entourage, PartyMan
 

@@ -6,9 +6,9 @@
 		    <p></p>
 		    <h3>{{pendingparties.name}}</h3>
 		    <p></p>
-		    Date: {{pendingparties.date}}
+		    Date: {{pendingparties.date | date:'M/d/yy'}}
 		    <p></p>
-		    Time: {{pendingparties.time}}
+		    Time: {{pendingparties.time | date:'hh:m'}}
 		    <p></p>
 		    Attendee Range: {{pendingparties.attendeeRange}}
 		    <p></p>
