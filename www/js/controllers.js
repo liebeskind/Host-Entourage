@@ -19,13 +19,13 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < newArray.length; i++) {
       newCohosts[i] = {name: newArray[i], accepted: false};
     };
-    $location.path('/host/createparty2');
+    $location.path('/main/host/createparty2');
     PendingParties.addCohosts(newCohosts);
   }
 
   $scope.addParty = function(party) {
     PendingParties.createParty(party);
-    $location.path("/host/viewparties")
+    $location.path("/main/host/viewparties")
   }
 
 })

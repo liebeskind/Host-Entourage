@@ -6,7 +6,7 @@
     <div class="partyListFormat">
       <h3>Awaiting Reply</h3>
       <ion-list>
-        <ion-item ng-repeat="entourage in waitingentourages" type="item-text-wrap" href="#/host/waitingentourage/{{entourage.id}}">
+        <ion-item ng-repeat="entourage in waitingentourages" type="item-text-wrap" href="#/main/host/waitingentourage/{{entourage.id}}">
           <img ng-src="img/{{entourage.imgUrl}}" class = "smallImg">
           {{entourage.name}}: 
           {{entourage.numMembers}} members
@@ -16,7 +16,7 @@
     <div class="partyListFormat">
       <h3>Already Accepted</h3>
       <ion-list>
-        <ion-item ng-repeat="entourage in acceptedentourages" type="item-text-wrap" href="#/host/acceptedentourage/{{entourage.id}}">
+        <ion-item ng-repeat="entourage in acceptedentourages" type="item-text-wrap" href="#/main/host/acceptedentourage/{{entourage.id}}">
           <img ng-src="img/{{entourage.imgUrl}}" class = "smallImg">
           {{entourage.name}}: 
           {{entourage.numMembers}} members

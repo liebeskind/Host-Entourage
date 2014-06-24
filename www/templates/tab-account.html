@@ -22,7 +22,7 @@
     <div class="partyListFormat noBottomBorder">
 	    <h3>Past Parties Hosted</h3>
 	    <ion-list class = "lineHeight">
-	      <ion-item ng-repeat="party in hosted | filter: search" href="#/host/party/{{party.id}}">
+	      <ion-item ng-repeat="party in hosted | filter: search" href="#/main/host/party/{{party.id}}">
 	        <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
 	        {{party.name}}
 	      </ion-item>
@@ -32,7 +32,7 @@
 		<div class="partyListFormat">
 	    <h3>Past Parties Attended</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="attendedparty in attended | filter: search" href="#/host/attendedparty/{{attendedparty.id}}">
+	      <ion-item ng-repeat="attendedparty in attended | filter: search" href="#/main/host/attendedparty/{{attendedparty.id}}">
 	        <img ng-src="img/{{attendedparty.imgUrl}}" class = "smallImg">
 	        {{attendedparty.name}}
 	      </ion-item>
