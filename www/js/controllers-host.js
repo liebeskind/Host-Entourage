@@ -5,6 +5,7 @@ angular.module('host.controllers', [])
   $scope.party = {}
   $scope.party.time = recentParty.time;
   $scope.party.address = recentParty.address;
+  $scope.party.attendeeRange = '31-40';
 
   $scope.addCohosts = function(people) {
     var newArray = [];
@@ -42,7 +43,7 @@ angular.module('host.controllers', [])
 .controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
   $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
   $scope.acceptEntourage = function(entourage) {
-    $location.path('host/findentourages');
+    $location.path('main/host/findentourages');
     AcceptedEntourages.addToAccepted(entourage);
     WaitingEntourages.removeAccepted(entourage);
   }

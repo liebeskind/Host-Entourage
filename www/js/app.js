@@ -53,7 +53,37 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       }
     })
 
-    // Each tab has its own nav history stack:
+/*****************************************/
+//Account States
+    .state('main.host.account', {
+      url: '/account',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/account/tab-account.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
+    .state('main.host.party-detail', {
+      url: '/party/:hostId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/account/party-detail.html',
+          controller: 'PartyCtrl'
+        }
+      }
+    })
+
+    .state('main.host.attended-party-detail', {
+      url: '/attendedparty/:attendeeId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/account/attended-party-detail.html',
+          controller: 'AttendedPartyCtrl'
+        }
+      }
+    }) 
 
 /*****************************************/
 //Entourage States
@@ -89,6 +119,16 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
 
 /*****************************************/
 //HOST States
+    .state('main.host.createparty', {
+      url: '/createparty',
+      views: {
+        'tab-createparty': {
+          templateUrl: 'templates/host/tab-createparty.html',
+          controller: 'CreatePartyCtrl'
+        }
+      }
+    })
+
     .state('main.host.createparty2', {
       url: '/createparty2',
       views: {
@@ -99,12 +139,32 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       }
     })
 
-    .state('main.host.createparty', {
-      url: '/createparty',
+    .state('main.host.viewparties', {
+      url: '/viewparties',
       views: {
-        'tab-createparty': {
-          templateUrl: 'templates/host/tab-createparty.html',
-          controller: 'CreatePartyCtrl'
+        'tab-viewparties': {
+          templateUrl: 'templates/host/tab-viewparties.html',
+          controller: 'ViewPartiesCtrl'
+        }
+      }
+    })    
+
+    .state('main.host.pendingparty-detail', {
+      url: '/pendingparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/host/pendingparty-detail.html',
+          controller: 'PendingPartyDetailsCtrl'
+        }
+      }
+    })   
+
+    .state('main.host.createdparty-detail', {
+      url: '/createdparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/host/createdparty-detail.html',
+          controller: 'CreatedPartyDetailsCtrl'
         }
       }
     })
@@ -119,16 +179,6 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       }
     })
 
-    .state('main.host.acceptedentourage-detail', {
-      url: '/acceptedentourage/:entourageId',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/host/acceptedentourage-detail.html',
-          controller: 'AcceptedEntourageDetailCtrl'
-        }
-      }
-    })
-
     .state('main.host.waitingentourage-detail', {
       url: '/waitingentourage/:entourageId',
       views: {
@@ -139,67 +189,17 @@ angular.module('host-entourage', ['ionic', 'host.controllers', 'general.controll
       }
     })
 
-    .state('main.host.account', {
-      url: '/account',
+    .state('main.host.acceptedentourage-detail', {
+      url: '/acceptedentourage/:entourageId',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
+        'tab-findentourages': {
+          templateUrl: 'templates/host/acceptedentourage-detail.html',
+          controller: 'AcceptedEntourageDetailCtrl'
         }
       }
     })
-
-    .state('main.host.party-detail', {
-      url: '/party/:hostId',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/host/party-detail.html',
-          controller: 'PartyCtrl'
-        }
-      }
-    })
-
-    .state('main.host.attended-party-detail', {
-      url: '/attendedparty/:attendeeId',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/host/attended-party-detail.html',
-          controller: 'AttendedPartyCtrl'
-        }
-      }
-    }) 
-
-    .state('main.host.createdparty-detail', {
-      url: '/createdparty/:partyId',
-      views: {
-        'tab-viewparties': {
-          templateUrl: 'templates/host/createdparty-detail.html',
-          controller: 'CreatedPartyDetailsCtrl'
-        }
-      }
-    })
-
-    .state('main.host.pendingparty-detail', {
-      url: '/pendingparty/:partyId',
-      views: {
-        'tab-viewparties': {
-          templateUrl: 'templates/host/pendingparty-detail.html',
-          controller: 'PendingPartyDetailsCtrl'
-        }
-      }
-    })   
-
-    .state('main.host.viewparties', {
-      url: '/viewparties',
-      views: {
-        'tab-viewparties': {
-          templateUrl: 'templates/host/tab-viewparties.html',
-          controller: 'ViewPartiesCtrl'
-        }
-      }
-    })    
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('main/host/account');
+  $urlRouterProvider.otherwise('main/host/createparty');
 });
 
