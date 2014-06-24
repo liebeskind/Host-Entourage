@@ -36,3 +36,8 @@ angular.module('entourage.controllers', [])
   	$location.path('/main/entourage/findparties');
   }
 })
+
+.controller('FindPartiesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
+	$scope.myentourages = MyEntourages.all();
+	console.log($scope.myentourages[0].name)
+})
