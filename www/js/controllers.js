@@ -1,5 +1,13 @@
 angular.module('starter.controllers', [])
 
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
+  
+  $scope.mainCtrl = {};
+  $scope.leftButtonTap = function () {
+      $ionicSideMenuDelegate.toggleLeft($scope.$childHead); // not working
+    }
+})
+
 .controller('CreatePartyCtrl', function($scope, PendingParties, $location) {
   $scope.addCohosts = function(people) {
     var newArray = [];
@@ -11,16 +19,21 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < newArray.length; i++) {
       newCohosts[i] = {name: newArray[i], accepted: false};
     };
-    $location.path('/tab/createparty2');
+    $location.path('/host/createparty2');
     PendingParties.addCohosts(newCohosts);
   }
 
   $scope.addParty = function(party) {
     PendingParties.createParty(party);
-    $location.path("/tab/viewparties")
+    $location.path("/host/viewparties")
   }
 
 })
+
+.controller('CreateEntourageCtrl', function($scope) {
+})
+
+
 
 .controller('SideMenusSimpleCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.toggleLeft = function() {
@@ -40,8 +53,7 @@ angular.module('starter.controllers', [])
 .controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
   $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
   $scope.acceptEntourage = function(entourage) {
-    console.log(entourage);
-    $location.path('tab/findentourages');
+    $location.path('host/findentourages');
     AcceptedEntourages.addToAccepted(entourage);
     WaitingEntourages.removeAccepted(entourage);
   }

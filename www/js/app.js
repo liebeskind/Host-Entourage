@@ -29,25 +29,44 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    .state('tab', {
-      url: "/tab",
+    .state('main', {
+      url: "/main",
       abstract: true,
-      templateUrl: "templates/tabs.html"
+      templateUrl: "templates/menu.html"
+    })    
+
+    .state('main.host', {
+      url: "/host",
+      abstract: true,
+      views: {
+        'menu-content': {
+          templateUrl: "templates/host.html"  
+        }
+      }
     })
 
-    .state('tab.menu', {
-      url: "/menu",
+    .state('main.entourage', {
+      url: "/entourage",
       views: {
-        'menuContent': {
-          templateUrl: "templates/menu.html",
-          controller: 'MenuCtrl'
+        'menu-content': {
+          templateUrl: "templates/entourage.html"  
         }
       }
     })
 
     // Each tab has its own nav history stack:
 
-    .state('tab.createparty2', {
+    .state('main.entourage.createentourage', {
+      url: '/createentourage',
+      views: {
+        'tab-createentourage': {
+          templateUrl: 'templates/tab-createentourage.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
+
+    .state('main.host.createparty2', {
       url: '/createparty2',
       views: {
         'tab-createparty': {
@@ -57,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.createparty', {
+    .state('main.host.createparty', {
       url: '/createparty',
       views: {
         'tab-createparty': {
@@ -67,7 +86,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.findentourages', {
+    .state('main.host.findentourages', {
       url: '/findentourages',
       views: {
         'tab-findentourages': {
@@ -77,7 +96,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.acceptedentourage-detail', {
+    .state('main.host.acceptedentourage-detail', {
       url: '/acceptedentourage/:entourageId',
       views: {
         'tab-findentourages': {
@@ -87,7 +106,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.waitingentourage-detail', {
+    .state('main.host.waitingentourage-detail', {
       url: '/waitingentourage/:entourageId',
       views: {
         'tab-findentourages': {
@@ -97,7 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.account', {
+    .state('main.host.account', {
       url: '/account',
       views: {
         'tab-account': {
@@ -107,7 +126,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.party-detail', {
+    .state('main.host.party-detail', {
       url: '/party/:hostId',
       views: {
         'tab-account': {
@@ -117,7 +136,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.createdparty-detail', {
+    .state('main.host.attended-party-detail', {
+      url: '/attendedparty/:attendeeId',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/attended-party-detail.html',
+          controller: 'AttendedPartyCtrl'
+        }
+      }
+    }) 
+
+    .state('main.host.createdparty-detail', {
       url: '/createdparty/:partyId',
       views: {
         'tab-viewparties': {
@@ -127,7 +156,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.pendingparty-detail', {
+    .state('main.host.pendingparty-detail', {
       url: '/pendingparty/:partyId',
       views: {
         'tab-viewparties': {
@@ -135,19 +164,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'PendingPartyDetailsCtrl'
         }
       }
-    })
+    })   
 
-    .state('tab.attended-party-detail', {
-      url: '/attendedparty/:attendeeId',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/attended-party-detail.html',
-          controller: 'AttendedPartyCtrl'
-        }
-      }
-    })    
-
-    .state('tab.viewparties', {
+    .state('main.host.viewparties', {
       url: '/viewparties',
       views: {
         'tab-viewparties': {
@@ -158,6 +177,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     })    
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/account');
+  $urlRouterProvider.otherwise('main/host/account');
 });
 

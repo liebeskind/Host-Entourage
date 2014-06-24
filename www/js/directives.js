@@ -5,3 +5,5 @@ angular.module('starter.directives', [])
 	}
 }
 
+})
+
