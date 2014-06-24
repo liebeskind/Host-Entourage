@@ -39,5 +39,8 @@ angular.module('entourage.controllers', [])
 
 .controller('FindPartiesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
 	$scope.myentourages = MyEntourages.all();
-	console.log($scope.myentourages[0].name)
+	$scope.findParties = function(party) {
+		console.log("Finding parties with "+ party);
+	} 
+
 })

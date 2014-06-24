@@ -8,9 +8,11 @@
 -Name possibilities = Host, Entourage, PartyMan
 -Fix time formatting to American-style
 -Add functionality to side menu so hides whichever option is currently active
+-Move Account tab up to side menu and remove as a tab.  Can add a bunch of different tabs to Account
 -Add image url and facebook url to createEntourage members and createParty cohosts
 -Add option to reuse previous entourage before picking entourage members.  Still have to wait for one other to confirm.
 -Invite all attendees (not just entourages) through the app as well
 -For View Entourages and View Parties, break between things I've created and things where I'm a cohost/member
 -Button to lock-in Entourage once have at least one person accept.  Once an entourage is locked, nobody else can join.
 -Need to reset Create Tab state when hit Create My Party or Create my Entourage
+-If get to tab-findParties by clicking on Find Parties within membersLocked-detail, ng-model for Which Entourage should be preloaded

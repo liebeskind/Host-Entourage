@@ -69,3 +69,18 @@ angular.module('entourage.services', [])
     }
   }
 })
+
+.factory('PartySearchResults', function() {
+  var parties = [
+    { id: 0, name: 'Party I Created a Week Ago', date: '6/28/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg'  }
+  ];
+
+  return {
+    all: function() {
+      return parties;
+    },
+    get: function(partyId) {
+      return parties[partyId];
+    }
+  }
+})
