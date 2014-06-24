@@ -1,12 +1,7 @@
 angular.module('host.services', [])
 
-/**
- * A simple example service that returns some data.
- */
 .factory('AcceptedEntourages', function() {
   // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
   var entourages = [
     { id: 0, name: 'Zoe Brigade', numMembers: 4, partyToJoin: 'Party I Created a Week Ago',
       captain: { name: 'Zoe Diamond-Liebeskind', imgUrl: 'zoe.jpg', facebook: 'https://www.facebook.com/zoe.diamondliebeskind'},
@@ -43,7 +38,6 @@ angular.module('host.services', [])
       return entourages;
     },
     get: function(entourageId) {
-      // Simple index lookup
       return entourages[entourageId];
     },
     addToAccepted: function(entourageId) {
@@ -53,9 +47,6 @@ angular.module('host.services', [])
 })
 
 .factory('WaitingEntourages', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
   var entourages = [
     { id: 0, name: 'Beccas Entourage', numMembers: 3, partyToJoin: 'Party I Created a Week Ago',
       captain: { name: 'Becca Liebeskind', imgUrl: 'beccaliebeskind.jpg', facebook: 'https://www.facebook.com/rebecca.liebeskind'},
@@ -84,44 +75,6 @@ angular.module('host.services', [])
       var uniqueId = entourageObject.id;
       console.log(uniqueId);
       entourages.shift(); //Need to fix - this is not a legit way to do this
-      // entourageObject.id.remove();
-    }
-  }
-})
-
-.factory('Hosted', function() {
-  var hosted = [
-    { id: 0, name: 'Top Of The Hill June Party', attendees: 53, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' },
-    { id: 1, name: 'Fort Mason Party', attendees: 36, address: 'Fort Mason, San Francisco, CA', type: 'Barbeque', theme: 'Cowboy', imgUrl: 'ftmason.jpg' },
-    { id: 2, name: 'Top Of The Hill May Party', attendees: 23, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' },
-    { id: 3, name: 'Top Of The Hill April Party', attendees: 34, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' },
-    { id: 4, name: 'Top Of The Hill March Party', attendees: 52, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' },
-    { id: 5, name: 'Top Of The Hill Feb Party', attendees: 41, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' },
-    { id: 6, name: 'Top Of The Hill Jan Party', attendees: 37, address: '1902 Leavenworth, San Francisco, CA', type: 'Party', theme: 'British', imgUrl: 'russianhillalcatraz.jpg' }
-  ];
-
-  return {
-    all: function() {
-      return hosted;
-    },
-    get: function(hostId) {
-      return hosted[hostId];
-    }
-  }
-})
-
-.factory('Attended', function() {
-  var attended = [
-    { id: 0, name: 'Crazy St. Pattys Day Shindig', attendees: 53, address: 'Somewhereville USA', type: 'Party', theme: 'St. Pattys', imgUrl: 'stPattys.jpg'  },
-    { id: 1, name: 'Epic Warehouse Party', attendees: 203, address: 'San Francisco, CA', type: 'Rave', theme: 'Costumed', imgUrl: 'warehouseparty.jpg'  }
-  ];
-
-  return {
-    all: function() {
-      return attended;
-    },
-    get: function(attendeeId) {
-      return attended[attendeeId];
     }
   }
 })
