@@ -19,3 +19,9 @@
 -Entourages should be grayed out in the list if they aren't for the date selected (or can just make error that says either change date to x or select different entourage)
 -Make things like list of options for attendee range a directive so can change in one place and have flow through.  Nothing should be hardcoded in the HTML
 -Consider adding navigation button to top of all views, instead of just tab views
+-When looking at details of a past parties hosted in account view, add button that enables creation of new party with same specs
+-Ng-Model should be passed into Create Party and Create Entourage so can attach data (such as time created, who is captain / host, etc)
+-Add list of attendees to all past parties hosted and attended and enable clicking on their names to bring you to their facebook page
+-All detailed party views should list all co-hosts, entourages and attendees
+-Receive push notification when invited to party, invited to be co-host or invited to be member of entourage.  If don't have app installed, facebook message sent.  If do have app installed, push notification sent to phone and link opens app.  
+-When Finding Parties as an entourage, can see results in a list or map view.  If in map view, can redo results similar to Yelp.
