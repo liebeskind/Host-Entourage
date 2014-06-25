@@ -19,3 +19,6 @@ angular.module('account.controllers', [])
 .controller('AttendedPartyCtrl', function($scope, $stateParams, Attended) {
   $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
+
+.controller('ProfileCtrl', function($scope) {
+})

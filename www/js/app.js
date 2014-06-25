@@ -54,38 +54,58 @@ angular.module('host-entourage', ['ionic',
         }
       }
     })
+    
+    .state('main.account', {
+      url: "/account",
+      abstract: true,
+      views: {
+        'menu-content': {
+          templateUrl: "templates/account/account.html"  
+        }
+      }
+    })
 
 /*****************************************/
 //Account States
-    .state('main.host.account', {
-      url: '/account',
+    .state('main.account.pastparties', {
+      url: '/pastparties',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/account/tab-account.html',
+        'tab-pastParties': {
+          templateUrl: 'templates/account/tab-pastParties.html',
           controller: 'AccountCtrl'
         }
       }
     })
 
-    .state('main.host.party-detail', {
+    .state('main.account.party-detail', {
       url: '/party/:hostId',
       views: {
-        'tab-account': {
+        'tab-pastParties': {
           templateUrl: 'templates/account/party-detail.html',
           controller: 'PartyCtrl'
         }
       }
     })
 
-    .state('main.host.attended-party-detail', {
+    .state('main.account.attended-party-detail', {
       url: '/attendedparty/:attendeeId',
       views: {
-        'tab-account': {
+        'tab-pastParties': {
           templateUrl: 'templates/account/attended-party-detail.html',
           controller: 'AttendedPartyCtrl'
         }
       }
     }) 
+
+    .state('main.account.myprofile', {
+      url: '/myprofile',
+      views: {
+        'tab-myProfile': {
+          templateUrl: 'templates/account/tab-myProfile.html',
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
 
 /*****************************************/
 //Entourage States
@@ -154,7 +174,7 @@ angular.module('host-entourage', ['ionic',
       views: {
         'tab-viewEntourages': {
           templateUrl: 'templates/entourage/memberOfEntourage-detail.html',
-          controller: 'MemberOfEntourageCtrl'
+          controller: 'ViewMemberOfEntourageCtrl'
         }
       }
     })

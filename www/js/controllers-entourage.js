@@ -44,7 +44,7 @@ angular.module('entourage.controllers', [])
   }
 })
 
-.controller('MemberOfEntourageCtrl', function($scope, $location, $stateParams, MemberEntourages) {
+.controller('ViewMemberOfEntourageCtrl', function($scope, $location, $stateParams, MemberEntourages) {
 	$scope.entourage = MemberEntourages.get($stateParams.entourageId);
 })
 
