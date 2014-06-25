@@ -44,6 +44,10 @@ angular.module('entourage.controllers', [])
   }
 })
 
+.controller('MemberOfEntourageCtrl', function($scope, $location, $stateParams, MemberEntourages) {
+	$scope.entourage = MemberEntourages.get($stateParams.entourageId);
+})
+
 .controller('FindPartiesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
 	$scope.myentourages = MyEntourages.all();
 	$scope.findParties = function(party) {

@@ -149,6 +149,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.entourage.memberentourages', {
+      url: '/memberofentourage/:entourageId',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/memberOfEntourage-detail.html',
+          controller: 'MemberOfEntourageCtrl'
+        }
+      }
+    })
+
 /*****************************************/
 //HOST States
     .state('main.host.createparty', {
