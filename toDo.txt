@@ -15,4 +15,6 @@
 -For View Entourages and View Parties, break between things I've created and things where I'm a cohost/member
 -Button to lock-in Entourage once have at least one person accept.  Once an entourage is locked, nobody else can join.
 -Need to reset Create Tab state when hit Create My Party or Create my Entourage
--If get to tab-findParties by clicking on Find Parties within membersLocked-detail, ng-model for Which Entourage should be preloaded
+-If get to tab-findParties by clicking on Find Parties within membersLocked-detail, ng-model for Which Entourage and Date should be preloaded
+-Entourages should be grayed out in the list if they aren't for the date selected (or can just make error that says either change date to x or select different entourage)
+-Make things like list of options for attendee range a directive so can change in one place and have flow through.  Nothing should be hardcoded in the HTML
