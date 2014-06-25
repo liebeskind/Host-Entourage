@@ -37,6 +37,13 @@ angular.module('entourage.controllers', [])
   }
 })
 
+.controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
+  $scope.entourage = MyEntourages.get($stateParams.entourageId);
+  $scope.findParties = function(entourage) {
+  	$location.path('/main/entourage/findparties');
+  }
+})
+
 .controller('FindPartiesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
 	$scope.myentourages = MyEntourages.all();
 	$scope.findParties = function(party) {

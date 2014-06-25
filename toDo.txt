@@ -18,3 +18,4 @@
 -If get to tab-findParties by clicking on Find Parties within membersLocked-detail, ng-model for Which Entourage and Date should be preloaded
 -Entourages should be grayed out in the list if they aren't for the date selected (or can just make error that says either change date to x or select different entourage)
 -Make things like list of options for attendee range a directive so can change in one place and have flow through.  Nothing should be hardcoded in the HTML
+-Consider adding navigation button to top of all views, instead of just tab views
