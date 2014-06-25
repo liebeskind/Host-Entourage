@@ -25,3 +25,7 @@
 -All detailed party views should list all co-hosts, entourages and attendees
 -Receive push notification when invited to party, invited to be co-host or invited to be member of entourage.  If don't have app installed, facebook message sent.  If do have app installed, push notification sent to phone and link opens app.  
 -When Finding Parties as an entourage, can see results in a list or map view.  If in map view, can redo results similar to Yelp.
+-Decide whether menu should pop left or pop down from top.
+-Add Edit button to nav bar for all detailed views where makes sense.  Pushing edit will make all fields editable.  Editing any fields will send message to relevant parties.
+-Add messages tab to Account view
+-In profile, can set settings such as when to send push notification, when to send message (for example, if friend on facebook is having a party), when to send email (daily or weekly digest of messages?).  Most settings and fields are auto-completed are account activiation.  
