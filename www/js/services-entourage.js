@@ -8,6 +8,8 @@ angular.module('entourage.services', [])
         {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
         {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
         {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ],
+      parties: [
       ]
     },
     { id: 1, name: "My Awesome Entourage", date: '6/27/14', locked: true, 
@@ -16,6 +18,8 @@ angular.module('entourage.services', [])
         {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
         {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
         {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
+      ],
+      parties: [
       ]
     }
   ];
@@ -36,6 +40,11 @@ angular.module('entourage.services', [])
       for (prop in entourage) {
         myentourages[myentourages.length-1][prop] = entourage[prop]; 
       }
+    },
+    applyToParty: function(entourage, party) {
+      console.log(entourage);
+      console.log(party);
+      myentourages[0].parties.push(party); //Need to select correct entourage.  Need to push in partyId instead.
     }
   }
 })

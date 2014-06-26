@@ -15,6 +15,20 @@
 	          {{member.name}}
 	        </ion-item>
 	      </ion-list>
+	      Parties Applied To:
+		    <ion-list>
+	        <ion-item ng-repeat="party in entourage.parties" type="item-text-wrap" href="{{party.facebook}}">
+	          <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
+	          {{party.name}}
+	        </ion-item>
+	      </ion-list>
+	      Parties Accepted At:
+		    <ion-list>
+	        <ion-item ng-repeat="party in entourage.parties" type="item-text-wrap" href="{{party.facebook}}">
+	          <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
+	          {{party.name}}
+	        </ion-item>
+	      </ion-list>
 		  </div>
 		</div>
 	  <button class="button button-block button-positive" ng-click="findParties(entourage)">

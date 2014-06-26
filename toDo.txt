@@ -30,3 +30,5 @@
 -Add messages tab to Account view
 -In profile, can set settings such as when to send push notification, when to send message (for example, if friend on facebook is having a party), when to send email (daily or weekly digest of messages?).  Most settings and fields are auto-completed are account activiation.  
 -When in findParties, date should auto-fill based on Entourage selected.
+-Add a unique ID to each party and entourage so other side can do lookup vs saving information.  Protect against changes not being reflected.
+-Clean up services so that there's only one instance of each party or entourage in each service
