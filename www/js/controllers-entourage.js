@@ -30,17 +30,19 @@ angular.module('entourage.controllers', [])
 	$scope.memberentourages = MemberEntourages.all()
 })
 
-.controller('ViewMembersLockedCtrl', function($scope, $location, $stateParams, MyEntourages) {
+.controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
   $scope.findParties = function(entourage) {
   	$location.path('/main/entourage/findparties');
   }
 })
 
-.controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
+.controller('ViewMembersLockedCtrl', function($scope, $location, $stateParams, MyEntourages) {
+  //membersLocked-detail.html
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
-  $scope.findParties = function(entourage) {
-  	$location.path('/main/entourage/findparties');
+  $scope.findPartiesView = function(entourage) {
+    MyEntourages.selectEntourage($scope.entourage);
+    $location.path('/main/entourage/findparties');
   }
 })
 
@@ -49,14 +51,23 @@ angular.module('entourage.controllers', [])
 })
 
 .controller('FindPartiesCtrl', function($scope, $location, $stateParams, MyEntourages, PartySearchResults) {
-	$scope.partyFilter;
+  //tab-findParties.html
+  $scope.partyFilter;
+  $scope.searchparty = {};
+  $scope.searchparty.entourage = MyEntourages.selectEntourage();
+  $scope.searchparty.date = $scope.searchparty.entourage.date;
+  console.log($scope.searchparty.entourage.date);
   $scope.myentourages = MyEntourages.all();
 	$scope.findParties = function(party) {
 		$location.path('main/entourage/partysearchresults');
     $scope.partyFilter = party;
 	} 
+
+  //partySearchResults.html
   $scope.partyresults = PartySearchResults.all();
   $scope.party = PartySearchResults.get($stateParams.partyId);
+  
+  //partySearchResults-detail.html
   $scope.applyToParty = function(entourage) {
     MyEntourages.applyToParty(entourage, $scope.party);
     $location.path('main/entourage/partysearchresults');

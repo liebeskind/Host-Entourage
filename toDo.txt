@@ -32,3 +32,5 @@
 -When in findParties, date should auto-fill based on Entourage selected.
 -Add a unique ID to each party and entourage so other side can do lookup vs saving information.  Protect against changes not being reflected.
 -Clean up services so that there's only one instance of each party or entourage in each service
+-In CreateEntourage2, should default to today's date
+-Add Past Entourages to Account menu

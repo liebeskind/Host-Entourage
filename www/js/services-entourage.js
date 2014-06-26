@@ -24,6 +24,8 @@ angular.module('entourage.services', [])
     }
   ];
 
+  var selectedEntourage = {}
+
   return {
     all: function() {
       return myentourages;
@@ -42,9 +44,11 @@ angular.module('entourage.services', [])
       }
     },
     applyToParty: function(entourage, party) {
-      console.log(entourage);
-      console.log(party);
       myentourages[0].parties.push(party); //Need to select correct entourage.  Need to push in partyId instead.
+    },
+    selectEntourage: function(entourage) {
+      selectedEntourage = entourage || selectedEntourage;
+      return selectedEntourage;
     }
   }
 })
