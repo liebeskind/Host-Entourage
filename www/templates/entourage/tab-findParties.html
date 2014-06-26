@@ -5,6 +5,14 @@
   <ion-content class="has-header padding">
     <h3>Find A Party!</h3>
 	  <div class="list">
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Entourage
+		    </div> 
+		    <select ng-model = "party.entourage">
+					<option ng-repeat="entourage in myentourages">{{entourage.name}}</option>
+		   	</select>
+  		</label>
 		  <label class="item item-input">
 		    <span class="input-label">Date</span>
 		    <input type="Date" ng-model="party.date">
@@ -53,14 +61,7 @@
 		    <span class="input-label">Theme</span>
 		    <input type="text" ng-model="party.theme">
 		  </label> -->
-		  <label class="item item-input item-select">
-		    <div class="input-label">
-		      Which Entourage (Required)
-		    </div> 
-		    <select ng-model = "party.entourage">
-					<option ng-repeat="entourage in myentourages">{{entourage.name}}</option>
-		   	</select>
-  		</label>
+		  
 		</div>
 
 		<button class="button button-block button-positive" ng-click="findParties(party)">

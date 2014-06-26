@@ -139,6 +139,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.entourage.partySearchResults', {
+      url: '/partysearchresults',
+      views: {
+        'tab-findParties': {
+          templateUrl: 'templates/entourage/partySearchResults.html',
+          controller: 'FindPartiesCtrl'
+        }
+      }
+    })
+
     .state('main.entourage.viewEntourages', {
       url: '/viewentourages',
       views: {

@@ -29,3 +29,4 @@
 -Add Edit button to nav bar for all detailed views where makes sense.  Pushing edit will make all fields editable.  Editing any fields will send message to relevant parties.
 -Add messages tab to Account view
 -In profile, can set settings such as when to send push notification, when to send message (for example, if friend on facebook is having a party), when to send email (daily or weekly digest of messages?).  Most settings and fields are auto-completed are account activiation.  
+-When in findParties, date should auto-fill based on Entourage selected.
