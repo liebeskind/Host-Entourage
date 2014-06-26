@@ -107,6 +107,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.account.pastentourages', {
+      url: '/pastentourages',
+      views: {
+        'tab-pastEntourages': {
+          templateUrl: 'templates/account/tab-pastEntourages.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
 /*****************************************/
 //Entourage States
     .state('main.entourage.createentourage', {
