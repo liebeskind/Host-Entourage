@@ -15,7 +15,7 @@
 		  
 		  <label class="item item-input">
 		    <span class="input-label">Date</span>
-		    <input type="Date" ng-model="searchparty.date">
+		    <input type="Date" name="input" ng-model="searchparty.date" placeholder = "yyyy-MM-dd">
 		  </label>
 		   
 		  <label class="item item-input item-select">
@@ -32,6 +32,7 @@
 		    <span class="input-label">Neighborhood</span>
 		    <input type="text" ng-model="party.neighborhood">
 		  </label> -->
+		  
 		  <label class="item item-input item-select">
 		    <div class="input-label">
 		      # Attendees
@@ -46,6 +47,7 @@
 		      <option>500+</option>
 		   	</select>
   		</label>
+  		
   		<label class="item item-input item-select">
 		    <div class="input-label">
 		      Type of Party
@@ -66,7 +68,7 @@
 		</div>
 
 		<button class="button button-block button-positive" ng-click="findParties(searchparty)">
-  	<h4 style="color: white;">Find Me A Party!</h4>
+  	<h4 style="color: white;">Find {{searchparty.entourage.name}} A Party!</h4>
 		</button>
   </ion-content>
 </ion-view>

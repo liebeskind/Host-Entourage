@@ -34,3 +34,5 @@
 -Clean up services so that there's only one instance of each party or entourage in each service
 -In CreateEntourage2, should default to today's date
 -Add Past Entourages to Account menu
+-Add Already Applied and Already Accepted to Search Results (for Entourages)
+-Change ng-repeats to collection-repeat
