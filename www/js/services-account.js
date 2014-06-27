@@ -42,6 +42,7 @@ angular.module('account.services', [])
 
   return {
     addUser: function(newUser) {
+      console.log(newUser)
       user.push(newUser)
     }
   }

@@ -20,19 +20,24 @@ angular.module('account.controllers', [])
   $scope.attendedparty = Attended.get($stateParams.attendeeId);
 })
 
-.controller('ProfileCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope, User) {
 	$scope.login = function() {
-	 FB.init({
-      appId: "250197515177945",
-      nativeInterface: CDV.FB,
-      useCachedDialogs: false,
-  });
-
-	 FB.getLoginStatus(function( response ) {
+	  FB.getLoginStatus(function( response ) {
 	    if ( response.status === "connected" ) {
 	        console.log('already logged in');
 	    } else {
-	        FB.login(function(response){},{scope:'email'})
+	        FB.login(function(response){
+	        	FB.api('/me', {
+	        		fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+	        	}, function(response) {
+	        		User.addUser(response)
+	        		FB.api('/me/friends', function(response) {
+	        			if (response && !response.error) {
+	        				console.log(response);
+	        			}
+	        		})
+	        	})
+	        },{scope: ['email', 'user_friends', 'user_events']})
 	    }
 		});
 	};
@@ -41,5 +46,5 @@ angular.module('account.controllers', [])
 		FB.logout(function( response ) {
 	    console.log( "logged out" );
 	  });
-	}
+	};
 })
