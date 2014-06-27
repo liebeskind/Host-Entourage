@@ -26,18 +26,7 @@ angular.module('account.controllers', [])
 	    if ( response.status === "connected" ) {
 	        console.log('already logged in');
 	    } else {
-	        FB.login(function(response){
-	        	FB.api('/me', {
-	        		fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
-	        	}, function(response) {
-	        		User.addUser(response)
-	        		FB.api('/me/friends', function(response) {
-	        			if (response && !response.error) {
-	        				console.log(response);
-	        			}
-	        		})
-	        	})
-	        },{scope: ['email', 'user_friends', 'user_events']})
+	      FBlogin();	  
 	    }
 		});
 	};
