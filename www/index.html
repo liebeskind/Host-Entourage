@@ -19,7 +19,7 @@
     <script src="cordova.js"></script>
 
     <!-- Facebook JS SDK and Cordova Facebook Plugin-->
-    <script src="cdv-plugin-fb-connect.js"></script>
+    <script src="lib/facebook-cordova/cdv-plugin-fb-connect.js"></script>
     <script src="http://connect.facebook.net/en_US/all.js"></script>
 
     <!-- your app's js -->
@@ -64,25 +64,25 @@
 
 
     // if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-    // if (typeof CDV === 'undefined') {
-    //   alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-    // }
+    if (typeof CDV === 'undefined') {
+      alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+    }
     if (typeof FB === 'undefined') {
       alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     }
      
-    // document.addEventListener('deviceready', function() {
-    //   try {
-    //       FB.init({
-    //           appId: "250197515177945",
-    //           nativeInterface: CDV.FB,
-    //           useCachedDialogs: false,
-    //           version: 'v1.0'
-    //       });
-    //   } catch (e) {
-    //       alert(e);
-    //   }
-    // }, false);
+    document.addEventListener('deviceready', function() {
+      try {
+          FB.init({
+              appId: "250197515177945",
+              nativeInterface: CDV.FB,
+              useCachedDialogs: false,
+              version: 'v1.0'
+          });
+      } catch (e) {
+          alert(e);
+      }
+    }, false);
       
     </script>
     <!-- 

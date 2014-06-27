@@ -25,20 +25,28 @@ angular.module('account.controllers', [])
       
 	
 	$scope.login = function() {
-		// e.preventDefault();
 	 
 	 FB.init({
-          appId      : '250197515177945',
-          xfbml      : true,
-          version    : 'v2.0'
-    });
+      appId: "250197515177945",
+      nativeInterface: CDV.FB,
+      useCachedDialogs: false,
+  });
 
-		FB.login(function(response) {
-			if (response.status === 'connected') {
-				alert('logged in');
-			} else {
-				alert('not logged in');
-			}
-		},{ scope: "email" });
+	 FB.getLoginStatus(function( response ) {
+	    if ( response.status === "connected" ) {
+	        console.log('already logged in');
+	    } else {
+	        FB.login(function(response){},{scope:'email'})
+	    }
+		});
+
+	// 	FB.login(function(response) {
+	// 		if (response.status === 'connected') {
+	// 			alert('logged in');
+	// 			console.log(response);
+	// 		} else {
+	// 			alert('not logged in');
+	// 		}
+	// 	},{ scope: "email" });
 	};
 })

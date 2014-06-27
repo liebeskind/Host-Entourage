@@ -36,3 +36,13 @@ angular.module('account.services', [])
     }
   }
 })
+
+.factory('User', function() {
+  var user = [];
+
+  return {
+    addUser: function(newUser) {
+      user.push(newUser)
+    }
+  }
+})
