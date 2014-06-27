@@ -21,11 +21,7 @@ angular.module('account.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope) {
-        
-      
-	
 	$scope.login = function() {
-	 
 	 FB.init({
       appId: "250197515177945",
       nativeInterface: CDV.FB,
@@ -39,14 +35,11 @@ angular.module('account.controllers', [])
 	        FB.login(function(response){},{scope:'email'})
 	    }
 		});
-
-	// 	FB.login(function(response) {
-	// 		if (response.status === 'connected') {
-	// 			alert('logged in');
-	// 			console.log(response);
-	// 		} else {
-	// 			alert('not logged in');
-	// 		}
-	// 	},{ scope: "email" });
 	};
+
+	$scope.logout = function() {
+		FB.logout(function( response ) {
+	    console.log( "logged out" );
+	  });
+	}
 })

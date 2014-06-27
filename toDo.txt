@@ -36,3 +36,4 @@
 -Add Past Entourages to Account menu
 -Add Already Applied and Already Accepted to Search Results (for Entourages)
 -Change ng-repeats to collection-repeat
+-Expand list of facebook permissions to include anything relevant
