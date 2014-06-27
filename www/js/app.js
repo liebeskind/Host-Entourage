@@ -107,6 +107,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.account.login', {
+      url: "/login",
+      views: {
+        'tab-myProfile': {
+          templateUrl: "templates/login.html",
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
     .state('main.account.pastentourages', {
       url: '/pastentourages',
       views: {
@@ -292,6 +302,6 @@ angular.module('host-entourage', ['ionic',
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('main/host/createparty');
+  $urlRouterProvider.otherwise('main/account/login');
 });
 
