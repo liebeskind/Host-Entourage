@@ -41,3 +41,5 @@
 -Expand list of people that you can invite or that can see party to 3rd level connection via facebook
 -Move friend permission and event permissions to later in the flow.  
 -Refactor CreatedParties to be part of pending parties and create filter so only show where all accepted flags = true
+-Create Welcome page after login where user can decide whether to go to Host or Entourage state
+-Separate FB picture request so can make higher resolution for detailed view

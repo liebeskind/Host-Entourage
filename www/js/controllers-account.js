@@ -21,6 +21,7 @@ angular.module('account.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope, $location, User) {
+	// $scope.userName = User.get(0).first_name;
 	$scope.login = function() {
 	  var results;
 	  FB.getLoginStatus(function( response ) {

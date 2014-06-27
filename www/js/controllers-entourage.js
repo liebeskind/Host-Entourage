@@ -1,9 +1,13 @@
 angular.module('entourage.controllers', [])
 
 .controller('CreateEntourageCtrl', function($scope, $location, MyEntourages, User) {
-  // var recent = MyEntourages.get(0)
+  var recent = MyEntourages.get(0)
   $scope.entourage = {}
-  if (User.get(0) != undefined) $scope.entourage.name = User.get(0).first_name + "'s Entourage";
+  if (User.get(0) != undefined) {
+    $scope.entourage.name = User.get(0).first_name + "'s Entourage";
+  } else {
+    $scope.entourage.name = recent.name;
+  }
   
   $scope.addEntourageMembers = function(people) {
     var newArray = [];
