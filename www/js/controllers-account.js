@@ -21,4 +21,24 @@ angular.module('account.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope) {
+        
+      
+	
+	$scope.login = function() {
+		// e.preventDefault();
+	 
+	 FB.init({
+          appId      : '250197515177945',
+          xfbml      : true,
+          version    : 'v2.0'
+    });
+
+		FB.login(function(response) {
+			if (response.status === 'connected') {
+				alert('logged in');
+			} else {
+				alert('not logged in');
+			}
+		},{ scope: "email" });
+	};
 })

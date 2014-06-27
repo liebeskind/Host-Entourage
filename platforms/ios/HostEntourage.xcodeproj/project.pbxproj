@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -44,6 +43,13 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		E2F07502A07F4F1387BC1272 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F09A8CF10B484EAC000E8D /* IonicKeyboard.m */; };
 		F84D715DE2674B27A402EF73 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC87D36201346479A85B154 /* CDVLogger.m */; };
+		CA39122CF7424AC397901024 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3E9CFE5444840910A6AAD /* FacebookConnectPlugin.m */; };
+		CFB06BD81A97499882F63E11 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2061FB7D53C644A394BFFB30 /* FacebookSDK.framework */; };
+		58AE9F3F94D745879A0C63E6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CC20A0C8A9BE4C80A3B2DF8C /* libsqlite3.dylib */; };
+		2E4F196CD1B44922AB6CFA78 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879CC4DBB11046BDB549EF90 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F2B5BFC5241141C7AD4264DE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13E4559F5B64A7994EDB4F6 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C80AF83B675D48F7B3577225 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE69A4DE47F457BA59B2A70 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		79D818D319024354823E1BEC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7436D967B9F442CF8B10C48B /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,14 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = HelloCordova/config.xml; sourceTree = "<group>"; };
+		7CB3E9CFE5444840910A6AAD /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "FacebookConnectPlugin.m"; path = "com.phonegap.plugins.facebookconnect/FacebookConnectPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		07F20BA0E9AF42B3ADF8D3DB /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FacebookConnectPlugin.h"; path = "com.phonegap.plugins.facebookconnect/FacebookConnectPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		2061FB7D53C644A394BFFB30 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "FacebookSDK.framework"; path = "HelloCordova/Plugins/com.phonegap.plugins.facebookconnect/FacebookSDK.framework"; sourceTree = "<group>"; };
+		CC20A0C8A9BE4C80A3B2DF8C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		879CC4DBB11046BDB549EF90 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B13E4559F5B64A7994EDB4F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Accounts.framework"; path = "System/Library/Frameworks/Accounts.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		ABE69A4DE47F457BA59B2A70 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AdSupport.framework"; path = "System/Library/Frameworks/AdSupport.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		7436D967B9F442CF8B10C48B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +144,12 @@
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
 				29FB7288195CEC2000EF794D /* FacebookSDK.framework in Frameworks */,
+				CFB06BD81A97499882F63E11 /* FacebookSDK.framework in Frameworks */,
+				58AE9F3F94D745879A0C63E6 /* libsqlite3.dylib in Frameworks */,
+				2E4F196CD1B44922AB6CFA78 /* Social.framework in Frameworks */,
+				F2B5BFC5241141C7AD4264DE /* Accounts.framework in Frameworks */,
+				C80AF83B675D48F7B3577225 /* AdSupport.framework in Frameworks */,
+				79D818D319024354823E1BEC /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +244,12 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				2061FB7D53C644A394BFFB30 /* FacebookSDK.framework */,
+				CC20A0C8A9BE4C80A3B2DF8C /* libsqlite3.dylib */,
+				879CC4DBB11046BDB549EF90 /* Social.framework */,
+				B13E4559F5B64A7994EDB4F6 /* Accounts.framework */,
+				ABE69A4DE47F457BA59B2A70 /* AdSupport.framework */,
+				7436D967B9F442CF8B10C48B /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -247,6 +273,8 @@
 				2E0C89D06F5C4F25A23C99E6 /* CDVLogger.h */,
 				AF199D263AA441A5AD244055 /* CDVDevice.m */,
 				16A04856F5824504A0598F77 /* CDVDevice.h */,
+				7CB3E9CFE5444840910A6AAD /* FacebookConnectPlugin.m */,
+				07F20BA0E9AF42B3ADF8D3DB /* FacebookConnectPlugin.h */,
 			);
 			name = Plugins;
 			path = HelloCordova/Plugins;
@@ -341,6 +369,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = WBG667HX6D;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HostEntourage" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -446,6 +479,7 @@
 				408A6AB6B92E4A56A7184564 /* UIWebViewExtension.m in Sources */,
 				F84D715DE2674B27A402EF73 /* CDVLogger.m in Sources */,
 				BDB47B823EE84025BF7B03E5 /* CDVDevice.m in Sources */,
+				CA39122CF7424AC397901024 /* FacebookConnectPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,12 +534,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dliebeskind/Documents/FacebookSDK,
 					/Users/dliebeskind/Documents/FacebookSDK/FBAudienceNetwork,
 					"$(PROJECT_DIR)",
+					"\"HelloCordova/Plugins/com.phonegap.plugins.facebookconnect\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -544,12 +580,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/dliebeskind/Documents/FacebookSDK,
 					/Users/dliebeskind/Documents/FacebookSDK/FBAudienceNetwork,
 					"$(PROJECT_DIR)",
+					"\"HelloCordova/Plugins/com.phonegap.plugins.facebookconnect\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloCordova/HostEntourage-Prefix.pch";
