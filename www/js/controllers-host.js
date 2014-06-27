@@ -1,6 +1,6 @@
 angular.module('host.controllers', [])
 
-.controller('CreatePartyCtrl', function($scope, $location, PendingParties) {
+.controller('CreatePartyCtrl', function($scope, $location, PendingParties, User) {
   var recentParty = PendingParties.get(0)
   $scope.party = {}
   $scope.party.time = recentParty.time;
@@ -18,7 +18,8 @@ angular.module('host.controllers', [])
       newCohosts[i] = {name: newArray[i], accepted: false};
     };
     $location.path('/main/host/createparty2');
-    PendingParties.addCohosts(newCohosts);
+    var newHost = User.get(0);
+    PendingParties.addCohosts(newCohosts, newHost);
   };
 
   $scope.addParty = function(party) {

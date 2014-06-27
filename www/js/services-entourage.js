@@ -3,7 +3,7 @@ angular.module('entourage.services', [])
 .factory('MyEntourages', function() {
   var myentourages = [
     { id: 0, name: "Daniel's Entourage", date: '6/26/14', locked: false,
-      captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
+      captain: {name: 'Daniel Liebeskind', imgUrl: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c4.0.50.50/p50x50/1484103_10100651628887376_1489797280_n.jpg?oh=4c3ce8287a3f7a8a11ee733dcf7562e9&oe=54148C9C&__gda__=1411759774_e6b037dcc654d3e4aeec51e18f7f2459", facebook: 'https://www.facebook.com/daniel.liebeskind'},
       members: [
         {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
         {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
@@ -13,7 +13,7 @@ angular.module('entourage.services', [])
       ]
     },
     { id: 1, name: "My Awesome Entourage", date: '6/27/14', locked: true, 
-      captain: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
+      captain: {name: 'Daniel Liebeskind', imgUrl: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c4.0.50.50/p50x50/1484103_10100651628887376_1489797280_n.jpg?oh=4c3ce8287a3f7a8a11ee733dcf7562e9&oe=54148C9C&__gda__=1411759774_e6b037dcc654d3e4aeec51e18f7f2459", facebook: 'https://www.facebook.com/daniel.liebeskind'},
       members: [
         {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
         {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
@@ -33,9 +33,11 @@ angular.module('entourage.services', [])
     get: function(entourageId) {
       return myentourages[entourageId];
     },
-    addNewEntourage: function(newEntourage) {
+    addNewEntourage: function(newEntourage, newCaptain) {
+      console.log(newCaptain);
+      newCaptain.imgUrl = newCaptain.picture.data.url;
       myentourages.push({ id: myentourages.length, members: newEntourage, 
-      	captain: { name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+      	captain: newCaptain
       });
     },
     createEntourage: function(entourage) {

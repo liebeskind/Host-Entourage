@@ -99,9 +99,9 @@ angular.module('host.services', [])
     get: function(partyId) {
       return pendingparties[partyId];
     },
-    addCohosts: function(newCohosts) {
+    addCohosts: function(newCohosts, newHost) {
       pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
-        host: { name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'}
+        host: newHost
       });
     },
     createParty: function(party) {
@@ -112,6 +112,8 @@ angular.module('host.services', [])
     }
   }
 })
+
+//should get rid of this and combine with PendingParties.  Then create a filter that only shows where all accepted = true
 
 .factory('CreatedParties', function() {
   var createdparties = [

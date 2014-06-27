@@ -1,9 +1,9 @@
 angular.module('entourage.controllers', [])
 
-.controller('CreateEntourageCtrl', function($scope, $location, MyEntourages) {
-  var recent = MyEntourages.get(0)
+.controller('CreateEntourageCtrl', function($scope, $location, MyEntourages, User) {
+  // var recent = MyEntourages.get(0)
   $scope.entourage = {}
-  $scope.entourage.name = recent.name;
+  if (User.get(0) != undefined) $scope.entourage.name = User.get(0).first_name + "'s Entourage";
   
   $scope.addEntourageMembers = function(people) {
     var newArray = [];
@@ -16,7 +16,8 @@ angular.module('entourage.controllers', [])
       newEntourage[i] = {name: newArray[i], accepted: false};
     };
     $location.path('/main/entourage/createentourage2');
-    MyEntourages.addNewEntourage(newEntourage);
+    var newCaptain = User.get(0);
+    MyEntourages.addNewEntourage(newEntourage, newCaptain);
   };
 
   $scope.addEntourage = function(entourage) {
