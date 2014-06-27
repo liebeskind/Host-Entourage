@@ -22,11 +22,19 @@ angular.module('account.controllers', [])
 
 .controller('ProfileCtrl', function($scope, User) {
 	$scope.login = function() {
+	  var results;
 	  FB.getLoginStatus(function( response ) {
 	    if ( response.status === "connected" ) {
 	        console.log('already logged in');
 	    } else {
-	      FBlogin();	  
+	      FB.login(function(response){
+			    FB.api('/v1.0/me', {
+			      fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+			    }, function(response) {
+			      // FBfriends();
+			      User.addUser(response);
+			    })},{scope: ['public_profile', 'email']}
+			  );  
 	    }
 		});
 	};
