@@ -37,13 +37,34 @@ angular.module('account.services', [])
   }
 })
 
-.factory('User', function() {
+.factory('User', function($rootScope, $location) {
   var user = [];
+  var isLoggedIn = false;
+
+  // Load auth token from somewhere, like localStorage.  Need to add 'token' to local storage on login
+  isLoggedIn = window.localStorage['token'] != null 
+
+  $rootScope.$on('user.logout', function() {
+    isLoggedIn = false;
+    // redir to login page
+    $location.path('/');
+  });
 
   return {
-    addUser: function(newUser) {
-      console.log(newUser);
-      user.push(newUser)
+    isLoggedIn: function() { return isLoggedIn; },
+    login: function() {
+      FB.login(function(response){
+        FB.api('/v1.0/me', {
+          fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+        }, function(response) {
+          user.push(response);
+          console.log(response.name + " is logged in")
+          $rootScope.$broadcast('user.login');
+        })},{scope: ['public_profile', 'email']}
+      );
+    },
+    logout: function() {
+      $rootScope.$broadcast('user.logout');
     },
     get: function(userId) {
       return user[userId];

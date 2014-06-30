@@ -7,7 +7,7 @@ angular.module('host-entourage', ['ionic',
   'host.controllers', 'general.controllers', 'entourage.controllers', 'account.controllers', 
   'host.services', 'general.services', 'entourage.services', 'account.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state, User) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,6 +18,18 @@ angular.module('host-entourage', ['ionic',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    // $rootScope.$on('$stateChangeStart', function (event, next, current) {
+    //   if(next.name.indexOf('main') !== -1 ) {
+
+    //       var isLoggedIn = User.isLoggedIn();
+
+    //       if(isLoggedIn===false) {
+    //           // event.preventDefault();
+    //           $state.go('main.account.login');
+    //       }
+    //   }
+    // })
   });
 })
 
@@ -65,6 +77,29 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+    .state('main.login', {
+      url: "/login",
+      abstract: true,
+      views: {
+        'menu-content': {
+          templateUrl: "templates/login/login.html"  
+        }
+      }
+    })
+/*****************************************/
+//Login
+
+.state('main.login.logmein', {
+      url: "/logmein",
+      views: {
+        'tab-login': {
+          templateUrl: "templates/login/tab-login.html",
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+
 /*****************************************/
 //Account States
     .state('main.account.pastparties', {
@@ -102,16 +137,6 @@ angular.module('host-entourage', ['ionic',
       views: {
         'tab-myProfile': {
           templateUrl: 'templates/account/tab-myProfile.html',
-          controller: 'ProfileCtrl'
-        }
-      }
-    })
-
-    .state('main.account.login', {
-      url: "/login",
-      views: {
-        'tab-myProfile': {
-          templateUrl: "templates/login.html",
           controller: 'ProfileCtrl'
         }
       }
@@ -302,6 +327,6 @@ angular.module('host-entourage', ['ionic',
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('main/account/login');
+  $urlRouterProvider.otherwise('main/login/logmein');
 });
 
