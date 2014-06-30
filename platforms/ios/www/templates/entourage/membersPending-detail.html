@@ -1,0 +1,29 @@
+<ion-view title="{{entourage.name}}">
+  <ion-content has-header="true" padding="true">
+	  <div class="card">
+		  <div class="item item-text-wrap">
+		    <img ng-src="{{entourage.captain.imgUrl}}" class = "detailedImg">
+		    <p></p>
+		    <h3>{{entourage.name}}</h3>
+		    <p></p>
+		    Date: {{entourage.date}}
+		    <p></p>
+		    Members:
+		    <ion-list>
+	        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebook}}">
+	          {{member.name}}
+	        	<span ng-show="{{member.accepted}}">
+			    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
+			    	</span>
+			    	<span ng-show="!{{member.accepted}}">
+			    		<img ng-src="img/redX.png" class = 'acceptedImg'>
+			    	</span>
+	        </ion-item>
+	      </ion-list>
+		  </div>
+		</div>
+	  <button class="button button-block button-positive" ng-click="pingMembers(thisIsBroken)">
+	  	<h4 style="color: white;">Ping Pending Members!</h4>
+		</button>
+  </ion-content>
+</ion-view>

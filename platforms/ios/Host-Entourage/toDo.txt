@@ -1,0 +1,38 @@
+-Add male/female property to each member of entourage
+-Enable sorting for findEntourage (using ng-filter) using dropdown menu
+-Add time requested and time accepted to findentourage details
+-Add sorting to account page using drowndown menu
+-Invite Friends from facebook on the Find Entourage tab.  Change tab name to Find Guests.  Send push notification to any invited friends (similar to cohosts) so that they download app as well.
+-Add ability to edit existing (or pending) parties and existing (or pending) entourages.
+-Move Account to sideMenu view
+-Name possibilities = Host, Entourage, PartyMan
+-Fix time formatting to American-style
+-Add functionality to side menu so hides whichever option is currently active
+-Move Account tab up to side menu and remove as a tab.  Can add a bunch of different tabs to Account
+-Add image url and facebook url to createEntourage members and createParty cohosts
+-Add option to reuse previous entourage before picking entourage members.  Still have to wait for one other to confirm.
+-Invite all attendees (not just entourages) through the app as well
+-For View Entourages and View Parties, break between things I've created and things where I'm a cohost/member
+-Button to lock-in Entourage once have at least one person accept.  Once an entourage is locked, nobody else can join.
+-Need to reset Create Tab state when hit Create My Party or Create my Entourage
+-If get to tab-findParties by clicking on Find Parties within membersLocked-detail, ng-model for Which Entourage and Date should be preloaded
+-Entourages should be grayed out in the list if they aren't for the date selected (or can just make error that says either change date to x or select different entourage)
+-Make things like list of options for attendee range a directive so can change in one place and have flow through.  Nothing should be hardcoded in the HTML
+-Consider adding navigation button to top of all views, instead of just tab views
+-When looking at details of a past parties hosted in account view, add button that enables creation of new party with same specs
+-Ng-Model should be passed into Create Party and Create Entourage so can attach data (such as time created, who is captain / host, etc)
+-Add list of attendees to all past parties hosted and attended and enable clicking on their names to bring you to their facebook page
+-All detailed party views should list all co-hosts, entourages and attendees
+-Receive push notification when invited to party, invited to be co-host or invited to be member of entourage.  If don't have app installed, facebook message sent.  If do have app installed, push notification sent to phone and link opens app.  
+-When Finding Parties as an entourage, can see results in a list or map view.  If in map view, can redo results similar to Yelp.
+-Decide whether menu should pop left or pop down from top.
+-Add Edit button to nav bar for all detailed views where makes sense.  Pushing edit will make all fields editable.  Editing any fields will send message to relevant parties.
+-Add messages tab to Account view
+-In profile, can set settings such as when to send push notification, when to send message (for example, if friend on facebook is having a party), when to send email (daily or weekly digest of messages?).  Most settings and fields are auto-completed are account activiation.  
+-When in findParties, date should auto-fill based on Entourage selected.
+-Add a unique ID to each party and entourage so other side can do lookup vs saving information.  Protect against changes not being reflected.
+-Clean up services so that there's only one instance of each party or entourage in each service
+-In CreateEntourage2, should default to today's date
+-Add Past Entourages to Account menu
+-Add Already Applied and Already Accepted to Search Results (for Entourages)
+-Change ng-repeats to collection-repeat

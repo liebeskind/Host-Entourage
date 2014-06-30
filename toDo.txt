@@ -43,3 +43,5 @@
 -Refactor CreatedParties to be part of pending parties and create filter so only show where all accepted flags = true
 -Create Welcome page after login where user can decide whether to go to Host or Entourage state
 -Separate FB picture request so can make higher resolution for detailed view
+-Add additional verifications to myProfile where can sign in through LinkedIn, Twitter, etc.
+-Profile auto-fills like Hinge and when click on a person's name you are brought to an overview of their profile, not of Facebook (currently a placeholder).  Anyone that has downloaded the app will have a profile.

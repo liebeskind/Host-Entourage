@@ -1,0 +1,18 @@
+<ion-view title="Create Entourage Step 2">
+  <ion-content class="has-header padding">
+    <h3>2. Create Your Entourage!</h3>
+	  <div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Entourage Name</span>
+		    <input type="text" ng-model="entourage.name">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Date</span>
+		    <input type="Date" ng-model="entourage.date">
+		  </label>
+
+		<button class="button button-block button-positive" ng-click="addEntourage(entourage)">
+  	<h4 style="color: white;">CREATE MY Entourage!</h4>
+		</button>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<ion-view title="{{pendingparties.name}}">
+  <ion-content has-header="true">
+	  <div class="card">
+		  <div class="item item-text-wrap">
+		    <img ng-src="img/{{pendingparties.imgUrl}}" class = "detailedImg">
+		    <p></p>
+		    <h3>{{pendingparties.name}}</h3>
+		    <p></p>
+		    Date: {{pendingparties.date | date:'M/d/yy'}}
+		    <p></p>
+		    Time: {{pendingparties.time | date:'hh:m'}}
+		    <p></p>
+		    Attendee Range: {{pendingparties.attendeeRange}}
+		    <p></p>
+		    Address: {{pendingparties.address}}
+		    <p></p>
+		    Type: {{pendingparties.type}}
+		    <p></p>
+		    Theme: {{pendingparties.theme}}
+		    <p></p>
+		    Cohosts (Accepted?):
+		    <p></p>
+		    <ion-item ng-repeat="cohosts in pendingparties.cohosts">
+		    	{{cohosts.name}}
+		    	<span ng-show="{{cohosts.accepted}}">
+		    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
+		    	</span>
+		    	<span ng-show="!{{cohosts.accepted}}">
+		    		<img ng-src="img/redX.png" class = 'acceptedImg'>
+		    	</span>
+		  	</ion-item>
+		    <p></p>
+		  </div>
+		</div>
+  </ion-content>
+</ion-view>

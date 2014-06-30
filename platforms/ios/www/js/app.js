@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('host-entourage', ['ionic', 
+  'host.controllers', 'general.controllers', 'entourage.controllers', 'account.controllers', 
+  'host.services', 'general.services', 'entourage.services', 'account.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,131 +29,279 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-    .state('menu', {
-      url: "/menu",
+    .state('main', {
+      url: "/main",
       abstract: true,
-      templateUrl: "templates/menu.html",
-      controller: 'AppCtrl'
-    })
+      templateUrl: "templates/menu.html"
+    })    
 
-    .state('tab', {
-      url: "/tab",
-      templateUrl: "templates/tabs.html"
-    })
-
-    // Each tab has its own nav history stack:
-
-    .state('tab.createparty2', {
-      url: '/createparty2',
+    .state('main.host', {
+      url: "/host",
+      abstract: true,
       views: {
-        'tab-createparty': {
-          templateUrl: 'templates/createparty2.html',
-          controller: 'CreateParty2Ctrl'
+        'menu-content': {
+          templateUrl: "templates/host/host.html"  
         }
       }
     })
 
-    .state('tab.createparty', {
-      url: '/createparty',
+    .state('main.entourage', {
+      url: "/entourage",
+      abstract: true,
       views: {
-        'tab-createparty': {
-          templateUrl: 'templates/tab-createparty.html',
-          controller: 'CreatePartyCtrl'
+        'menu-content': {
+          templateUrl: "templates/entourage/entourage.html"  
+        }
+      }
+    })
+    
+    .state('main.account', {
+      url: "/account",
+      abstract: true,
+      views: {
+        'menu-content': {
+          templateUrl: "templates/account/account.html"  
         }
       }
     })
 
-    .state('tab.findentourages', {
-      url: '/findentourages',
+/*****************************************/
+//Account States
+    .state('main.account.pastparties', {
+      url: '/pastparties',
       views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/tab-findentourages.html',
-          controller: 'FindEntouragesCtrl'
-        }
-      }
-    })
-
-    .state('tab.acceptedentourage-detail', {
-      url: '/acceptedentourage/:entourageId',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/acceptedentourage-detail.html',
-          controller: 'AcceptedEntourageDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.waitingentourage-detail', {
-      url: '/waitingentourage/:entourageId',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/waitingentourage-detail.html',
-          controller: 'WaitingEntourageDetailCtrl'
-        }
-      }
-    })
-
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
+        'tab-pastParties': {
+          templateUrl: 'templates/account/tab-pastParties.html',
           controller: 'AccountCtrl'
         }
       }
     })
 
-    .state('tab.party-detail', {
+    .state('main.account.party-detail', {
       url: '/party/:hostId',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/party-detail.html',
+        'tab-pastParties': {
+          templateUrl: 'templates/account/party-detail.html',
           controller: 'PartyCtrl'
         }
       }
     })
 
-    .state('tab.createdparty-detail', {
-      url: '/createdparty/:partyId',
-      views: {
-        'tab-viewparties': {
-          templateUrl: 'templates/createdparty-detail.html',
-          controller: 'CreatedPartyDetailsCtrl'
-        }
-      }
-    })
-
-    .state('tab.pendingparty-detail', {
-      url: '/pendingparty/:partyId',
-      views: {
-        'tab-viewparties': {
-          templateUrl: 'templates/pendingparty-detail.html',
-          controller: 'PendingPartyDetailsCtrl'
-        }
-      }
-    })
-
-    .state('tab.attended-party-detail', {
+    .state('main.account.attended-party-detail', {
       url: '/attendedparty/:attendeeId',
       views: {
-        'tab-account': {
-          templateUrl: 'templates/attended-party-detail.html',
+        'tab-pastParties': {
+          templateUrl: 'templates/account/attended-party-detail.html',
           controller: 'AttendedPartyCtrl'
         }
       }
-    })    
+    }) 
 
-    .state('tab.viewparties', {
+    .state('main.account.myprofile', {
+      url: '/myprofile',
+      views: {
+        'tab-myProfile': {
+          templateUrl: 'templates/account/tab-myProfile.html',
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+    .state('main.account.login', {
+      url: "/login",
+      views: {
+        'tab-myProfile': {
+          templateUrl: "templates/login.html",
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+    .state('main.account.pastentourages', {
+      url: '/pastentourages',
+      views: {
+        'tab-pastEntourages': {
+          templateUrl: 'templates/account/tab-pastEntourages.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
+/*****************************************/
+//Entourage States
+    .state('main.entourage.createentourage', {
+      url: '/createentourage',
+      views: {
+        'tab-createentourage': {
+          templateUrl: 'templates/entourage/tab-createentourage.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.createentourage2', {
+      url: '/createentourage2',
+      views: {
+        'tab-createentourage': {
+          templateUrl: 'templates/entourage/createentourage2.html',
+          controller: 'CreateEntourageCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.findParties', {
+      url: '/findparties',
+      views: {
+        'tab-findParties': {
+          templateUrl: 'templates/entourage/tab-findParties.html',
+          controller: 'FindPartiesCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.partySearchResults', {
+      url: '/partysearchresults',
+      views: {
+        'tab-findParties': {
+          templateUrl: 'templates/entourage/partySearchResults.html',
+          controller: 'FindPartiesCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.partySearchResults-detail', {
+      url: '/partysearchresults/:partyId',
+      views: {
+        'tab-findParties': {
+          templateUrl: 'templates/entourage/partySearchResults-detail.html',
+          controller: 'FindPartiesCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.viewEntourages', {
+      url: '/viewentourages',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/tab-viewEntourages.html',
+          controller: 'ViewEntouragesCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.memberslocked', {
+      url: '/memberslocked/:entourageId',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/membersLocked-detail.html',
+          controller: 'ViewMembersLockedCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.memberspending', {
+      url: '/memberspending/:entourageId',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/membersPending-detail.html',
+          controller: 'ViewMembersPendingCtrl'
+        }
+      }
+    })
+
+    .state('main.entourage.memberentourages', {
+      url: '/memberofentourage/:entourageId',
+      views: {
+        'tab-viewEntourages': {
+          templateUrl: 'templates/entourage/memberOfEntourage-detail.html',
+          controller: 'ViewMemberOfEntourageCtrl'
+        }
+      }
+    })
+
+/*****************************************/
+//HOST States
+    .state('main.host.createparty', {
+      url: '/createparty',
+      views: {
+        'tab-createparty': {
+          templateUrl: 'templates/host/tab-createparty.html',
+          controller: 'CreatePartyCtrl'
+        }
+      }
+    })
+
+    .state('main.host.createparty2', {
+      url: '/createparty2',
+      views: {
+        'tab-createparty': {
+          templateUrl: 'templates/host/createparty2.html',
+          controller: 'CreatePartyCtrl'
+        }
+      }
+    })
+
+    .state('main.host.viewparties', {
       url: '/viewparties',
       views: {
         'tab-viewparties': {
-          templateUrl: 'templates/tab-viewparties.html',
+          templateUrl: 'templates/host/tab-viewparties.html',
           controller: 'ViewPartiesCtrl'
         }
       }
     })    
 
+    .state('main.host.pendingparty-detail', {
+      url: '/pendingparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/host/pendingparty-detail.html',
+          controller: 'PendingPartyDetailsCtrl'
+        }
+      }
+    })   
+
+    .state('main.host.createdparty-detail', {
+      url: '/createdparty/:partyId',
+      views: {
+        'tab-viewparties': {
+          templateUrl: 'templates/host/createdparty-detail.html',
+          controller: 'CreatedPartyDetailsCtrl'
+        }
+      }
+    })
+
+    .state('main.host.findentourages', {
+      url: '/findentourages',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/host/tab-findentourages.html',
+          controller: 'FindEntouragesCtrl'
+        }
+      }
+    })
+
+    .state('main.host.waitingentourage-detail', {
+      url: '/waitingentourage/:entourageId',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/host/waitingentourage-detail.html',
+          controller: 'WaitingEntourageDetailCtrl'
+        }
+      }
+    })
+
+    .state('main.host.acceptedentourage-detail', {
+      url: '/acceptedentourage/:entourageId',
+      views: {
+        'tab-findentourages': {
+          templateUrl: 'templates/host/acceptedentourage-detail.html',
+          controller: 'AcceptedEntourageDetailCtrl'
+        }
+      }
+    })
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/account');
+  $urlRouterProvider.otherwise('main/account/login');
 });
 
