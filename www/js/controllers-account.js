@@ -21,17 +21,27 @@ angular.module('account.controllers', [])
 })
 
 .controller('ProfileCtrl', function($scope, $location, User) {
+	$scope.logout = function() {
+		User.logout();
+	};
 })
 
 .controller('LoginCtrl', function($scope, $location, User) {
-	// $scope.userName = User.get(0).first_name;
+	if (User.get(0)) $scope.user = User.get(0);
 	$scope.login = function() {
 		User.login();
-	}
+	};
+
+	$scope.goHost = function() {
+		$location.path('/main/host/createparty')
+	};
+
+	$scope.goEntourage = function() {
+		$location.path('/main/entourage/createentourage')
+	};
 
 	$scope.logout = function() {
-		FB.logout(function( response ) {
-	    console.log( "logged out" );
-	  });
+		User.logout();
 	};
+
 })

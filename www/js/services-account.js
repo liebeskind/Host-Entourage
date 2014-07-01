@@ -47,8 +47,15 @@ angular.module('account.services', [])
   $rootScope.$on('user.logout', function() {
     isLoggedIn = false;
     // redir to login page
-    $location.path('/');
+    $rootScope.$apply( function(){$location.path('/main/login/logmein'); } );
+    console.log('logged out!')
   });
+
+  $rootScope.$on('user.login', function() {
+    isLoggedIn = true;
+    $rootScope.$apply( function(){$location.path('/main/login/loginchoice'); } );
+    console.log( "You are now logged in")
+  })
 
   return {
     isLoggedIn: function() { return isLoggedIn; },
@@ -58,13 +65,15 @@ angular.module('account.services', [])
           fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
         }, function(response) {
           user.push(response);
-          console.log(response.name + " is logged in")
           $rootScope.$broadcast('user.login');
         })},{scope: ['public_profile', 'email']}
       );
     },
     logout: function() {
-      $rootScope.$broadcast('user.logout');
+      FB.logout(function( response ) {
+        $rootScope.$broadcast('user.logout');
+        console.log('logged out');
+      });
     },
     get: function(userId) {
       return user[userId];

@@ -99,6 +99,16 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
+.state('main.login.login-choice', {
+      url: "/loginchoice",
+      views: {
+        'tab-login': {
+          templateUrl: "templates/login/login-choice.html",
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
 
 /*****************************************/
 //Account States
