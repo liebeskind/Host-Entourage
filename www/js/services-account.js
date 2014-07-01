@@ -72,7 +72,6 @@ angular.module('account.services', [])
     logout: function() {
       FB.logout(function( response ) {
         $rootScope.$broadcast('user.logout');
-        console.log('logged out');
       });
     },
     get: function(userId) {
