@@ -59,6 +59,7 @@ angular.module('account.services', [])
 
   var getUserInfo = function() {
     FB.api('/v1.0/me', {
+      access_token: facebookToken,
       fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
       user.push(response);
@@ -70,48 +71,34 @@ angular.module('account.services', [])
   return {
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
-      var fbLoginSuccess = function(userData){ //https://www.parse.com/questions/facebookutils-and-cordova-310
-        if (!userData.authResponse){
-                fbLoginError("Cannot find the authResponse");
-                return;
-        }
-        var expDate = new Date(
-                new Date().getTime() + userData.authResponse.expiresIn * 1000
-        ).toISOString();
+      auth.login('facebook', {
+        rememberMe: true,
+        scope: 'email,public_profile'
+      });
+      getUserInfo();
 
-        var authData = {
-                id: String(userData.authResponse.userID),
-                access_token: userData.authResponse.accessToken,
-                expiration_date: expDate
-        }
-        console.log(authData)
-        fbLogged.resolve(authData);
-        fbLoginSuccess = null;
-      };
-
-      var fbLogged = new Parse.Promise();
-      
-      // FB.getLoginStatus(function(response) {
-        // if (response.status != 'connected') {
-          FB.login(fbLoginSuccess, "email, public_profile");
-        // } else {
-        //   $location.path('/main/login/loginchoice');
-        // }
+      // Parse.FacebookUtils.logIn('public_profile', {
+      //   success: function(user) {
+      //     if (!user.existed()) {
+      //       alert("User signed up and logged in through Facebook!");
+      //       // getUserInfo();
+      //     } else {
+      //       alert("User logged in through Facebook!");
+      //       // getUserInfo();
+      //     }
+      //   },
+      //   error: function(user, error) {
+      //     alert("User cancelled the Facebook login or did not fully authorize.");
+      //   }
       // });
-
-      fbLogged.then(function(authData){
-              // return Parse.FacebookUtils.logIn("email, public_profile", authData);
-      }).then(function(userObject){
-              getUserInfo();
-      }, function(error){
-              console.log(error);
-      })
     },
     logout: function() {
-      Parse.User.logOut()
-      FB.logout(function() {
-        $rootScope.$broadcast('user.logout');
-      });
+      auth.logout();
+      $rootScope.$broadcast('user.logout');
+      // Parse.User.logOut()
+      // FB.logout(function() {
+      //   $rootScope.$broadcast('user.logout');
+      // });
     },
     get: function(userId) {
       return user[userId];

@@ -38,6 +38,9 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
     <name>HOST-ENTOURAGE</name>
     <description>
         A party planning and attending app.
@@ -51,15 +54,6 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb568587663233762</string>
-            </array>
-        </dict>
-    </array>
     <preference name="BackupWebStorage" value="none" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />

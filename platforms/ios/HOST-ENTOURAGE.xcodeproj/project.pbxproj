@@ -49,6 +49,7 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		DAAADB9B4D504B88AF0E022B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1550D418BEB24CC596CE3EE1 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E21EE44174B94504B393F6B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 790DB3D6CC2C42D19B92D838 /* libsqlite3.dylib */; };
+		1F06EEC67EF84669B89676FE /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A8988BD7CA400C86FE1834 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "HOST-ENTOURAGE/config.xml"; sourceTree = "<group>"; };
+		A0A8988BD7CA400C86FE1834 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		09EF16D672A94C498963296A /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +274,8 @@
 				952BD024D3264F64AAF8593C /* CDVLogger.h */,
 				3356FED878CF4944B7912218 /* CDVDevice.m */,
 				D6CE40C64A2E470898FFD66F /* CDVDevice.h */,
+				A0A8988BD7CA400C86FE1834 /* CDVInAppBrowser.m */,
+				09EF16D672A94C498963296A /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "HOST-ENTOURAGE/Plugins";
@@ -470,6 +475,7 @@
 				40E00F7923964ED6BB55CE73 /* FacebookConnectPlugin.m in Sources */,
 				122A66CF1FA049F29E327651 /* CDVLogger.m in Sources */,
 				B3D2F37A7F0047A78D6225C8 /* CDVDevice.m in Sources */,
+				1F06EEC67EF84669B89676FE /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

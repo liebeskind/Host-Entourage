@@ -63,8 +63,6 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb568587663233762</string>
@@ -73,7 +71,13 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb568587663233762</string>
+				<string>fb$APP_ID</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb$APP_ID</string>
 			</array>
 		</dict>
 	</array>
