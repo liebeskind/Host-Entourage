@@ -57,20 +57,57 @@ angular.module('account.services', [])
     console.log( "You are now logged in")
   })
 
+  var getUserInfo = function() {
+    FB.api('/v1.0/me', {
+      fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+    }, function(response) {
+      user.push(response);
+      console.log(response);
+      $rootScope.$broadcast('user.login');
+    })
+  }
+
   return {
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
-      FB.login(function(response){
-        FB.api('/v1.0/me', {
-          fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
-        }, function(response) {
-          user.push(response);
-          $rootScope.$broadcast('user.login');
-        })},{scope: ['public_profile', 'email']}
-      );
+      var fbLoginSuccess = function(userData){ //https://www.parse.com/questions/facebookutils-and-cordova-310
+        if (!userData.authResponse){
+                fbLoginError("Cannot find the authResponse");
+                return;
+        }
+        var expDate = new Date(
+                new Date().getTime() + userData.authResponse.expiresIn * 1000
+        ).toISOString();
+        var authData = {
+                id: String(userData.authResponse.userID),
+                access_token: userData.authResponse.accessToken,
+                expiration_date: expDate
+        }
+        fbLogged.resolve(authData);
+        fbLoginSuccess = null;
+      };
+
+      var fbLogged = new Parse.Promise();
+      
+      FB.getLoginStatus(function(response) {
+        // if (response.status != 'connected') {
+          FB.login(fbLoginSuccess, "email, public_profile");
+        // } else {
+        //   $location.path('/main/login/loginchoice');
+        // }
+      });
+
+      fbLogged.then(function(authData){
+              return Parse.FacebookUtils.logIn("email, public_profile", authData);
+      }).then(function(userObject){
+              getUserInfo();
+      }, function(error){
+              console.log(error);
+      })
     },
     logout: function() {
-      FB.logout(function( response ) {
+      Parse.User.logOut()
+      FB.logout(function() {
         $rootScope.$broadcast('user.logout');
       });
     },
