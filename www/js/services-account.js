@@ -78,24 +78,26 @@ angular.module('account.services', [])
         var expDate = new Date(
                 new Date().getTime() + userData.authResponse.expiresIn * 1000
         ).toISOString();
+
         var authData = {
                 id: String(userData.authResponse.userID),
                 access_token: userData.authResponse.accessToken,
                 expiration_date: expDate
         }
+        console.log(authData)
         fbLogged.resolve(authData);
         fbLoginSuccess = null;
       };
 
       var fbLogged = new Parse.Promise();
       
-      FB.getLoginStatus(function(response) {
+      // FB.getLoginStatus(function(response) {
         // if (response.status != 'connected') {
           FB.login(fbLoginSuccess, "email, public_profile");
         // } else {
         //   $location.path('/main/login/loginchoice');
         // }
-      });
+      // });
 
       fbLogged.then(function(authData){
               return Parse.FacebookUtils.logIn("email, public_profile", authData);

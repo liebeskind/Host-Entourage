@@ -13,14 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"ios-package\" value=\"FacebookConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
@@ -46,6 +38,14 @@
                         },
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -89,19 +89,19 @@
                 "parents": {
                     "FacebookAppID": [
                         {
-                            "xml": "<string>250197515177945</string>",
+                            "xml": "<string>$APP_ID</string>",
                             "count": 1
                         }
                     ],
                     "FacebookDisplayName": [
                         {
-                            "xml": "<string>Host-Entourage</string>",
+                            "xml": "<string>$APP_NAME</string>",
                             "count": 1
                         }
                     ],
                     "CFBundleURLTypes": [
                         {
-                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>fb250197515177945</string></array></dict></array>",
+                            "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>fb$APP_ID</string></array></dict></array>",
                             "count": 1
                         }
                     ]
@@ -111,17 +111,15 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.starter"
-        },
-        "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.ionicframework.starter"
-        },
-        "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.ionicframework.starter"
+            "PACKAGE_NAME": "com.cybenex.hostentourage"
         },
         "com.phonegap.plugins.facebookconnect": {
-            "APP_ID": "250197515177945",
-            "APP_NAME": "Host-Entourage",
+            "PACKAGE_NAME": "com.cybenex.hostentourage"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.cybenex.hostentourage"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.cybenex.hostentourage"
         }
     },

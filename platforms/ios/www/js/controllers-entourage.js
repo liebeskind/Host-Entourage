@@ -30,9 +30,10 @@ angular.module('entourage.controllers', [])
   };
 })
 
-.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages) {
+.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages, User) {
 	$scope.myentourages = MyEntourages.all();
 	$scope.memberentourages = MemberEntourages.all()
+  if (User.get(0)) $scope.user = User.get(0).first_name + "'s"
 })
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
@@ -61,7 +62,6 @@ angular.module('entourage.controllers', [])
   $scope.searchparty = {};
   $scope.searchparty.entourage = MyEntourages.selectEntourage();
   $scope.searchparty.date = $scope.searchparty.entourage.date;
-  console.log($scope.searchparty.entourage.date);
   $scope.myentourages = MyEntourages.all();
 	$scope.findParties = function(party) {
 		$location.path('main/entourage/partysearchresults');

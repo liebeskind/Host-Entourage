@@ -32,10 +32,14 @@
     <script src="js/controllers-host.js"></script>
     <script src="js/controllers-account.js"></script>
 
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+
         <!-- Facebook JS SDK and Cordova Facebook Plugin-->
     <script src="lib/facebook-cordova/cdv-plugin-fb-connect.js"></script>
-    <script src="https://connect.facebook.net/en_US/all.js"></script>
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <!-- // <script src="https://connect.facebook.net/en_US/all.js"></script> -->
+
+    <!-- Native-->
+    <script src="lib/facebook-cordova/facebook-js-sdk.js"></script>
 
   </head>
   <body ng-app="host-entourage" animation="slide-left-right-ios7">
@@ -54,6 +58,8 @@
     </ion-nav-bar>
     <script type="text/javascript">
 
+    Parse.initialize("CNSB6bMXVAG6p5DwA16ZuG10RhJvJx6JuvilulG5", "sOKpQGPdtYACIXCTnW6JpoaEkbhpKu6SYFJPcxot");
+
     // if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
     if (typeof CDV === 'undefined') {
       alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
@@ -61,26 +67,28 @@
     if (typeof FB === 'undefined') {
       alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     }
-    
-    FB.init({
-      appId: "568587663233762",
-      nativeInterface: CDV.FB,
-      useCachedDialogs: false,
-      version: 'v1.0'
-    });
 
-    document.addEventListener('deviceready', function() { // in case 
-      try {
-        FB.init({
-          appId: "568587663233762",
-          nativeInterface: CDV.FB,
-          useCachedDialogs: false,
-          version: 'v1.0'
-        });
-      } catch (e) {
-          alert(e);
-      }
-    }, false);
+// window.fbAsyncInit = function() {
+  Parse.FacebookUtils.init({
+    appId: "568587663233762",
+    nativeInterface: CDV.FB,
+    useCachedDialogs: false,
+    version: 'v1.0'
+  });
+// }
+
+    // document.addEventListener('deviceready', function() { // in case 
+    //   try {
+    //     Parse.FacebookUtils.init({
+    //           appId: "568587663233762",
+    //           nativeInterface: CDV.FB,
+    //           useCachedDialogs: false,
+    //           version: 'v1.0'
+    //         });
+    //   } catch (e) {
+    //       alert(e);
+    //   }
+    // }, false);
       
     </script>
     <!-- 

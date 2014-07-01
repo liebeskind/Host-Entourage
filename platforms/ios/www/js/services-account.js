@@ -37,13 +37,81 @@ angular.module('account.services', [])
   }
 })
 
-.factory('User', function() {
+.factory('User', function($rootScope, $location) {
   var user = [];
+  var isLoggedIn = false;
+
+  // Load auth token from somewhere, like localStorage.  Need to add 'token' to local storage on login
+  isLoggedIn = window.localStorage['token'] != null 
+
+  $rootScope.$on('user.logout', function() {
+    isLoggedIn = false;
+    // redir to login page
+    $rootScope.$apply( function(){$location.path('/main/login/logmein'); } );
+    console.log('logged out!')
+  });
+
+  $rootScope.$on('user.login', function() {
+    isLoggedIn = true;
+    $rootScope.$apply( function(){$location.path('/main/login/loginchoice'); } );
+    console.log( "You are now logged in")
+  })
+
+  var getUserInfo = function() {
+    FB.api('/v1.0/me', {
+      fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+    }, function(response) {
+      user.push(response);
+      console.log(response);
+      $rootScope.$broadcast('user.login');
+    })
+  }
 
   return {
-    addUser: function(newUser) {
-      console.log(newUser);
-      user.push(newUser)
+    isLoggedIn: function() { return isLoggedIn; },
+    login: function() {
+      var fbLoginSuccess = function(userData){ //https://www.parse.com/questions/facebookutils-and-cordova-310
+        if (!userData.authResponse){
+                fbLoginError("Cannot find the authResponse");
+                return;
+        }
+        var expDate = new Date(
+                new Date().getTime() + userData.authResponse.expiresIn * 1000
+        ).toISOString();
+
+        var authData = {
+                id: String(userData.authResponse.userID),
+                access_token: userData.authResponse.accessToken,
+                expiration_date: expDate
+        }
+        console.log(authData)
+        fbLogged.resolve(authData);
+        fbLoginSuccess = null;
+      };
+
+      var fbLogged = new Parse.Promise();
+      
+      // FB.getLoginStatus(function(response) {
+        // if (response.status != 'connected') {
+          FB.login(fbLoginSuccess, "email, public_profile");
+        // } else {
+        //   $location.path('/main/login/loginchoice');
+        // }
+      // });
+
+      fbLogged.then(function(authData){
+              // return Parse.FacebookUtils.logIn("email, public_profile", authData);
+      }).then(function(userObject){
+              getUserInfo();
+      }, function(error){
+              console.log(error);
+      })
+    },
+    logout: function() {
+      Parse.User.logOut()
+      FB.logout(function() {
+        $rootScope.$broadcast('user.logout');
+      });
     },
     get: function(userId) {
       return user[userId];

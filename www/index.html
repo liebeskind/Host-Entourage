@@ -32,10 +32,14 @@
     <script src="js/controllers-host.js"></script>
     <script src="js/controllers-account.js"></script>
 
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+
         <!-- Facebook JS SDK and Cordova Facebook Plugin-->
     <script src="lib/facebook-cordova/cdv-plugin-fb-connect.js"></script>
-    <script src="https://connect.facebook.net/en_US/all.js"></script>
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <!-- // <script src="https://connect.facebook.net/en_US/all.js"></script> -->
+
+    <!-- Native-->
+    <script src="lib/facebook-cordova/facebook-js-sdk.js"></script>
 
   </head>
   <body ng-app="host-entourage" animation="slide-left-right-ios7">
@@ -67,7 +71,7 @@
 // window.fbAsyncInit = function() {
   Parse.FacebookUtils.init({
     appId: "568587663233762",
-    nativeInterface: CDV.FB,
+    // nativeInterface: CDV.FB,
     useCachedDialogs: false,
     version: 'v1.0'
   });
@@ -75,12 +79,12 @@
 
     // document.addEventListener('deviceready', function() { // in case 
     //   try {
-    //     FB.init({
-    //       appId: "568587663233762",
-    //       nativeInterface: CDV.FB,
-    //       useCachedDialogs: false,
-    //       version: 'v1.0'
-    //     });
+    //     Parse.FacebookUtils.init({
+    //           appId: "568587663233762",
+    //           nativeInterface: CDV.FB,
+    //           useCachedDialogs: false,
+    //           version: 'v1.0'
+    //         });
     //   } catch (e) {
     //       alert(e);
     //   }
