@@ -47,7 +47,6 @@ angular.module('account.services', [])
   $rootScope.$on('user.logout', function() {
     isLoggedIn = false;
     // redir to login page
-    $rootScope.$apply( function(){$location.path('/main/login/logmein'); } );
     console.log('logged out!')
   });
 
@@ -94,7 +93,7 @@ angular.module('account.services', [])
     },
     logout: function() {
       auth.logout();
-      $rootScope.$broadcast('user.logout');
+      $location.path('/main/login/logmein')
       // Parse.User.logOut()
       // FB.logout(function() {
       //   $rootScope.$broadcast('user.logout');
