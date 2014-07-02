@@ -61,20 +61,7 @@
     </ion-nav-bar>
     <script type="text/javascript">
 
-    var facebookToken;
     var chatRef = new Firebase('https://host-entourage.firebaseio.com');
-    var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-      if (error) {
-      // an error occurred while attempting login
-        console.log(error);
-      } else if (user) {
-        // user authenticated with Firebase
-        facebookToken = user.accessToken;
-        console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
-      } else {
-        console.log('Not logged in');
-      }
-    });
 
     // Parse.initialize("CNSB6bMXVAG6p5DwA16ZuG10RhJvJx6JuvilulG5", "sOKpQGPdtYACIXCTnW6JpoaEkbhpKu6SYFJPcxot");
 

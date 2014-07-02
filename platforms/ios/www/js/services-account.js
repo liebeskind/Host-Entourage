@@ -39,65 +39,49 @@ angular.module('account.services', [])
 
 .factory('User', function($rootScope, $location) {
   var user = [];
-  var isLoggedIn = false;
+  var isLoggedIn;
 
-  // Load auth token from somewhere, like localStorage.  Need to add 'token' to local storage on login
-  isLoggedIn = window.localStorage['token'] != null 
+  // window.localStorage['token'] != null
 
-  $rootScope.$on('user.logout', function() {
-    isLoggedIn = false;
-    // redir to login page
-    console.log('logged out!')
+  var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+    if (error) {
+      console.log(error);
+    } else if (user) {
+      getUserInfo(user.accessToken)
+      isLoggedIn = true;
+      console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+      $rootScope.$apply(function(){$location.path('/main/login/loginchoice'); });
+    } else {
+      console.log('Not logged in');
+    }
   });
 
-  $rootScope.$on('user.login', function() {
-    isLoggedIn = true;
-    $rootScope.$apply( function(){$location.path('/main/login/loginchoice'); } );
-    console.log( "You are now logged in")
-  })
-
-  var getUserInfo = function() {
+  var getUserInfo = function(token){
     FB.api('/v1.0/me', {
-      access_token: facebookToken,
+      access_token: token,
       fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
       user.push(response);
       console.log(response);
-      $rootScope.$broadcast('user.login');
     })
   }
 
   return {
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
-      auth.login('facebook', {
-        rememberMe: true,
-        scope: 'email,public_profile'
-      });
-      getUserInfo();
-
-      // Parse.FacebookUtils.logIn('public_profile', {
-      //   success: function(user) {
-      //     if (!user.existed()) {
-      //       alert("User signed up and logged in through Facebook!");
-      //       // getUserInfo();
-      //     } else {
-      //       alert("User logged in through Facebook!");
-      //       // getUserInfo();
-      //     }
-      //   },
-      //   error: function(user, error) {
-      //     alert("User cancelled the Facebook login or did not fully authorize.");
-      //   }
-      // });
+      if (!isLoggedIn) {
+        auth.login('facebook', {
+          rememberMe: true,
+          scope: 'email,public_profile'
+        });
+      } else {
+        $location.path('/main/login/loginchoice')
+      }
     },
     logout: function() {
       auth.logout();
+      isLoggedIn = false;
       $location.path('/main/login/logmein')
-      // Parse.User.logOut()
-      // FB.logout(function() {
-      //   $rootScope.$broadcast('user.logout');
-      // });
     },
     get: function(userId) {
       return user[userId];
