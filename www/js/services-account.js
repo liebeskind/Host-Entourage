@@ -60,7 +60,9 @@ angular.module('account.services', [])
       fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
       user.push(response);
-      console.log(response);
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      var currentUserRef = userRef.child(response.id)
+      currentUserRef.set(response);
     })
   }
 
