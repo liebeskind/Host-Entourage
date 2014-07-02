@@ -41,8 +41,6 @@ angular.module('account.services', [])
   var user = [];
   var isLoggedIn;
 
-  // window.localStorage['token'] != null
-
   var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
     if (error) {
       console.log(error);
@@ -72,8 +70,7 @@ angular.module('account.services', [])
       if (!isLoggedIn) {
         auth.login('facebook', {
           rememberMe: true,
-          scope: 'email,public_profile',
-          preferRedirect: true
+          scope: 'email,public_profile'
         });
       } else {
         $location.path('/main/login/loginchoice')

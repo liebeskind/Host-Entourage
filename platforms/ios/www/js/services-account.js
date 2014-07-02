@@ -72,7 +72,8 @@ angular.module('account.services', [])
       if (!isLoggedIn) {
         auth.login('facebook', {
           rememberMe: true,
-          scope: 'email,public_profile'
+          scope: 'email,public_profile',
+          preferRedirect: true
         });
       } else {
         $location.path('/main/login/loginchoice')
