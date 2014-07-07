@@ -20,7 +20,7 @@ angular.module('entourage.controllers', [])
       newEntourage[i] = {name: newArray[i], accepted: false};
     };
     $location.path('/main/entourage/createentourage2');
-    var newCaptain = User.get(0);
+    var newCaptain = User.get();
     MyEntourages.addNewEntourage(newEntourage, newCaptain);
   };
 

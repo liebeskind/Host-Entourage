@@ -35,7 +35,7 @@ angular.module('entourage.services', [])
     },
     addNewEntourage: function(newEntourage, newCaptain) {
       console.log(newCaptain);
-      newCaptain.imgUrl = newCaptain.picture.data.url;
+      newCaptain.imgUrl = newCaptain.facebookInfo.picture.data.url;
       myentourages.push({ id: myentourages.length, members: newEntourage, 
       	captain: newCaptain
       });

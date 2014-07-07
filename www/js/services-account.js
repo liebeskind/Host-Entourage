@@ -38,7 +38,6 @@ angular.module('account.services', [])
 })
 
 .factory('User', function($rootScope, $location) {
-  var userPath;
   var user;
   var isLoggedIn;
 
@@ -70,7 +69,6 @@ angular.module('account.services', [])
         user = snapshot.val()
       })
       
-      userPath = currentUserRef.toString();
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
       facebookInfo.set(response);
