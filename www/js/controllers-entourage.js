@@ -3,8 +3,8 @@ angular.module('entourage.controllers', [])
 .controller('CreateEntourageCtrl', function($scope, $location, MyEntourages, User) {
   var recent = MyEntourages.get(0)
   $scope.entourage = {}
-  if (User.get(0) != undefined) {
-    $scope.entourage.name = User.get(0).first_name + "'s Entourage";
+  if (User.get() != undefined) {
+    $scope.entourage.name = User.get().facebookInfo.first_name + "'s Entourage";
   } else {
     $scope.entourage.name = recent.name;
   }
@@ -33,7 +33,7 @@ angular.module('entourage.controllers', [])
 .controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages, User) {
 	$scope.myentourages = MyEntourages.all();
 	$scope.memberentourages = MemberEntourages.all()
-  if (User.get(0)) $scope.user = User.get(0).first_name + "'s"
+  if (User.get()) $scope.user = User.get().facebookInfo.first_name + "'s"
 })
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {

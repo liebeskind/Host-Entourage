@@ -27,7 +27,7 @@ angular.module('account.controllers', [])
 })
 
 .controller('LoginCtrl', function($scope, $location, User) {
-	if (User.get(0)) $scope.user = User.get(0);
+	if (User.get()) $scope.user = User.get();
 	$scope.login = function() {
 		User.login();
 	};

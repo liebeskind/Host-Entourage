@@ -38,7 +38,8 @@ angular.module('account.services', [])
 })
 
 .factory('User', function($rootScope, $location) {
-  var user = [];
+  var userPath;
+  var user;
   var isLoggedIn;
 
   var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
@@ -59,10 +60,20 @@ angular.module('account.services', [])
       access_token: token,
       fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
-      user.push(response);
       var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      //Create new user if User ID (Facebook ID) hasn't already been used
       var currentUserRef = userRef.child(response.id)
-      currentUserRef.set(response);
+      
+      //Set user to current user and update user info whenever there is a change in database
+      currentUserRef.on('value', function(snapshot) {
+        console.log(snapshot.val());
+        user = snapshot.val()
+      })
+      
+      userPath = currentUserRef.toString();
+      //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
+      var facebookInfo = currentUserRef.child('facebookInfo');
+      facebookInfo.set(response);
     })
   }
 
@@ -83,8 +94,8 @@ angular.module('account.services', [])
       isLoggedIn = false;
       $location.path('/main/login/logmein')
     },
-    get: function(userId) {
-      return user[userId];
+    get: function() {
+      return user;
     }
   }
 })

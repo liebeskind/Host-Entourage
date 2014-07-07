@@ -46,3 +46,4 @@
 -Add additional verifications to myProfile where can sign in through LinkedIn, Twitter, etc.
 -Profile auto-fills like Hinge and when click on a person's name you are brought to an overview of their profile, not of Facebook (currently a placeholder).  Anyone that has downloaded the app will have a profile.
 -Add a checker that determines whether user is signed off.  If they are, direct to sign-in page.
+-Add push notifications with https://github.com/phonegap-build/PushPlugin
