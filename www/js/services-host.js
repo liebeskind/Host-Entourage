@@ -101,7 +101,7 @@ angular.module('host.services', [])
     },
     addCohosts: function(newCohosts, newHost) {
       pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
-        host: newHost
+        host: newHost.facebookInfo
       });
     },
     createParty: function(party) {

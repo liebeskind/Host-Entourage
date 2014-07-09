@@ -18,18 +18,6 @@ angular.module('host-entourage', ['ionic',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-    // $rootScope.$on('$stateChangeStart', function (event, next, current) {
-    //   if(next.name.indexOf('main') !== -1 ) {
-
-    //       var isLoggedIn = User.isLoggedIn();
-
-    //       if(isLoggedIn===false) {
-    //           // event.preventDefault();
-    //           $state.go('main.account.login');
-    //       }
-    //   }
-    // })
   });
 })
 

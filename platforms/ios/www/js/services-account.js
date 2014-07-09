@@ -38,31 +38,43 @@ angular.module('account.services', [])
 })
 
 .factory('User', function($rootScope, $location) {
-  var user = [];
+  var user;
   var isLoggedIn;
 
-  // window.localStorage['token'] != null
-
+  var chatRef = new Firebase('https://host-entourage.firebaseio.com');
   var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
     if (error) {
       console.log(error);
     } else if (user) {
-      getUserInfo(user.accessToken)
+      $rootScope.$apply(function(){
+        $location.path('/main/login/loginchoice'); 
+      });
+      getUserInfo()
       isLoggedIn = true;
       console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
-      $rootScope.$apply(function(){$location.path('/main/login/loginchoice'); });
     } else {
       console.log('Not logged in');
     }
   });
 
-  var getUserInfo = function(token){
-    FB.api('/v1.0/me', {
-      access_token: token,
-      fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
+  var getUserInfo = function(){
+    facebookConnectPlugin.api('/v1.0/me', {
+      // access_token: token,
+      // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
-      user.push(response);
       console.log(response);
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      //Create new user if User ID (Facebook ID) hasn't already been used
+      var currentUserRef = userRef.child(response.id)
+      
+      //Set user to current user and update user info whenever there is a change in database
+      currentUserRef.on('value', function(snapshot) {
+        user = snapshot.val()
+      })
+      
+      //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
+      var facebookInfo = currentUserRef.child('facebookInfo');
+      facebookInfo.set(response);
     })
   }
 
@@ -70,22 +82,27 @@ angular.module('account.services', [])
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
       if (!isLoggedIn) {
-        auth.login('facebook', {
-          rememberMe: true,
-          scope: 'email,public_profile',
-          preferRedirect: true
-        });
+        facebookConnectPlugin.login( ['email, public_profile'], function(response){
+          auth.login('facebook', {
+            access_token: response.authResponse.accessToken,
+            preferRedirect: true,
+            rememberMe: true,
+            scope: 'email,public_profile'
+          });  
+        }, function(error){console.log(error)})
       } else {
         $location.path('/main/login/loginchoice')
       }
     },
     logout: function() {
-      auth.logout();
+      FB.logout(function(){
+        auth.logout();  
+      });
       isLoggedIn = false;
       $location.path('/main/login/logmein')
     },
-    get: function(userId) {
-      return user[userId];
+    get: function() {
+      return user;
     }
   }
 })

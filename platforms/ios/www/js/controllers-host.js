@@ -18,7 +18,7 @@ angular.module('host.controllers', [])
       newCohosts[i] = {name: newArray[i], accepted: false};
     };
     $location.path('/main/host/createparty2');
-    var newHost = User.get(0);
+    var newHost = User.get();
     PendingParties.addCohosts(newCohosts, newHost);
   };
 
@@ -52,7 +52,7 @@ angular.module('host.controllers', [])
 .controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties, User) {
 	$scope.pendingparties = PendingParties.all();
 	$scope.createdparties = CreatedParties.all();
-  if (User.get(0)) $scope.user = User.get(0).first_name+"'s";
+  if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
 })
 
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {

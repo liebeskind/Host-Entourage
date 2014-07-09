@@ -27,6 +27,10 @@
     <feature name="org.apache.cordova.facebook.Connect">
         <param name="ios-package" value="org.apache.cordova.facebook.ConnectPlugin" />
     </feature>
+
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
      
     <!-- Cordova Plugin -->
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
