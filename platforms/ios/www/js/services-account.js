@@ -54,11 +54,15 @@ angular.module('account.services', [])
       console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
     } else {
       console.log('Not logged in');
+      isLoggedIn = false;
+      $rootScope.$apply(function(){
+        $location.path('/main/login/logmein'); 
+      });
     }
   });
 
   var getUserInfo = function(){
-    facebookConnectPlugin.api('/v1.0/me', {
+    facebookConnectPlugin.api('/me', {
       // access_token: token,
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
@@ -95,11 +99,18 @@ angular.module('account.services', [])
       }
     },
     logout: function() {
-      FB.logout(function(){
-        auth.logout();  
-      });
-      isLoggedIn = false;
-      $location.path('/main/login/logmein')
+     facebookConnectPlugin.getLoginStatus(function(ret){
+        if (ret.authResponse) {
+          facebookConnectPlugin.logout(function(){
+            auth.logout();
+          }, function(error) {
+            console.log('Error With Logout');
+            $location.path('/main/login/loginchoice');
+          });
+        } else {
+          $location.path('/main/login/logmein')
+        }   
+     })  
     },
     get: function() {
       return user;

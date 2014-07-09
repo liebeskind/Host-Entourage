@@ -12,15 +12,10 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    
-
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
     <script src="lib/facebook-cordova/cdv-plugin-fb-connect.js"></script>
     <script src="https://connect.facebook.net/en_US/all.js"></script>
-
-    <!-- Native-->
-    <!-- // <script src="lib/facebook-cordova/facebook-js-sdk.js"></script> -->
 
     <script src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
     <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
@@ -46,21 +41,10 @@
   </head>
   <body ng-app="host-entourage" animation="slide-left-right-ios7">
     <div id="fb-root"></div>
-
-      <!-- <ion-nav-view animation="slide-left-right"></ion-nav-view> -->
-    
-    <!-- 
-      The nav bar that will be updated as we navigate between views.
-    -->
     <ion-nav-bar class="bar-positive nav-title-slide-ios7">
-      <!-- <button class="button button-icon icon ion-navicon"></button> -->
-      <!-- <ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
-        Back
-      </ion-nav-back-button> -->
     </ion-nav-bar>
     
     <script src="lib/facebook-cordova/facebookConnectPlugin.js"></script>
-
     <script type="text/javascript">
 
     // Parse.initialize("CNSB6bMXVAG6p5DwA16ZuG10RhJvJx6JuvilulG5", "sOKpQGPdtYACIXCTnW6JpoaEkbhpKu6SYFJPcxot");
@@ -72,10 +56,6 @@
     // if (typeof FB === 'undefined') {
     //   alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     // }
-
-  // window.fbAsyncInit = function() {
-    // facebookConnectPlugin.browserInit(568587663233762)
-  // }
 
     FB.init({
       appId: "568587663233762",
@@ -100,11 +80,6 @@
   }, false);
       
     </script>
-    <!-- 
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
     <div ng-controller="MainCtrl">
       <ion-nav-view animation="slide-left-right-ios7"></ion-nav-view>
     </div>

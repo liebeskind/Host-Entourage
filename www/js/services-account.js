@@ -54,6 +54,10 @@ angular.module('account.services', [])
       console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
     } else {
       console.log('Not logged in');
+      isLoggedIn = false;
+      $rootScope.$apply(function(){
+        $location.path('/main/login/logmein'); 
+      });
     }
   });
 
@@ -95,15 +99,18 @@ angular.module('account.services', [])
       }
     },
     logout: function() {
-      facebookConnectPlugin.logout(function(){
-        auth.logout();  
-        $location.path('/main/login/logmein')
-        isLoggedIn = false;
-      }, function(error) {
-        console.log('Error With Logout');
-        $location.path('/main/login/loginchoice');
-      });
-      
+     facebookConnectPlugin.getLoginStatus(function(ret){
+        if (ret.authResponse) {
+          facebookConnectPlugin.logout(function(){
+            auth.logout();
+          }, function(error) {
+            console.log('Error With Logout');
+            $location.path('/main/login/loginchoice');
+          });
+        } else {
+          $location.path('/main/login/logmein')
+        }   
+     })  
     },
     get: function() {
       return user;
