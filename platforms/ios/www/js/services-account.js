@@ -46,10 +46,7 @@ angular.module('account.services', [])
     if (error) {
       console.log(error);
     } else if (user) {
-      $rootScope.$apply(function(){
-        $location.path('/main/login/loginchoice'); 
-      });
-      getUserInfo()
+      getUserInfo();
       isLoggedIn = true;
       console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
     } else {
@@ -66,6 +63,7 @@ angular.module('account.services', [])
       // access_token: token,
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
+
       console.log(response);
       var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
       //Create new user if User ID (Facebook ID) hasn't already been used
@@ -79,33 +77,40 @@ angular.module('account.services', [])
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
       facebookInfo.set(response);
+      $rootScope.$apply(function(){
+        $location.path('/main/login/loginchoice'); 
+      });
     })
   }
 
   return {
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
-      if (!isLoggedIn) {
-        facebookConnectPlugin.login( ['email, public_profile'], function(response){
+      console.log('nothing to brag about')
+      // if (!isLoggedIn) {
+        facebookConnectPlugin.login( ['email'], function(response){
+          console.log('it got this far')
           auth.login('facebook', {
             access_token: response.authResponse.accessToken,
             preferRedirect: true,
             rememberMe: true,
             scope: 'email,public_profile'
           });  
-        }, function(error){console.log(error)})
-      } else {
-        $location.path('/main/login/loginchoice')
-      }
+        }
+        , function(error){console.log(error)}
+        )
+      // } else {
+      //   $location.path('/main/login/loginchoice')
+      // }
     },
     logout: function() {
      facebookConnectPlugin.getLoginStatus(function(ret){
-        if (ret.authResponse) {
+        if (ret === 'connected') {
           facebookConnectPlugin.logout(function(){
             auth.logout();
           }, function(error) {
             console.log('Error With Logout');
-            $location.path('/main/login/loginchoice');
+            // $location.path('/main/login/loginchoice');
           });
         } else {
           $location.path('/main/login/logmein')
