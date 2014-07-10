@@ -1,4 +1,4 @@
-<ion-view title="Create Party To Host">
+<ion-view title="Select Cohost Group">
 	<ion-nav-buttons side="left">
       <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
    </ion-nav-buttons>
@@ -10,7 +10,7 @@
 		    <div class="input-label">
 		      Existing Group
 		    </div> 
-		    <select ng-model = "party.cohostGroup" ng-options = "cohostGroup.name for cohostGroup in myCohostGroups"></select>
+		    <select ng-model = "party.cohostGroup" ng-options = "cohostGroup.name for (name , cohostGroup) in myCohostGroups"></select>
   		</label>
 
 		  <h4>Or Create A New Group</h4>
@@ -65,7 +65,7 @@
 			  </li>
 			</ul>
 
-			<button class="button button-block button-positive" ng-click="addCohosts(cohosts)">
+			<button class="button button-block button-positive" ng-click="addCohostGroup(cohosts)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
   </ion-content>

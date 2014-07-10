@@ -105,14 +105,14 @@ angular.module('host.services', [])
     get: function(partyId) {
       return pendingparties[partyId];
     },
-    addCohosts: function(newCohosts, newHost) {
-    var newCohostGroup = cohostGroupRef.push();
-    newCohostGroup.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
-    console.log(newCohostGroup.toString());
+    // addCohosts: function(newCohosts, newHost) {
+    // var newCohostGroup = cohostGroupRef.push();
+    // newCohostGroup.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
+    // console.log(newCohostGroup.toString());
       // pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
       //   host: newHost.facebookInfo
       // });
-    },
+    // },
     createParty: function(party) {
       var newParty = partyRef.push();
       party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?

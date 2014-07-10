@@ -26,7 +26,7 @@ angular.module('account.controllers', [])
 	};
 })
 
-.controller('LoginCtrl', function($scope, $location, User) {
+.controller('LoginCtrl', function($scope, $location, User, CohostGroups) {
 	if (User.get()) $scope.user = User.get();
 	$scope.login = function() {
 		User.login();

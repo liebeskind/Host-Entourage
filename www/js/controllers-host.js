@@ -3,6 +3,8 @@ angular.module('host.controllers', [])
 .controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   var recentParty = PendingParties.get(0)
   $scope.party = {}
+  $scope.myCohostGroups = CohostGroups.all();
+  console.log($scope.myCohostGroups)
   // $scope.party.time = recentParty.time;
   // $scope.party.address = recentParty.address;
   // $scope.party.attendeeRange = '31-40';
@@ -19,7 +21,7 @@ angular.module('host.controllers', [])
     };
     $location.path('/main/host/createparty2');
     var newHost = User.get();
-    PendingParties.addCohosts(newCohosts, newHost);
+    CohostGroups.addCohostGroup(newCohosts, newHost);
   };
 
   $scope.addParty = function(party) {
