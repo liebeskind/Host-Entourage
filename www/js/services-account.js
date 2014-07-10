@@ -49,9 +49,6 @@ angular.module('account.services', [])
       //user authenticated with Firebase
       getUserPicture()
       console.log('User ID: ' + user.uid + 'authenticated with ' + user.provider);
-      $rootScope.$apply(function(){
-        $location.path('/main/login/loginchoice'); 
-      });
     } else {
       //user is logged out
       console.log('Not logged in');
@@ -105,7 +102,7 @@ angular.module('account.services', [])
     }, function(response) {
       console.log(response);
       response.picture = picture;
-      user.facebookInfo = user.facebookInfo || response;
+      // user.facebookInfo = user.facebookInfo || response;
       
       //Create new user if User ID (Facebook ID) hasn't already been used
       var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
@@ -113,7 +110,12 @@ angular.module('account.services', [])
       
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
-      facebookInfo.set(response);
+      facebookInfo.set(response, function(){
+        user = currentUserRef;
+        $rootScope.$apply(function(){
+          $location.path('/main/login/loginchoice'); 
+        });  
+      });
 
       //Update user info whenever there is a change in database
       currentUserRef.on('value', function(snapshot) {
