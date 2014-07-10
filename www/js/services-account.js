@@ -98,6 +98,7 @@ angular.module('account.services', [])
   }
 
   var getUserInfo = function(picture){
+    //called by getUserPicture() above
     facebookConnectPlugin.api('/me', {
       // access_token: token,
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']

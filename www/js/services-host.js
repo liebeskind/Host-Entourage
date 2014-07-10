@@ -80,6 +80,8 @@ angular.module('host.services', [])
 })
 
 .factory('PendingParties', function() {
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
+  var userRef = new Firebase('https://host-entourage.firebaseio.com/parties');
   var pendingparties = [
     { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
       host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
@@ -92,6 +94,8 @@ angular.module('host.services', [])
     }
   ];
 
+
+
   return {
     all: function() {
       return pendingparties;
@@ -100,9 +104,12 @@ angular.module('host.services', [])
       return pendingparties[partyId];
     },
     addCohosts: function(newCohosts, newHost) {
-      pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
-        host: newHost.facebookInfo
-      });
+    var newPartyRef = partyRef.push();
+    newPartyRef.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
+    console.log(newPartyRef.toString());
+      // pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
+      //   host: newHost.facebookInfo
+      // });
     },
     createParty: function(party) {
       for (prop in party) {
