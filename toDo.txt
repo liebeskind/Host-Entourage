@@ -48,3 +48,4 @@
 -Add a checker that determines whether user is signed off.  If they are, direct to sign-in page.
 -Add push notifications with https://github.com/phonegap-build/PushPlugin
 -Grab user picture from facebook
+-Add tests!

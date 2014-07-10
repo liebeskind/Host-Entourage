@@ -82,6 +82,7 @@ angular.module('host.services', [])
 .factory('PendingParties', function() {
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
   var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
   var currentParty;
   var pendingparties = [
     { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
@@ -113,8 +114,10 @@ angular.module('host.services', [])
       // });
     },
     createParty: function(party) {
-      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg'
-      newPartyRef.set({'partyDetails': party})
+      var newParty = partyRef.push();
+      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
+      newParty.set({'partyDetails': party})
+      // Need to set party as a parameter for cohost group... party.cohostGroup
       // for (prop in party) {
       //   pendingparties[pendingparties.length-1][prop] = party[prop]; 
       // }

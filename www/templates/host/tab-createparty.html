@@ -3,7 +3,23 @@
       <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
    </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h3>1. Select 4 Other Co-hosts</h3>
+    <h3>1. Select Cohost Group</h3>
+		  
+		  <h4>Either Select Existing Group</h4>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Existing Group
+		    </div> 
+		    <select ng-model = "party.cohostGroup" ng-options = "cohostGroup.name for cohostGroup in myCohostGroups"></select>
+  		</label>
+
+		  <h4>Or Create A New Group</h4>
+
+		  <label class="item item-input">
+		    <span class="input-label">Cohost Group Name</span>
+		    <input type="text" ng-model="cohosts.name">
+		  </label>
+
 		  <ul class="list">
 
 			  <li class="item item-checkbox">

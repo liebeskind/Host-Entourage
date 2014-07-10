@@ -1,6 +1,6 @@
 angular.module('host.controllers', [])
 
-.controller('CreatePartyCtrl', function($scope, $location, PendingParties, User) {
+.controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   var recentParty = PendingParties.get(0)
   $scope.party = {}
   // $scope.party.time = recentParty.time;

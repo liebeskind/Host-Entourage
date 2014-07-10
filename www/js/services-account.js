@@ -137,3 +137,18 @@ angular.module('account.services', [])
     }
   }
 })
+
+
+.factory('CohostGroups', function($rootScope, $location) {
+  var cohostGroups;
+  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups')
+  cohostGroupRef.on('value', function(snapshot) {
+    cohostGroups = snapshot.val();
+  })
+
+  return {
+    all: function() {
+      return cohostGroups;
+    }
+  }
+})
