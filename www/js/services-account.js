@@ -47,7 +47,7 @@ angular.module('account.services', [])
       console.log(error);
     } else if (user) {
       //user authenticated with Firebase
-      getUserInfo()
+      getUserPicture()
       console.log('User ID: ' + user.uid + 'authenticated with ' + user.provider);
       $rootScope.$apply(function(){
         $location.path('/main/login/loginchoice'); 
@@ -90,12 +90,20 @@ angular.module('account.services', [])
     })      
   }
 
-  var getUserInfo = function(){
+  var getUserPicture = function(){
+    facebookConnectPlugin.api('/me/picture', {
+    }, function(response) {
+      getUserInfo(response);
+    })
+  }
+
+  var getUserInfo = function(picture){
     facebookConnectPlugin.api('/me', {
       // access_token: token,
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
       console.log(response);
+      response.picture = picture;
       user.facebookInfo = user.facebookInfo || response;
       
       //Create new user if User ID (Facebook ID) hasn't already been used
