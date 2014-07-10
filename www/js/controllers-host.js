@@ -1,13 +1,12 @@
 angular.module('host.controllers', [])
 
-.controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
-  var recentParty = PendingParties.get(0)
-  $scope.party = {}
+.controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   $scope.myCohostGroups = CohostGroups.all();
-  console.log($scope.myCohostGroups)
-  // $scope.party.time = recentParty.time;
-  // $scope.party.address = recentParty.address;
-  // $scope.party.attendeeRange = '31-40';
+
+  $scope.selectCohostGroup = function(cohostGroup) {
+    CohostGroups.setCurrent(cohostGroup)
+    $location.path('/main/host/createparty2')
+  };
 
   $scope.addCohosts = function(people) {
     var newArray = [];
@@ -23,8 +22,18 @@ angular.module('host.controllers', [])
     var newHost = User.get();
     CohostGroups.addCohostGroup(newCohosts, newHost);
   };
+})
+
+.controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
+  var recentParty = PendingParties.get(0)
+  $scope.party = {}
+  $scope.party.cohostGroup = CohostGroups.getCurrent();
+  // $scope.party.time = recentParty.time;
+  // $scope.party.address = recentParty.address;
+  // $scope.party.attendeeRange = '31-40';
 
   $scope.addParty = function(party) {
+    console.log(party);
     PendingParties.createParty(party);
     $location.path("/main/host/viewparties")
   };

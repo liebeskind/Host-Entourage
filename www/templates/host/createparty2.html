@@ -7,11 +7,8 @@
 		    <input type="text" ng-model="party.name">
 		  </label>
 			
-			<label class="item item-input item-select">
-		    <div class="input-label">
-		      Cohost Group
-		    </div> 
-		    <select ng-model = "party.cohostGroup" ng-options = "cohostGroup.name for cohostGroup in myCohostGroups"></select>
+			<label class="item item-input">
+		    <span class="input-label">  Cohost Group: {{party.cohostGroup.name}}</span>
   		</label>
 
 		  <label class="item item-input">
