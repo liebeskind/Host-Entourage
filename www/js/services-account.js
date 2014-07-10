@@ -160,7 +160,7 @@ angular.module('account.services', [])
     },
     addCohostGroup: function(newCohosts, newHost) {
       var newCohostGroup = cohostGroupRef.push();
-      newCohostGroup.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
+      newCohostGroup.set({'id': newCohostGroup.name(), 'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
     },
     setCurrent: function(currentGroup) {
       currentCohostGroup = currentGroup;

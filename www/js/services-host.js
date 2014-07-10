@@ -117,7 +117,7 @@ angular.module('host.services', [])
       var newParty = partyRef.push();
       console.log(party.cohostGroup);
       party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
-      newParty.set({'cohostGroup': party.cohostGroup, 'partyDetails': party})
+      newParty.set({'cohostGroup': party.cohostGroup.id, 'partyDetails': party})
       // Need to set party as a parameter for cohost group... party.cohostGroup
       // for (prop in party) {
       //   pendingparties[pendingparties.length-1][prop] = party[prop]; 
