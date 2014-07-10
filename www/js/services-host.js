@@ -81,7 +81,8 @@ angular.module('host.services', [])
 
 .factory('PendingParties', function() {
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
-  var userRef = new Firebase('https://host-entourage.firebaseio.com/parties');
+  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+  var currentParty;
   var pendingparties = [
     { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
       host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
@@ -94,7 +95,7 @@ angular.module('host.services', [])
     }
   ];
 
-
+// can select existing cohost group or create new cohost group.  If select cohost group, have to pick date for that entourage to occur.
 
   return {
     all: function() {
@@ -104,18 +105,20 @@ angular.module('host.services', [])
       return pendingparties[partyId];
     },
     addCohosts: function(newCohosts, newHost) {
-    var newPartyRef = partyRef.push();
-    newPartyRef.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
-    console.log(newPartyRef.toString());
+    var newCohostGroup = cohostGroupRef.push();
+    newCohostGroup.set({'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
+    console.log(newCohostGroup.toString());
       // pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
       //   host: newHost.facebookInfo
       // });
     },
     createParty: function(party) {
-      for (prop in party) {
-        pendingparties[pendingparties.length-1][prop] = party[prop]; 
-      }
-      pendingparties[pendingparties.length-1]['imgUrl'] = 'sickparty.jpg'
+      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg'
+      newPartyRef.set({'partyDetails': party})
+      // for (prop in party) {
+      //   pendingparties[pendingparties.length-1][prop] = party[prop]; 
+      // }
+      // pendingparties[pendingparties.length-1]['imgUrl'] = 'sickparty.jpg'
     }
   }
 })
