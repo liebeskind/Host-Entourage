@@ -46,9 +46,12 @@ angular.module('account.services', [])
     if (error) {
       console.log(error);
     } else if (user) {
-      getUserInfo();
+      getUserInfo()
       isLoggedIn = true;
       console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+      $rootScope.$apply(function(){
+        $location.path('/main/login/loginchoice'); 
+      });
     } else {
       console.log('Not logged in');
       isLoggedIn = false;
@@ -77,19 +80,14 @@ angular.module('account.services', [])
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
       facebookInfo.set(response);
-      $rootScope.$apply(function(){
-        $location.path('/main/login/loginchoice'); 
-      });
     })
   }
 
   return {
     isLoggedIn: function() { return isLoggedIn; },
     login: function() {
-      console.log('nothing to brag about')
       // if (!isLoggedIn) {
         facebookConnectPlugin.login( ['email'], function(response){
-          console.log('it got this far')
           auth.login('facebook', {
             access_token: response.authResponse.accessToken,
             preferRedirect: true,
