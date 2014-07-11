@@ -14,11 +14,12 @@
   		</label>
 
 		  <h4>Or Create A New Group</h4>
-
-		  <label class="item item-input">
-		    <span class="input-label">Cohost Group Name</span>
-		    <input type="text" ng-model="cohosts.name">
-		  </label>
+		  <form name = "nameForm">
+			  <label class="item item-input">
+			    <input name = "cohostName" type="text" ng-model="cohosts.name" ng-required="true">
+			    	<span class="error" ng-show="nameForm.cohostName.$error.required">Required!</span><br>
+			  </label>
+			</form>
 
 		  <ul class="list">
 
@@ -65,7 +66,7 @@
 			  </li>
 			</ul>
 
-			<button class="button button-block button-positive" ng-click="addCohostGroup(cohosts)">
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && addCohostGroup(cohosts)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
   </ion-content>

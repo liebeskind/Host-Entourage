@@ -2,7 +2,6 @@ angular.module('host.controllers', [])
 
 .controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   $scope.myCohostGroups = CohostGroups.all();
-  console.log($scope.myCohostGroups);
 
   $scope.selectCohostGroup = function(cohostGroup) {
     console.log(cohostGroup);
@@ -10,7 +9,7 @@ angular.module('host.controllers', [])
     $location.path('/main/host/createparty2')
   };
 
-  $scope.addCohosts = function(people) {
+  $scope.addCohostGroup = function(people) {
     var newArray = [];
     var newCohosts = [{}];
     for (var prop in people) {
