@@ -84,7 +84,7 @@ angular.module('host.services', [])
   var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
   var allparties;
   partyRef.on('value', function(snapshot) {
-    allparties.snapshot.val();
+    allparties = snapshot.val();
   })
   
   var pendingparties = [
@@ -110,7 +110,6 @@ angular.module('host.services', [])
     },
     createParty: function(party) {
       var newParty = partyRef.push();
-      console.log(party);
       party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
       newParty.set({'cohostGroup': party.cohostGroup.id,'partyID': newParty.name(), 'partyDetails': party})
 
@@ -121,6 +120,10 @@ angular.module('host.services', [])
       partyInfo.push(newParty.name());
 
       //Adds party reference to user model
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      var currentUserRef = userRef.child(party.cohostGroup.host)
+      partyInfo = currentUserRef.child('partiesWhereHost');
+      partyInfo.push(newParty.name());      
 
     }
   }

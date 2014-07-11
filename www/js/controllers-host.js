@@ -35,7 +35,6 @@ angular.module('host.controllers', [])
   // $scope.party.attendeeRange = '31-40';
 
   $scope.addParty = function(party) {
-    console.log(party);
     PendingParties.createParty(party);
     $location.path("/main/host/viewparties")
   };

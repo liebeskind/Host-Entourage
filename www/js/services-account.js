@@ -48,7 +48,7 @@ angular.module('account.services', [])
     } else if (user) {
       //user authenticated with Firebase
       getUserPicture()
-      console.log('User ID: ' + user.uid + 'authenticated with ' + user.provider);
+      console.log('Success: User ID ' + user.id + ' authenticated with ' + user.provider + ' using Firebase');
     } else {
       //user is logged out
       console.log('Not logged in');
@@ -100,7 +100,6 @@ angular.module('account.services', [])
       // access_token: token,
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
-      console.log(response);
       response.picture = picture;
       // user.facebookInfo = user.facebookInfo || response;
       
