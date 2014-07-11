@@ -91,24 +91,6 @@
 				<string>fb568587663233762</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb$APP_ID</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb$APP_ID</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb$APP_ID</string>
-			</array>
-		</dict>
 	</array>
 </dict>
 </plist>

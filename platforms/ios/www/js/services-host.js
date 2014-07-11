@@ -80,6 +80,13 @@ angular.module('host.services', [])
 })
 
 .factory('PendingParties', function() {
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
+  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+  var allparties;
+  partyRef.on('value', function(snapshot) {
+    allparties = snapshot.val();
+  })
+  
   var pendingparties = [
     { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
       host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
@@ -92,6 +99,8 @@ angular.module('host.services', [])
     }
   ];
 
+// can select existing cohost group or create new cohost group.  If select cohost group, have to pick date for that entourage to occur.
+
   return {
     all: function() {
       return pendingparties;
@@ -99,16 +108,23 @@ angular.module('host.services', [])
     get: function(partyId) {
       return pendingparties[partyId];
     },
-    addCohosts: function(newCohosts, newHost) {
-      pendingparties.push({id: pendingparties.length, cohosts: newCohosts,
-        host: newHost.facebookInfo
-      });
-    },
     createParty: function(party) {
-      for (prop in party) {
-        pendingparties[pendingparties.length-1][prop] = party[prop]; 
-      }
-      pendingparties[pendingparties.length-1]['imgUrl'] = 'sickparty.jpg'
+      var newParty = partyRef.push();
+      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
+      newParty.set({'cohostGroup': party.cohostGroup.id,'partyID': newParty.name(), 'partyDetails': party})
+
+      //Adds party reference to current cohost model
+      var cohostRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+      var currentCohostRef = cohostRef.child(party.cohostGroup.id)
+      var partyInfo = currentCohostRef.child('hostedParties');
+      partyInfo.push(newParty.name());
+
+      //Adds party reference to user model
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      var currentUserRef = userRef.child(party.cohostGroup.host)
+      partyInfo = currentUserRef.child('partiesWhereHost');
+      partyInfo.push(newParty.name());      
+
     }
   }
 })

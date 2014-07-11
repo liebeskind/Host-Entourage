@@ -137,7 +137,6 @@ angular.module('account.services', [])
   }
 })
 
-
 .factory('CohostGroups', function($rootScope, $location) {
   var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups')
   var cohostGroups;
@@ -157,9 +156,9 @@ angular.module('account.services', [])
     get: function(cohostGroupId) {
       return cohostGroup[cohostGroupId]
     },
-    addCohostGroup: function(newCohosts, newHost) {
+    addCohostGroup: function(groupName, newCohosts, newHost) {
       var newCohostGroup = cohostGroupRef.push();
-      newCohostGroup.set({'id': newCohostGroup.name(), 'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
+      newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
     },
     setCurrent: function(currentGroup) {
       currentCohostGroup = currentGroup;
@@ -168,4 +167,22 @@ angular.module('account.services', [])
       return currentCohostGroup;
     }
   };
+})
+
+.factory('FriendsOfUser', function($rootScope, $location) {
+  var allUsersRef = new Firebase('https://host-entourage.firebaseio.com/users')
+  var allUsers;
+  allUsersRef.once('value', function(snapshot) {
+    allUsers = snapshot.val();
+  });
+
+  allUsersRef.on('value', function(snapshot) {
+    allUsers = snapshot.val();
+  });
+
+  return {
+    all: function() {
+      return allUsers;
+    }
+  }
 })

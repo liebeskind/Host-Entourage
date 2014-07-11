@@ -249,7 +249,7 @@ angular.module('host-entourage', ['ionic',
       views: {
         'tab-createparty': {
           templateUrl: 'templates/host/tab-createparty.html',
-          controller: 'CreatePartyCtrl'
+          controller: 'CreateCohostGroupCtrl'
         }
       }
     })

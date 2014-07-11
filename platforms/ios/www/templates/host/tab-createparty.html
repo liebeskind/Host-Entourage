@@ -1,9 +1,26 @@
-<ion-view title="Create Party To Host">
+<ion-view title="Select Cohost Group">
 	<ion-nav-buttons side="left">
       <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
    </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h3>1. Select 4 Other Co-hosts</h3>
+    <h3>1. Select Cohost Group</h3>
+		  
+		  <h4>Either Select Existing Group</h4>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Existing Group
+		    </div> 
+		    <select ng-change = "selectCohostGroup(cohostGroup)" ng-model = "cohostGroup" ng-options = "cohostGroup.name for (name , cohostGroup) in myCohostGroups"></select>
+  		</label>
+
+		  <h4>Or Create A New Group</h4>
+		  <form name = "nameForm">
+			  <label class="item item-input">
+			    <input name = "cohostName" type="text" ng-model="cohosts.name" ng-required="true">
+			    	<span class="error" ng-show="nameForm.cohostName.$error.required">Required!</span><br>
+			  </label>
+			</form>
+
 		  <ul class="list">
 
 			  <li class="item item-checkbox">
@@ -49,7 +66,7 @@
 			  </li>
 			</ul>
 
-			<button class="button button-block button-positive" ng-click="addCohosts(cohosts)">
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && addCohostGroup(cohosts)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
   </ion-content>
