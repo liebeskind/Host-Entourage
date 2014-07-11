@@ -158,6 +158,7 @@ angular.module('account.services', [])
     },
     addCohostGroup: function(groupName, newCohosts, newHost) {
       var newCohostGroup = cohostGroupRef.push();
+      console.log(newHost)
       newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
     },
     setCurrent: function(currentGroup) {
@@ -172,9 +173,6 @@ angular.module('account.services', [])
 .factory('FriendsOfUser', function($rootScope, $location) {
   var allUsersRef = new Firebase('https://host-entourage.firebaseio.com/users')
   var allUsers;
-  allUsersRef.once('value', function(snapshot) {
-    allUsers = snapshot.val();
-  });
 
   allUsersRef.on('value', function(snapshot) {
     allUsers = snapshot.val();

@@ -2,8 +2,9 @@ angular.module('host.controllers', [])
 
 .controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups, FriendsOfUser) {
   $scope.myCohostGroups = CohostGroups.all();
-  $scope.allUsers = FriendsOfUser.all();
-  console.log($scope.allUsers);
+  $scope.newCohostGroup = {};
+  $scope.newCohostGroup.cohosts = FriendsOfUser.all();
+  console.log($scope.newCohostGroup.cohosts);
 
   $scope.selectCohostGroup = function(cohostGroup) {
     console.log(cohostGroup);
@@ -11,12 +12,12 @@ angular.module('host.controllers', [])
     $location.path('/main/host/createparty2')
   };
 
-  $scope.addCohostGroup = function(cohostGroup) {
+  $scope.addCohostGroup = function(newCohostGroup) {
     var newArray = [];
     var newCohosts = [{}];
 
     //Next in line to be fixed.  Need to add cohost Group name as separate property
-    for (var prop in cohostGroup) {
+    for (var prop in newCohostGroup) {
       newArray.push(prop)
     };
 
@@ -25,7 +26,7 @@ angular.module('host.controllers', [])
     };
     $location.path('/main/host/createparty2');
     var newHost = User.get();
-    var groupName = cohostGroup.name;
+    var groupName = newCohostGroup.name;
     CohostGroups.addCohostGroup(groupName, newCohosts, newHost);
   };
 })
