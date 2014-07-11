@@ -4,7 +4,6 @@ angular.module('host.controllers', [])
   $scope.myCohostGroups = CohostGroups.all();
   $scope.newCohostGroup = {};
   $scope.newCohostGroup.cohosts = FriendsOfUser.all();
-  console.log($scope.newCohostGroup.cohosts);
 
   $scope.selectCohostGroup = function(cohostGroup) {
     console.log(cohostGroup);

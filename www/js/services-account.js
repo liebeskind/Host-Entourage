@@ -110,7 +110,7 @@ angular.module('account.services', [])
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
       facebookInfo.set(response, function(){
-        user = currentUserRef;
+        // user = currentUserRef.val();
         $rootScope.$apply(function(){
           $location.path('/main/login/loginchoice'); 
         });  
