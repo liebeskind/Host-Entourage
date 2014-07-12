@@ -13,20 +13,20 @@ angular.module('host.controllers', [])
 
   $scope.addCohostGroup = function(newCohostGroup) {
     var newArray = [];
-    var newCohosts = [{}];
+    // var newCohosts = [{}];
 
     //Next in line to be fixed.  Need to add cohost Group name as separate property
-    for (var prop in newCohostGroup) {
-      newArray.push(prop)
-    };
+    // for (var prop in newCohostGroup) {
+    //   newArray.push(prop)
+    // };
 
-    for (var i = 0; i < newArray.length; i++) {
-      newCohosts[i] = {name: newArray[i], accepted: false};
-    };
+    // for (var i = 0; i < newArray.length; i++) {
+    //   newCohosts[i] = {name: newArray[i], accepted: false};
+    // };
     $location.path('/main/host/createparty2');
     var newHost = User.get();
     var groupName = newCohostGroup.name;
-    CohostGroups.addCohostGroup(groupName, newCohosts, newHost);
+    CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
   };
 })
 

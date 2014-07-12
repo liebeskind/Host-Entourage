@@ -50,3 +50,4 @@
 -Grab user picture from facebook
 -Add tests!
 -Need to be able to only show friends of the user when selecting cohort.  Currently shows all users.
+-Add a date to new cohost group

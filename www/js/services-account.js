@@ -101,7 +101,6 @@ angular.module('account.services', [])
       // fields: ['id', 'name', 'first_name', 'last_name', 'link', 'gender', 'locale', 'age_range', 'email', 'birthday', 'picture']
     }, function(response) {
       response.picture = picture;
-      // user.facebookInfo = user.facebookInfo || response;
       
       //Create new user if User ID (Facebook ID) hasn't already been used
       var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
@@ -110,7 +109,6 @@ angular.module('account.services', [])
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
       facebookInfo.set(response, function(){
-        // user = currentUserRef.val();
         $rootScope.$apply(function(){
           $location.path('/main/login/loginchoice'); 
         });  
@@ -158,7 +156,6 @@ angular.module('account.services', [])
     },
     addCohostGroup: function(groupName, newCohosts, newHost) {
       var newCohostGroup = cohostGroupRef.push();
-      console.log(newHost)
       newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id})
     },
     setCurrent: function(currentGroup) {
