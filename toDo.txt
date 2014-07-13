@@ -51,3 +51,6 @@
 -Add tests!
 -Need to be able to only show friends of the user when selecting cohort.  Currently shows all users.
 -Add a date to new cohost group
+
+Possible Features
+-Option to enable attendees to invite people.  Can set limit per person.
