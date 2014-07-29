@@ -160,6 +160,7 @@ angular.module('account.services', [])
     },
     setCurrent: function(currentGroup) {
       currentCohostGroup = currentGroup;
+      console.log(currentCohostGroup);
     },
     getCurrent: function() {
       return currentCohostGroup;

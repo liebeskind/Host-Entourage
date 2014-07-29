@@ -51,6 +51,7 @@
 -Add tests!
 -Need to be able to only show friends of the user when selecting cohort.  Currently shows all users.
 -Add a date to new cohost group
+-Add back button to second stage of creating party and entourage and reset states when back is hit.
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.
