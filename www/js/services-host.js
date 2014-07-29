@@ -111,7 +111,7 @@ angular.module('host.services', [])
     createParty: function(party) {
       var newParty = partyRef.push();
       party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
-      newParty.set({'cohostGroup': party.cohostGroup.id,'partyID': newParty.name(), 'partyDetails': party})
+      newParty.set({'cohostGroup': party.cohostGroup,'partyID': newParty.name(), 'partyDetails': party})
 
       //Adds party reference to current cohost model
       var cohostRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
