@@ -6,7 +6,6 @@ angular.module('host.controllers', [])
   $scope.newCohostGroup.cohosts = FriendsOfUser.all();
 
   $scope.selectExistingCohostGroup = function(cohostGroup) {
-    console.log(cohostGroup);
     CohostGroups.setCurrent(cohostGroup)
     $location.path('/main/host/createparty2')
   };
@@ -26,7 +25,7 @@ angular.module('host.controllers', [])
     var newHost = User.get();
     var groupName = newCohostGroup.name;
     CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
-    // $location.path('/main/host/createparty2')
+    
   };
 })
 
@@ -34,7 +33,6 @@ angular.module('host.controllers', [])
   var recentParty = PendingParties.get(0)
   $scope.party = {}
   $scope.party.cohostGroup = CohostGroups.getCurrent();
-  console.log($scope.party.cohostGroup);
   // $scope.party.time = recentParty.time;
   // $scope.party.address = recentParty.address;
   // $scope.party.attendeeRange = '31-40';

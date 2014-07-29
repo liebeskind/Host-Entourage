@@ -160,7 +160,6 @@ angular.module('account.services', [])
       newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id}, function() {
         newCohostGroup.once('value', function(snapshot) {
           currentCohostGroup = snapshot.val(); 
-          console.log(currentCohostGroup);
         })
       // Add loading animation.  SetTimout implemented to give firebase time to set currentCohostGroup.
         window.setTimeout(
@@ -174,7 +173,6 @@ angular.module('account.services', [])
     },
     setCurrent: function(currentGroup) {
       currentCohostGroup = currentGroup;
-      console.log(currentCohostGroup);
     },
     getCurrent: function() {
       return currentCohostGroup;
