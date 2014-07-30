@@ -135,51 +135,6 @@ angular.module('account.services', [])
   }
 })
 
-.factory('CohostGroups', function($rootScope, $location) {
-  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups')
-  var cohostGroups;
-  var currentCohostGroup = {};
-  cohostGroupRef.once('value', function(snapshot) {
-    cohostGroups = snapshot.val();
-  })
-
-  cohostGroupRef.on('value', function(snapshot) {
-    cohostGroups = snapshot.val();
-  })
-
-  return {
-    all: function() {
-      return cohostGroups;
-    },
-    get: function(cohostGroupId) {
-      return cohostGroup[cohostGroupId]
-    },
-    addCohostGroup: function(groupName, newCohosts, newHost) {
-      var newCohostGroup = cohostGroupRef.push();
-      // currentCohostGroup.name = groupName;
-      newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id}, function() {
-        newCohostGroup.once('value', function(snapshot) {
-          currentCohostGroup = snapshot.val(); 
-        })
-      // Add loading animation.  SetTimout implemented to give firebase time to set currentCohostGroup.
-        window.setTimeout(
-          function(){
-            $rootScope.$apply(function(){
-              $location.path('/main/host/createparty2'); 
-            })
-          }, 
-        1000)
-      })
-    },
-    setCurrent: function(currentGroup) {
-      currentCohostGroup = currentGroup;
-    },
-    getCurrent: function() {
-      return currentCohostGroup;
-    }
-  };
-})
-
 .factory('FriendsOfUser', function($rootScope, $location) {
   var allUsersRef = new Firebase('https://host-entourage.firebaseio.com/users')
   var allUsers;

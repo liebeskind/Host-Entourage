@@ -4,54 +4,32 @@
    </ion-nav-buttons>
   <ion-content class="has-header padding">
     <h3>1. Select Entourage</h3>
-		  <ul class="list">
+		  
+		  <h4>Either Select Existing Entourage</h4>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Existing Entourage
+		    </div> 
+		    <select ng-change = "selectExistingEntourage(entourage)" ng-model = "entourage" ng-options = "entourage.name for (name , entourage) in myEntourage"></select>
+  		</label>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.DerekGillaspy">
-			     </label>
-			     Derek Gillaspy
-			  </li>
+		  <h4>Or Create A New Entourage</h4>
+		  <form name = "nameForm">
+			  <label class="item item-input">
+			    <input name = "entourageName" type="text" ng-model="newEntourage.name" ng-required="true">
+			    	<span class="error" ng-show="nameForm.entourageName.$error.required">Required!</span><br>
+			  </label>
+			</form>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.TonyaReed">
-			     </label>
-			     Tonya Reed
-			  </li>
+			<br>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.AlexWainwright" >
-			     </label>
-			     Alex Wainwright
-			  </li>		
+		  <label ng-repeat="(user, members) in memberList">
+  			<input type="checkbox" checklist-model="newEntourage.members" checklist-value="members"> 
+  			{{members.facebookInfo.first_name}} {{members.facebookInfo.last_name}}<br>
+			</label>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.RaynaRoumie">
-			     </label>
-			     Rayna Roumie
-			  </li>		  
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.DanielleDiamond">
-			     </label>
-			     Danielle Diamond
-			  </li>
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.MeaghanBarbin">
-			     </label>
-			     Meaghan Barbin
-			  </li>
-			</ul>
-
-			<button class="button button-block button-positive" ng-click="addEntourageMembers(entourage)">
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && addEntourage(newEntourage)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
-			
   </ion-content>
 </ion-view>

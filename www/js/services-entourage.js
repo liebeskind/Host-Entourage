@@ -1,56 +1,48 @@
 angular.module('entourage.services', [])
 
-.factory('MyEntourages', function() {
-  var myentourages = [
-    { id: 0, name: "Daniel's Entourage", date: '6/26/14', locked: false,
-      captain: {name: 'Daniel Liebeskind', imgUrl: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c4.0.50.50/p50x50/1484103_10100651628887376_1489797280_n.jpg?oh=4c3ce8287a3f7a8a11ee733dcf7562e9&oe=54148C9C&__gda__=1411759774_e6b037dcc654d3e4aeec51e18f7f2459", facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      members: [
-        {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
-        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
-        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ],
-      parties: [
-      ]
-    },
-    { id: 1, name: "My Awesome Entourage", date: '6/27/14', locked: true, 
-      captain: {name: 'Daniel Liebeskind', imgUrl: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/c4.0.50.50/p50x50/1484103_10100651628887376_1489797280_n.jpg?oh=4c3ce8287a3f7a8a11ee733dcf7562e9&oe=54148C9C&__gda__=1411759774_e6b037dcc654d3e4aeec51e18f7f2459", facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      members: [
-        {id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.diamond'}, 
-        {id: 1, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'https://www.facebook.com/derek.gillaspy'}, 
-        {id: 2, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ],
-      parties: [
-      ]
-    }
-  ];
+.factory('MyEntourages', function($rootScope, $location) {
+  var entourageRef = new Firebase('https://host-entourage.firebaseio.com/entourages')
+  var entourages;
+  var currentEntourage = {};
+  entourageRef.once('value', function(snapshot) {
+    entourages = snapshot.val();
+  })
 
-  var selectedEntourage = {}
+  entourageRef.on('value', function(snapshot) {
+    entourages = snapshot.val();
+  })
 
   return {
     all: function() {
-      return myentourages;
+      return entourages;
     },
     get: function(entourageId) {
-      return myentourages[entourageId];
+      return entourage[entourageId]
     },
-    addNewEntourage: function(newEntourage, newCaptain) {
-      myentourages.push({ id: myentourages.length, members: newEntourage, 
-      	captain: newCaptain
-      });
+    addEntourage: function(entourageName, members, newCaptain) {
+      var newEntourage = entourageRef.push();
+      // currentCohostGroup.name = groupName;
+      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'cohosts': members, 'host': newCaptain.facebookInfo.id}, function() {
+        newEntourage.once('value', function(snapshot) {
+          currentEntourage = snapshot.val(); 
+        })
+      // Add loading animation.  SetTimout implemented to give firebase time to set currentCohostGroup.
+        window.setTimeout(
+          function(){
+            $rootScope.$apply(function(){
+              $location.path('/main/entourage/createentourage2'); 
+            })
+          }, 
+        1000)
+      })
     },
-    createEntourage: function(entourage) {
-      for (prop in entourage) {
-        myentourages[myentourages.length-1][prop] = entourage[prop]; 
-      }
+    setCurrent: function(currentGroup) {
+      currentEntourage = currentGroup;
     },
-    applyToParty: function(entourage, party) {
-      myentourages[0].parties.push(party); //Need to select correct entourage.  Need to push in partyId instead.
-    },
-    selectEntourage: function(entourage) {
-      selectedEntourage = entourage || selectedEntourage;
-      return selectedEntourage;
+    getCurrent: function() {
+      return currentEntourage;
     }
-  }
+  };
 })
 
 .factory('MemberEntourages', function() {

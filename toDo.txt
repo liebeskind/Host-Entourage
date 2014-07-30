@@ -54,6 +54,7 @@
 -Add back button to second stage of creating party and entourage and reset states when back is hit.
 -Replace 'location' with map
 -User shouldn't be able to select himself as cohost
+-Add 'Member of' section to View Parties
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.

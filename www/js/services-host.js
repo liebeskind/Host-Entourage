@@ -1,5 +1,86 @@
 angular.module('host.services', [])
 
+.factory('CohostGroups', function($rootScope, $location) {
+  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups')
+  var cohostGroups;
+  var currentCohostGroup = {};
+  cohostGroupRef.once('value', function(snapshot) {
+    cohostGroups = snapshot.val();
+  })
+
+  cohostGroupRef.on('value', function(snapshot) {
+    cohostGroups = snapshot.val();
+  })
+
+  return {
+    all: function() {
+      return cohostGroups;
+    },
+    get: function(cohostGroupId) {
+      return cohostGroup[cohostGroupId]
+    },
+    addCohostGroup: function(groupName, newCohosts, newHost) {
+      var newCohostGroup = cohostGroupRef.push();
+      // currentCohostGroup.name = groupName;
+      newCohostGroup.set({'id': newCohostGroup.name(), 'name': groupName, 'cohosts': newCohosts, 'host': newHost.facebookInfo.id}, function() {
+        newCohostGroup.once('value', function(snapshot) {
+          currentCohostGroup = snapshot.val(); 
+        })
+      // Add loading animation.  SetTimout implemented to give firebase time to set currentCohostGroup.
+        window.setTimeout(
+          function(){
+            $rootScope.$apply(function(){
+              $location.path('/main/host/createparty2'); 
+            })
+          }, 
+        1000)
+      })
+    },
+    setCurrent: function(currentGroup) {
+      currentCohostGroup = currentGroup;
+    },
+    getCurrent: function() {
+      return currentCohostGroup;
+    }
+  };
+})
+
+.factory('PendingParties', function() {
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
+  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+  var allparties;
+  partyRef.on('value', function(snapshot) {
+    allparties = snapshot.val();
+  })
+
+  return {
+    all: function() {
+      return allparties;
+    },
+    get: function(partyId) {
+      return allparties[partyId];
+    },
+    createParty: function(party) {
+      var newParty = partyRef.push();
+      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
+      newParty.set({'cohostGroup': party.cohostGroup,'partyID': newParty.name(), 'partyDetails': party})
+
+      //Adds party reference to current cohost model
+      var cohostRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+      var currentCohostRef = cohostRef.child(party.cohostGroup.id)
+      var partyInfo = currentCohostRef.child('hostedParties');
+      partyInfo.push(newParty.name());
+
+      //Adds party reference to user model
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      var currentUserRef = userRef.child(party.cohostGroup.host)
+      partyInfo = currentUserRef.child('partiesWhereHost');
+      partyInfo.push(newParty.name());      
+
+    }
+  }
+})
+
 .factory('AcceptedEntourages', function() {
   // Might use a resource here that returns a JSON array
   var entourages = [
@@ -75,81 +156,6 @@ angular.module('host.services', [])
       var uniqueId = entourageObject.id;
       console.log(uniqueId);
       entourages.shift(); //Need to fix - this is not a legit way to do this
-    }
-  }
-})
-
-.factory('PendingParties', function() {
-  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
-  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
-  var allparties;
-  partyRef.on('value', function(snapshot) {
-    allparties = snapshot.val();
-  })
-  
-  var pendingparties = [
-    { id: 0, name: 'Sick Upcoming Party', date: '6/18/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
-      host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      cohosts: [
-        { id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
-        { id: 1, name: 'Buck Wallander', accepted: true, imgUrl: 'buckwallander.jpg', facebook: 'https://www.facebook.com/buck.wallander'}, 
-        { id: 2, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'}, 
-        { id: 3, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ]
-    }
-  ];
-
-// can select existing cohost group or create new cohost group.  If select cohost group, have to pick date for that entourage to occur.
-
-  return {
-    all: function() {
-      return allparties;
-    },
-    get: function(partyId) {
-      return allparties[partyId];
-    },
-    createParty: function(party) {
-      var newParty = partyRef.push();
-      party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
-      newParty.set({'cohostGroup': party.cohostGroup,'partyID': newParty.name(), 'partyDetails': party})
-
-      //Adds party reference to current cohost model
-      var cohostRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
-      var currentCohostRef = cohostRef.child(party.cohostGroup.id)
-      var partyInfo = currentCohostRef.child('hostedParties');
-      partyInfo.push(newParty.name());
-
-      //Adds party reference to user model
-      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
-      var currentUserRef = userRef.child(party.cohostGroup.host)
-      partyInfo = currentUserRef.child('partiesWhereHost');
-      partyInfo.push(newParty.name());      
-
-    }
-  }
-})
-
-//should get rid of this and combine with PendingParties.  Then create a filter that only shows where all accepted = true
-
-.factory('CreatedParties', function() {
-  var createdparties = [
-    { id: 0, name: 'Party I Created a Week Ago', date: '6/28/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg',
-      host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      cohosts: [
-        { id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
-        { id: 1, name: 'Buck Wallander', accepted: true, imgUrl: 'buckwallander.jpg', facebook: 'https://www.facebook.com/buck.wallander'}, 
-        { id: 2, name: 'Derek Gillaspy', accepted: true, imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'}, 
-        { id: 3, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ]
-    }
-  ];
-
-  return {
-    all: function() {
-      return createdparties;
-    },
-    get: function(partyId) {
-      return createdparties[partyId];
     }
   }
 })

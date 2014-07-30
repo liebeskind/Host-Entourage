@@ -1,32 +1,21 @@
 angular.module('entourage.controllers', [])
 
-.controller('CreateEntourageCtrl', function($scope, $location, MyEntourages, User) {
-  var recent = MyEntourages.get(0)
-  $scope.entourage = {}
-  if (User.get() != undefined) {
-    $scope.entourage.name = User.get().facebookInfo.first_name + "'s Entourage";
-  } else {
-    $scope.entourage.name = recent.name;
-  }
-  
-  $scope.addEntourageMembers = function(people) {
-    var newArray = [];
-    var newEntourage = [{}];
-    for (var prop in people) {
-      newArray.push(prop)
-    };
+.controller('CreateEntourageCtrl', function($scope, $location, MyEntourages, User, FriendsOfUser) {
+  $scope.myEntourages = MyEntourages.all();
+  $scope.newEntourage = {};
+  $scope.memberList = FriendsOfUser.all();
 
-    for (var i = 0; i < newArray.length; i++) {
-      newEntourage[i] = {name: newArray[i], accepted: false};
-    };
-    $location.path('/main/entourage/createentourage2');
-    var newCaptain = User.get();
-    MyEntourages.addNewEntourage(newEntourage, newCaptain);
+  $scope.selectExistingEntourage = function(entourage) {
+    MyEntourages.setCurrent(entourage)
+    $location.path('/main/entourage/createentourage2')
   };
 
-  $scope.addEntourage = function(entourage) {
-    MyEntourages.createEntourage(entourage);
-    $location.path("/main/entourage/viewentourages")
+  $scope.addEntourage = function(newEntourage) {
+    var newArray = [];
+    var newCaptain = User.get();
+    var entourageName = newEntourage.name;
+    console.log(newEntourage);
+    MyEntourages.addEntourage(entourageName, newEntourage.members, newCaptain);
   };
 })
 
