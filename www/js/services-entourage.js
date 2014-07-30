@@ -97,6 +97,15 @@ angular.module('entourage.services', [])
     }
   ];
 
+  var partiesRef = new Firebase('https://host-entourage.firebaseio.com/parties')
+  partiesRef.once('value', function(snapshot) {
+    parties = snapshot.val();
+  })
+
+  partiesRef.on('value', function(snapshot) {
+    parties = snapshot.val();
+  })
+
   return {
     all: function() {
       return parties;
