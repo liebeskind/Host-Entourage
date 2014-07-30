@@ -6,9 +6,9 @@ angular.module('entourage.controllers', [])
   $scope.memberList = FriendsOfUser.all();
   $scope.entourage = MyEntourages.getCurrent();
 
-  $scope.selectExistingEntourage = function(entourage) {
-    MyEntourages.setCurrent(entourage)
-    $location.path('/main/entourage/createentourage2')
+  $scope.selectExistingEntourage = function(entourage, date) {
+    MyEntourages.setCurrent(entourage, date)
+    $location.path('/main/entourage/findparties')
   };
 
   $scope.addEntourage = function(newEntourage, date) {
@@ -50,9 +50,10 @@ angular.module('entourage.controllers', [])
   //tab-findParties.html
   $scope.partyFilter;
   $scope.searchparty = {};
-  $scope.searchparty.entourage = MyEntourages.selectEntourage();
+  $scope.searchparty.entourage = MyEntourages.getCurrent();
   $scope.searchparty.date = $scope.searchparty.entourage.date;
   $scope.myentourages = MyEntourages.all();
+  console.log($scope.myentourages);
 	$scope.findParties = function(party) {
 		$location.path('main/entourage/partysearchresults');
     $scope.partyFilter = party;

@@ -35,8 +35,9 @@ angular.module('entourage.services', [])
         1000)
       })
     },
-    setCurrent: function(currentGroup) {
+    setCurrent: function(currentGroup, date) {
       currentEntourage = currentGroup;
+      currentEntourage.date = date;
     },
     getCurrent: function() {
       return currentEntourage;

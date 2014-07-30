@@ -55,6 +55,7 @@
 -Replace 'location' with map
 -User shouldn't be able to select himself as cohost
 -Add 'Member of' section to View Parties
+-When creating party or finding party, date is a dropdown.  Possible dates are set when creating cohost group or entourage.
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.
