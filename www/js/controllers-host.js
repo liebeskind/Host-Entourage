@@ -14,7 +14,6 @@ angular.module('host.controllers', [])
     var newArray = [];
     var newHost = User.get();
     var groupName = newCohostGroup.name;
-    console.log(newCohostGroup);
     CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
   };
 })

@@ -19,18 +19,17 @@ angular.module('entourage.services', [])
     get: function(entourageId) {
       return entourage[entourageId]
     },
-    addEntourage: function(entourageName, members, newCaptain) {
+    addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
-      // currentCohostGroup.name = groupName;
-      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'cohosts': members, 'host': newCaptain.facebookInfo.id}, function() {
+      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain.facebookInfo.id, 'date': date}, function() {
         newEntourage.once('value', function(snapshot) {
           currentEntourage = snapshot.val(); 
         })
-      // Add loading animation.  SetTimout implemented to give firebase time to set currentCohostGroup.
+      // Add loading animation.  SetTimout implemented to give firebase time to set currentEntourage.
         window.setTimeout(
           function(){
             $rootScope.$apply(function(){
-              $location.path('/main/entourage/createentourage2'); 
+              $location.path('/main/entourage/findparties'); 
             })
           }, 
         1000)

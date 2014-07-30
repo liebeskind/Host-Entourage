@@ -5,6 +5,11 @@
   <ion-content class="has-header padding">
     <h3>1. Select Entourage</h3>
 		  
+		  <label class="item item-input">
+		    <span class="input-label">Enter Date</span>
+		    <input type="Date" ng-model="entourage.date">
+		  </label>
+
 		  <h4>Either Select Existing Entourage</h4>
 		  <label class="item item-input item-select">
 		    <div class="input-label">
@@ -28,7 +33,7 @@
   			{{members.facebookInfo.first_name}} {{members.facebookInfo.last_name}}<br>
 			</label>
 
-			<button class="button button-block button-positive" ng-click="nameForm.$valid && addEntourage(newEntourage)">
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && addEntourage(newEntourage, entourage.date)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
   </ion-content>

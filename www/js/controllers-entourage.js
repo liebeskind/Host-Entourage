@@ -4,18 +4,19 @@ angular.module('entourage.controllers', [])
   $scope.myEntourages = MyEntourages.all();
   $scope.newEntourage = {};
   $scope.memberList = FriendsOfUser.all();
+  $scope.entourage = MyEntourages.getCurrent();
 
   $scope.selectExistingEntourage = function(entourage) {
     MyEntourages.setCurrent(entourage)
     $location.path('/main/entourage/createentourage2')
   };
 
-  $scope.addEntourage = function(newEntourage) {
+  $scope.addEntourage = function(newEntourage, date) {
     var newArray = [];
     var newCaptain = User.get();
     var entourageName = newEntourage.name;
     console.log(newEntourage);
-    MyEntourages.addEntourage(entourageName, newEntourage.members, newCaptain);
+    MyEntourages.addEntourage(entourageName, newEntourage.members, newCaptain, date);
   };
 })
 
