@@ -53,6 +53,7 @@
 -Add a date to new cohost group
 -Add back button to second stage of creating party and entourage and reset states when back is hit.
 -Replace 'location' with map
+-Fix cohosts so that only ones that are selected are added to cohost group
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.

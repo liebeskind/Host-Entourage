@@ -3,7 +3,7 @@ angular.module('host.controllers', [])
 .controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups, FriendsOfUser) {
   $scope.myCohostGroups = CohostGroups.all();
   $scope.newCohostGroup = {};
-  $scope.newCohostGroup.cohosts = FriendsOfUser.all();
+  $scope.cohostList = FriendsOfUser.all();
 
   $scope.selectExistingCohostGroup = function(cohostGroup) {
     CohostGroups.setCurrent(cohostGroup)
@@ -12,25 +12,14 @@ angular.module('host.controllers', [])
 
   $scope.addCohostGroup = function(newCohostGroup) {
     var newArray = [];
-    // var newCohosts = [{}];
-
-    //Next in line to be fixed.  Need to add cohost Group name as separate property
-    // for (var prop in newCohostGroup) {
-    //   newArray.push(prop)
-    // };
-
-    // for (var i = 0; i < newArray.length; i++) {
-    //   newCohosts[i] = {name: newArray[i], accepted: false};
-    // };
     var newHost = User.get();
     var groupName = newCohostGroup.name;
+    console.log(newCohostGroup);
     CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
-    
   };
 })
 
 .controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
-  var recentParty = PendingParties.get(0)
   $scope.party = {}
   $scope.party.cohostGroup = CohostGroups.getCurrent();
   // $scope.party.time = recentParty.time;
@@ -66,12 +55,14 @@ angular.module('host.controllers', [])
 
 .controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties, User) {
 	$scope.pendingparties = PendingParties.all();
+  console.log($scope.pendingparties);
 	$scope.createdparties = CreatedParties.all();
   if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
 })
 
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
 	$scope.pendingparties = PendingParties.get($stateParams.partyId);
+  console.log($scope.pendingparties);
 })
 
 .controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {

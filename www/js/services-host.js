@@ -103,10 +103,10 @@ angular.module('host.services', [])
 
   return {
     all: function() {
-      return pendingparties;
+      return allparties;
     },
     get: function(partyId) {
-      return pendingparties[partyId];
+      return allparties[partyId];
     },
     createParty: function(party) {
       var newParty = partyRef.push();

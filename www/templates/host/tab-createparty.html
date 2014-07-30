@@ -23,8 +23,8 @@
 
 			<br>
 
-		  <label ng-repeat="(user, cohosts) in newCohostGroup.cohosts">
-  			<input class = "checkbox item item-checkbox" type="checkbox" checklist-model="newCohostGroup.cohosts" checklist-value="user"> 
+		  <label ng-repeat="(user, cohosts) in cohostList">
+  			<input type="checkbox" checklist-model="newCohostGroup.cohosts" checklist-value="cohosts"> 
   			{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}<br>
 			</label>
 
