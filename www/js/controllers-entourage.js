@@ -28,6 +28,7 @@ angular.module('entourage.controllers', [])
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+
   console.log($scope.entourage)
   $scope.findParties = function(entourage) {
   	$location.path('/main/entourage/findparties');
@@ -58,6 +59,7 @@ angular.module('entourage.controllers', [])
   $scope.partyresults = PartySearchResults.all();
 
 	$scope.findParties = function(party) {
+    console.log(party);
 		$location.path('main/entourage/partysearchresults');
     $scope.partyFilter = party;
     $scope.partyresults = PartySearchResults.all();

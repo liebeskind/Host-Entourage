@@ -2,6 +2,7 @@ angular.module('entourage.services', [])
 
 .factory('MyEntourages', function($rootScope, $location) {
   var entourageRef = new Firebase('https://host-entourage.firebaseio.com/entourages')
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties')
   var entourages;
   var currentEntourage = {};
   entourageRef.once('value', function(snapshot) {
@@ -41,6 +42,12 @@ angular.module('entourage.services', [])
     },
     getCurrent: function() {
       return currentEntourage;
+    },
+    applyToParty: function(entourage, party) {
+      console.log(entourage);
+      console.log(party);
+      var partyId = party.partyID;
+      partyRef.child(partyId).child('entouragesApplied').push(entourage);
     }
   };
 })
