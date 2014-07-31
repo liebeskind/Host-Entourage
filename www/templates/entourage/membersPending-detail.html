@@ -11,7 +11,7 @@
 		    Members:
 		    <ion-list>
 	        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebook}}">
-	          {{member.name}}
+	          {{member.facebookInfo.first_name}} {{member.facebookInfo.last_name}}
 	        	<span ng-show="{{member.accepted}}">
 			    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
 			    	</span>

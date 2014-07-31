@@ -28,6 +28,7 @@ angular.module('entourage.controllers', [])
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+  console.log($scope.entourage)
   $scope.findParties = function(entourage) {
   	$location.path('/main/entourage/findparties');
   }
@@ -36,6 +37,7 @@ angular.module('entourage.controllers', [])
 .controller('ViewMembersLockedCtrl', function($scope, $location, $filter, $stateParams, MyEntourages) {
   //membersLocked-detail.html
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+  console.log($scope.entourage);
   $scope.findPartiesView = function(entourage) {
     MyEntourages.selectEntourage($scope.entourage);
     $location.path('/main/entourage/findparties');

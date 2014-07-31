@@ -17,7 +17,7 @@ angular.module('entourage.services', [])
       return entourages;
     },
     get: function(entourageId) {
-      return entourage[entourageId]
+      return entourages[entourageId]
     },
     addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
