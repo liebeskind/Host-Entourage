@@ -2,7 +2,7 @@
   <ion-content has-header="true" padding="true">
 	  <div class="card">
 		  <div class="item item-text-wrap">
-		    <img ng-src="img/{{entourage.captain.imgUrl}}" class = "detailedImg">
+		    <img ng-src="{{entourage.captain.imgUrl}}" class = "detailedImg">
 		    <p></p>
 		    <h3>{{entourage.name}}</h3>
 		    <p></p>
@@ -11,8 +11,8 @@
 		    Members:
 		    <ion-list>
 	        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebook}}">
-	          <img ng-src="img/{{member.imgUrl}}" class = "smallImg">
-	          {{member.name}}
+	          <img ng-src="{{member.imgUrl}}" class = "smallImg">
+	          {{member.facebookInfo.first_name}} {{member.facebookInfo.last_name}}
 	        </ion-item>
 	      </ion-list>
 		  </div>

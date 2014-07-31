@@ -58,6 +58,8 @@
 -When creating party or finding party, date is a dropdown.  Possible dates are set when creating cohost group or entourage.
 -Set all required inputs and provide error spans
 -Add property of whether member / cohost has accepted.
+-Figure out how users can upload / take images for entourage.  For now, just using captain image for entourage
+-Should we use full object or just reference to object?  Using full object would be easier and would make member / host / cohost / captain static whereas using reference would allow dynamic changing.
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.
