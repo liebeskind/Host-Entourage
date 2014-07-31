@@ -48,6 +48,7 @@ angular.module('entourage.services', [])
       console.log(party);
       var partyId = party.partyID;
       partyRef.child(partyId).child('entouragesApplied').push(entourage);
+      entourageRef.child(entourage.id).child('partiesAppliedTo').push(party);
     }
   };
 })

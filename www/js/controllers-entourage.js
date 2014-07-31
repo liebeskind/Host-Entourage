@@ -59,7 +59,6 @@ angular.module('entourage.controllers', [])
   $scope.partyresults = PartySearchResults.all();
 
 	$scope.findParties = function(party) {
-    console.log(party);
 		$location.path('main/entourage/partysearchresults');
     $scope.partyFilter = party;
     $scope.partyresults = PartySearchResults.all();
