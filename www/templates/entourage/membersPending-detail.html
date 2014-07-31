@@ -2,22 +2,24 @@
   <ion-content has-header="true" padding="true">
 	  <div class="card">
 		  <div class="item item-text-wrap">
-		    <img ng-src="{{entourage.captain.imgUrl}}" class = "detailedImg">
+		    <img ng-src="{{entourage.captain.facebookInfo.picture.data.url}}" class = "detailedImg">
 		    <p></p>
 		    <h3>{{entourage.name}}</h3>
 		    <p></p>
 		    Date: {{entourage.date}}
 		    <p></p>
-		    Members:
+		    Captain: {{entourage.captain.facebookInfo.first_name}} {{entourage.captain.facebookInfo.last_name}}
+		    <p></p>
 		    <ion-list>
-	        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebook}}">
+		    	<h3>Members</h3>
+	        <ion-item ng-repeat="member in entourage.members" type="item-text-wrap" href="{{member.facebookInfo.link}}">
 	          {{member.facebookInfo.first_name}} {{member.facebookInfo.last_name}}
-	        	<span ng-show="{{member.accepted}}">
+	        	<!-- <span ng-show="{{member.accepted}}">
 			    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
 			    	</span>
 			    	<span ng-show="!{{member.accepted}}">
 			    		<img ng-src="img/redX.png" class = 'acceptedImg'>
-			    	</span>
+			    	</span> -->
 	        </ion-item>
 	      </ion-list>
 		  </div>

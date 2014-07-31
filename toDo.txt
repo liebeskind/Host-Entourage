@@ -60,6 +60,7 @@
 -Add property of whether member / cohost has accepted.
 -Figure out how users can upload / take images for entourage.  For now, just using captain image for entourage
 -Should we use full object or just reference to object?  Using full object would be easier and would make member / host / cohost / captain static whereas using reference would allow dynamic changing.
+-For entourage membersPending-detail, create dynamic css so names are red if pending and green if accepted.
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.

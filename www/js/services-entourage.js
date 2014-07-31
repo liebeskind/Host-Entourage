@@ -21,7 +21,7 @@ angular.module('entourage.services', [])
     },
     addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
-      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain.facebookInfo.id, 'date': date}, function() {
+      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain, 'date': date}, function() {
         newEntourage.once('value', function(snapshot) {
           currentEntourage = snapshot.val(); 
         })
