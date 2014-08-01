@@ -18,7 +18,7 @@
 		    <p></p>
 		    Theme: {{pendingparties.partyDetails.theme}}
 		    <p></p>
-		    Cohosts (Accepted?):
+		    <h3>Cohosts (Accepted?)</h3>
 		    <p></p>
 		    <ion-item ng-repeat="cohosts in pendingparties.cohostGroup.cohosts">
 		    	{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}
@@ -30,6 +30,10 @@
 		    	</span>
 		  	</ion-item>
 		    <p></p>
+		    <h3>Entourages Attending</h3>
+		    <ion-item ng-repeat="entourages in pendingparties.entouragesApplied" href="#/main/host/acceptedentourage/{{entourages.id}}">
+		    	<img ng-src="{{entourages.captain.facebookInfo.picture.data.url}}" class = 'smallImg'>
+		    	{{entourages.name}}
 		  </div>
 		</div>
   </ion-content>

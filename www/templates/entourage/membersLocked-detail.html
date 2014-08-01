@@ -18,18 +18,19 @@
 	        </ion-item>
 	      </ion-list>
 	      <br>
-	      Parties Applied To:
+	      <h3>Parties Applied To</h3>
 		    <ion-list>
 	        <ion-item ng-repeat="party in entourage.partiesAppliedTo" type="item-text-wrap" href="#/main/entourage/partysearchresults/{{party.partyID}}">
 	          <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
 	          {{party.partyDetails.name}}
 	        </ion-item>
 	      </ion-list>
-	      Parties Accepted At:
+	      <br>
+	      <h3>Parties Accepted At</h3>
 		    <ion-list>
-	        <ion-item ng-repeat="party in entourage.parties" type="item-text-wrap" href="{{party.facebook}}">
-	          <img ng-src="{{party.imgUrl}}" class = "smallImg">
-	          {{party.name}}
+	        <ion-item ng-repeat="party in entourage.partiesAcceptedAt" type="item-text-wrap" href="#/main/entourage/partysearchresults/{{party.partyID}}">
+	          <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
+	          {{party.partyDetails.name}}
 	        </ion-item>
 	      </ion-list>
 		  </div>

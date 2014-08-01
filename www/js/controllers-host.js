@@ -39,8 +39,8 @@ angular.module('host.controllers', [])
   $scope.waitingentourages = WaitingEntourages.all();
 })
 
-.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, AcceptedEntourages) {
-  $scope.entourage = AcceptedEntourages.get($stateParams.entourageId);
+.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, MyEntourages) {
+  $scope.entourage = MyEntourages.get($stateParams.entourageId);
 })
 
 .controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
@@ -52,10 +52,10 @@ angular.module('host.controllers', [])
   }
 })
 
-.controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties, User) {
+.controller('ViewPartiesCtrl', function($scope, PendingParties, User) {
 	$scope.pendingparties = PendingParties.all();
   console.log($scope.pendingparties);
-	$scope.createdparties = CreatedParties.all();
+	// $scope.createdparties = CreatedParties.all();
   if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
 })
 
@@ -64,7 +64,7 @@ angular.module('host.controllers', [])
   console.log($scope.pendingparties);
 })
 
-.controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
-	$scope.createdparties = CreatedParties.get($stateParams.partyId);
-})
+// .controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
+// 	$scope.createdparties = CreatedParties.get($stateParams.partyId);
+// })
 ;
