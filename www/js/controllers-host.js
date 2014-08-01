@@ -54,7 +54,6 @@ angular.module('host.controllers', [])
 
 .controller('ViewPartiesCtrl', function($scope, PendingParties, User) {
 	$scope.pendingparties = PendingParties.all();
-  console.log($scope.pendingparties);
 	// $scope.createdparties = CreatedParties.all();
   if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
 })

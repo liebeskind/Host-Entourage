@@ -95,7 +95,6 @@ angular.module('account.services', [])
       facebookLogout();
     },
     get: function() {
-      console.log(user);
       return user;
     }
   }

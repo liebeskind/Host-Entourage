@@ -2,19 +2,30 @@ angular.module('account.services', [])
 
 .factory('User', function($rootScope, $location) {
   var user = user || {};
+  var currentUserRef;
 
   //Firebase authentication callback system.  Callback fires whenever a change to user.
-  var chatRef = new Firebase('https://host-entourage.firebaseio.com');
-  var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+  var authRef = new Firebase('https://host-entourage.firebaseio.com');
+  var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+
+  var auth = new FirebaseSimpleLogin(authRef, function(error, theUser) {
     if (error) {
       console.log(error);
-    } else if (user) {
-      //user authenticated with Firebase
-      getUserPicture()
+    } else if (theUser) {
+      
+      currentUserRef = userRef.child(theUser.id)
+
+      currentUserRef.on('value', function(snapshot) {
+        user = snapshot.val()
+        console.log(user);
+        getUserPicture()
+        $rootScope.$apply(function(){
+          $location.path('/main/login/loginchoice'); 
+        }); 
+      })
+
       console.log('Success: User ID ' + user.id + ' authenticated with ' + user.provider + ' using Firebase');
-      $rootScope.$apply(function(){
-        $location.path('/main/login/loginchoice'); 
-      });  
+            
     } else {
       //user is logged out
       console.log('Not logged in');
@@ -68,22 +79,10 @@ angular.module('account.services', [])
     }, function(response) {
       response.picture = picture;
       
-      //Create new user if User ID (Facebook ID) hasn't already been used
-      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
-      var currentUserRef = userRef.child(response.id)
-      
       //Reset facebookInfo of user ID.  Doing this on every login to make sure user info is current.
       var facebookInfo = currentUserRef.child('facebookInfo');
-      facebookInfo.set(response, function(){
-        // $rootScope.$apply(function(){
-        //   $location.path('/main/login/loginchoice'); 
-        // });  
+        facebookInfo.set(response, function(){
       });
-
-      //Update user info whenever there is a change in database
-      currentUserRef.on('value', function(snapshot) {
-        user = snapshot.val()
-      })
     })
   }
 
