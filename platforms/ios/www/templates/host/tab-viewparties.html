@@ -6,14 +6,14 @@
     <div class="partyListFormat">
 	    <h3>Waiting for Co-Hosts</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="party in pendingparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.id}}">
-	        <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
-	        {{party.name}}
+	      <ion-item ng-repeat="party in pendingparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.partyID}}">
+	        <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
+	        {{party.partyDetails.name}}
 	      </ion-item>
 	    </ion-list>
   	</div>
     
-		<div class="partyListFormat">
+		<!-- <div class="partyListFormat">
 	    <h3>Existing Parties</h3>
 	    <ion-list>
 	      <ion-item ng-repeat="party in createdparties" type="item-text-wrap" href="#/main/host/createdparty/{{party.id}}">
@@ -21,7 +21,7 @@
 	        {{party.name}}
 	      </ion-item>
 	    </ion-list>
-	   </div>
+	   </div> -->
   
   </ion-content>
 </ion-view>

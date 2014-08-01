@@ -2,35 +2,23 @@ angular.module('host.controllers', [])
 
 .controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups, FriendsOfUser) {
   $scope.myCohostGroups = CohostGroups.all();
-  $scope.allUsers = FriendsOfUser.all();
-  console.log($scope.allUsers);
+  $scope.newCohostGroup = {};
+  $scope.cohostList = FriendsOfUser.all();
 
-  $scope.selectCohostGroup = function(cohostGroup) {
-    console.log(cohostGroup);
+  $scope.selectExistingCohostGroup = function(cohostGroup) {
     CohostGroups.setCurrent(cohostGroup)
     $location.path('/main/host/createparty2')
   };
 
-  $scope.addCohostGroup = function(cohostGroup) {
+  $scope.addCohostGroup = function(newCohostGroup) {
     var newArray = [];
-    var newCohosts = [{}];
-
-    //Next in line to be fixed
-    for (var prop in cohostGroup) {
-      newArray.push(prop)
-    };
-
-    for (var i = 0; i < newArray.length; i++) {
-      newCohosts[i] = {name: newArray[i], accepted: false};
-    };
-    $location.path('/main/host/createparty2');
     var newHost = User.get();
-    CohostGroups.addCohostGroup(newCohosts, newHost);
+    var groupName = newCohostGroup.name;
+    CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
   };
 })
 
 .controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
-  var recentParty = PendingParties.get(0)
   $scope.party = {}
   $scope.party.cohostGroup = CohostGroups.getCurrent();
   // $scope.party.time = recentParty.time;
@@ -51,8 +39,8 @@ angular.module('host.controllers', [])
   $scope.waitingentourages = WaitingEntourages.all();
 })
 
-.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, AcceptedEntourages) {
-  $scope.entourage = AcceptedEntourages.get($stateParams.entourageId);
+.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, MyEntourages) {
+  $scope.entourage = MyEntourages.get($stateParams.entourageId);
 })
 
 .controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
@@ -64,17 +52,19 @@ angular.module('host.controllers', [])
   }
 })
 
-.controller('ViewPartiesCtrl', function($scope, PendingParties, CreatedParties, User) {
+.controller('ViewPartiesCtrl', function($scope, PendingParties, User) {
 	$scope.pendingparties = PendingParties.all();
-	$scope.createdparties = CreatedParties.all();
+  console.log($scope.pendingparties);
+	// $scope.createdparties = CreatedParties.all();
   if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
 })
 
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
 	$scope.pendingparties = PendingParties.get($stateParams.partyId);
+  console.log($scope.pendingparties);
 })
 
-.controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
-	$scope.createdparties = CreatedParties.get($stateParams.partyId);
-})
+// .controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
+// 	$scope.createdparties = CreatedParties.get($stateParams.partyId);
+// })
 ;

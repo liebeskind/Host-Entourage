@@ -10,7 +10,7 @@
 		    <div class="input-label">
 		      Entourage
 		    </div> 
-		    <select ng-model = "searchparty.entourage" ng-options = "entourage.name for entourage in myentourages"></select>
+		    <select ng-model = "searchparty.entourage" ng-options = "entourage.name for (name, entourage) in myentourages"></select>
   		</label>
 		  
 		  <label class="item item-input">

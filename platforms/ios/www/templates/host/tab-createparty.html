@@ -1,4 +1,4 @@
-<ion-view title="Select Cohost Group">
+<ion-view title="Create Party">
 	<ion-nav-buttons side="left">
       <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
    </ion-nav-buttons>
@@ -10,63 +10,25 @@
 		    <div class="input-label">
 		      Existing Group
 		    </div> 
-		    <select ng-change = "selectCohostGroup(cohostGroup)" ng-model = "cohostGroup" ng-options = "cohostGroup.name for (name , cohostGroup) in myCohostGroups"></select>
+		    <select ng-change = "selectExistingCohostGroup(cohostGroup)" ng-model = "cohostGroup" ng-options = "cohostGroup.name for (name , cohostGroup) in myCohostGroups"></select>
   		</label>
 
 		  <h4>Or Create A New Group</h4>
 		  <form name = "nameForm">
 			  <label class="item item-input">
-			    <input name = "cohostName" type="text" ng-model="cohosts.name" ng-required="true">
-			    	<span class="error" ng-show="nameForm.cohostName.$error.required">Required!</span><br>
+			    <input name = "cohostGroupName" type="text" ng-model="newCohostGroup.name" ng-required="true">
+			    	<span class="error" ng-show="nameForm.cohostGroupName.$error.required">Required!</span><br>
 			  </label>
 			</form>
 
-		  <ul class="list">
+			<br>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.DerekGillaspy">
-			     </label>
-			     Derek Gillaspy
-			  </li>
+		  <label ng-repeat="(user, cohosts) in cohostList">
+  			<input type="checkbox" checklist-model="newCohostGroup.cohosts" checklist-value="cohosts"> 
+  			{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}<br>
+			</label>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.TonyaReed">
-			     </label>
-			     Tonya Reed
-			  </li>
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.AlexWainwright" >
-			     </label>
-			     Alex Wainwright
-			  </li>		
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.RaynaRoumie">
-			     </label>
-			     Rayna Roumie
-			  </li>		  
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.DanielleDiamond">
-			     </label>
-			     Danielle Diamond
-			  </li>
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="cohosts.MeaghanBarbin">
-			     </label>
-			     Meaghan Barbin
-			  </li>
-			</ul>
-
-			<button class="button button-block button-positive" ng-click="nameForm.$valid && addCohostGroup(cohosts)">
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && addCohostGroup(newCohostGroup)">
 	  		<h4 style="color: white;">GO!</h4>
 			</button>
   </ion-content>

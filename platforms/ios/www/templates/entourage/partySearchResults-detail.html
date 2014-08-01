@@ -1,22 +1,22 @@
-<ion-view title="Results: {{party.name}}">
+<ion-view title="Results: {{party.partyDetails.name}}">
   <ion-content has-header="true">
 	  <div class="card">
 		  <div class="item item-text-wrap">
-		    <img ng-src="img/{{party.imgUrl}}" class = "detailedImg">
+		    <img ng-src="{{party.partyDetails.imgUrl}}" class = "detailedImg">
 		    <p></p>
-		    <h3>{{party.name}}</h3>
+		    <h3>{{party.partyDetails.name}}</h3>
 		    <p></p>
-		    Date: {{party.date | date:'M/d/yy'}}
+		    Date: {{party.partyDetails.date | date:'M/d/yy'}}
 		    <p></p>
-		    Time: {{party.time | date:'hh:m'}}
+		    Time: {{party.partyDetails.time | date:'hh:m'}}
 		    <p></p>
-		    Attendee Range: {{party.attendeeRange}}
+		    Attendee Range: {{party.partyDetails.attendeeRange}}
 		    <p></p>
-		    Address: {{party.address}}
+		    Address: {{party.partyDetails.address}}
 		    <p></p>
-		    Type: {{party.type}}
+		    Type: {{party.partyDetails.type}}
 		    <p></p>
-		    Theme: {{party.theme}}
+		    Theme: {{party.partyDetails.theme}}
 		    <p></p>
 		  </div>
 		</div>

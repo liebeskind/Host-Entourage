@@ -7,9 +7,9 @@
 		  </label>
 	    <ion-list>
 	    	<h4> Current Results</h4>
-	      <ion-item ng-repeat="party in partyresults | filter: search" type="item-text-wrap" href="#/main/entourage/partysearchresults/{{party.id}}">
-	        <img ng-src="img/{{party.imgUrl}}" class = "smallImg">
-	        {{party.name}}
+	      <ion-item ng-repeat="party in partyresults | filter: search" type="item-text-wrap" href="#/main/entourage/partysearchresults/{{party.partyID}}">
+	        <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
+	        {{party.partyDetails.name}}
 	      </ion-item>
 	    </ion-list>
   </ion-content>

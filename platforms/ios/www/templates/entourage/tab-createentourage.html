@@ -3,55 +3,41 @@
       <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
    </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h3>1. Select Entourage</h3>
-		  <ul class="list">
+    <h3>Create New Entourage</h3>
+		  
+		<form name = "dateForm">
+		  <label class="item item-input">
+		    <span class="input-label">Enter Date</span>
+		    <input name = "entourageDate" type="Date" ng-model="date" ng-required="true">
+		    	<span class="error" ng-show="dateForm.entourageDate.$error.required">Required!</span><br>
+		  </label>
+		</form>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.DerekGillaspy">
-			     </label>
-			     Derek Gillaspy
-			  </li>
+		  <h4>Either Use Existing Entourage</h4>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Existing
+		    </div> 
+		    <select ng-change = "dateForm.$valid && selectExistingEntourage(entourage, date)" ng-model = "entourage" ng-options = "entourage.name for (name , entourage) in myEntourages"></select>
+  		</label>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.TonyaReed">
-			     </label>
-			     Tonya Reed
-			  </li>
+		  <h4>Or Create A New Entourage</h4>
+		  <form name = "nameForm">
+			  <label class="item item-input">
+			    <input name = "entourageName" type="text" ng-model="newEntourage.name" ng-required="true">
+			    	<span class="error" ng-show="nameForm.entourageName.$error.required">Required!</span><br>
+			  </label>
+			</form>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.AlexWainwright" >
-			     </label>
-			     Alex Wainwright
-			  </li>		
+			<br>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.RaynaRoumie">
-			     </label>
-			     Rayna Roumie
-			  </li>		  
+		  <label ng-repeat="(user, members) in memberList">
+  			<input type="checkbox" checklist-model="newEntourage.members" checklist-value="members"> 
+  			{{members.facebookInfo.first_name}} {{members.facebookInfo.last_name}}<br>
+			</label>
 
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.DanielleDiamond">
-			     </label>
-			     Danielle Diamond
-			  </li>
-
-			  <li class="item item-checkbox">
-			     <label class="checkbox">
-			       <input type="checkbox" ng-model="entourage.MeaghanBarbin">
-			     </label>
-			     Meaghan Barbin
-			  </li>
-			</ul>
-
-			<button class="button button-block button-positive" ng-click="addEntourageMembers(entourage)">
-	  		<h4 style="color: white;">GO!</h4>
+			<button class="button button-block button-positive" ng-click="nameForm.$valid && dateForm.$valid && addEntourage(newEntourage, date)">
+	  		<h4 style="color: white;">Create & Find Parties!</h4>
 			</button>
-			
   </ion-content>
 </ion-view>
