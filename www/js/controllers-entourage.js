@@ -40,14 +40,14 @@ angular.module('entourage.controllers', [])
   //membersLocked-detail.html
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
   MyEntourages.setCurrent($scope.entourage);
-  
+
   $scope.findPartiesView = function() {
     $location.path('/main/entourage/findparties');
   }
 })
 
-.controller('ViewMemberOfEntourageCtrl', function($scope, $location, $stateParams, MemberEntourages) {
-	$scope.entourage = MemberEntourages.get($stateParams.entourageId);
+.controller('ViewMemberOfEntourageCtrl', function($scope, $location, $stateParams, MyEntourages) {
+	$scope.entourage = MyEntourages.get($stateParams.entourageId);
 })
 
 .controller('FindPartiesCtrl', function($scope, $location, $stateParams, MyEntourages, PartySearchResults) {

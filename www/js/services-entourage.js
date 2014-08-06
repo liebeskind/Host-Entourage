@@ -84,19 +84,6 @@ angular.module('entourage.services', [])
   };
 })
 
-.factory('MemberEntourages', function() {
-  var memberentourages = {};
-
-  return {
-    all: function() {
-      return memberentourages;
-    },
-    get: function(entourageId) {
-      return memberentourages[entourageId];
-    }
-  }
-})
-
 .factory('PartySearchResults', function() {
   var parties = {};
 
