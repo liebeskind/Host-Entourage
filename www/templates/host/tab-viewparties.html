@@ -16,7 +16,7 @@
     <div class="partyListFormat">
   		<h3>I'm a Cohost</h3>
 	    <ion-list>
-	      <ion-item ng-repeat="party in memberparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.partyID}}">
+	      <ion-item ng-repeat="party in cohostparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.partyID}}">
 	        <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
 	        {{party.partyDetails.name}}
 	      </ion-item>

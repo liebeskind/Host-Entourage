@@ -46,7 +46,8 @@ angular.module('host.services', [])
 })
 
 .factory('PendingParties', function() {
-  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties');
+  var currentUserId;
+  var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties/');
   var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
   var allparties;
   partyRef.on('value', function(snapshot) {
@@ -54,8 +55,17 @@ angular.module('host.services', [])
   })
 
   return {
-    all: function() {
+    mine: function(user) {
+      var myParties = {};
+      for (key in user.partiesWhereHost) {
+        myParties[user.partiesWhereHost[key]] = user.partiesWhereHost[key];
+      }
+      console.log(myParties);
+
       return allparties;
+    },
+    cohost: function(user) {
+
     },
     get: function(partyId) {
       return allparties[partyId];

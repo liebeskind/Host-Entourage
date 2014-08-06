@@ -54,9 +54,11 @@ angular.module('host.controllers', [])
 })
 
 .controller('ViewPartiesCtrl', function($scope, PendingParties, User) {
-	$scope.pendingparties = PendingParties.all();
+	var currentUser = User.get();
+  $scope.pendingparties = PendingParties.mine(currentUser);
+  $scope.cohostparties = PendingParties.cohost(currentUser);
 	// $scope.createdparties = CreatedParties.all();
-  if (User.get()) $scope.user = User.get().facebookInfo.first_name+"'s";
+  if (User.get()) $scope.user = currentUser.facebookInfo.first_name+"'s";
 })
 
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
