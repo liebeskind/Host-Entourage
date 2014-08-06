@@ -39,9 +39,9 @@ angular.module('entourage.controllers', [])
 .controller('ViewMembersLockedCtrl', function($scope, $location, $filter, $stateParams, MyEntourages) {
   //membersLocked-detail.html
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
-  console.log($scope.entourage);
-  $scope.findPartiesView = function(entourage) {
-    MyEntourages.selectEntourage($scope.entourage);
+  MyEntourages.setCurrent($scope.entourage);
+  
+  $scope.findPartiesView = function() {
     $location.path('/main/entourage/findparties');
   }
 })
