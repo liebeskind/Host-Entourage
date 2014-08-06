@@ -3,11 +3,11 @@ angular.module('entourage.services', [])
 .factory('MyEntourages', function($rootScope, $location) {
   var entourageRef = new Firebase('https://host-entourage.firebaseio.com/entourages')
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties')
-  var entourages;
+  var entourages = {};
   var currentEntourage = {};
-  entourageRef.once('value', function(snapshot) {
-    entourages = snapshot.val();
-  })
+  // entourageRef.once('value', function(snapshot) {
+  //   entourages = snapshot.val();
+  // })
 
   entourageRef.on('value', function(snapshot) {
     entourages = snapshot.val();
@@ -19,15 +19,14 @@ angular.module('entourage.services', [])
     },
     mine: function(user) {
       var myEntourages = {};
-      for (key in user.partiesWhereCaptain) {
+      for (key in user.entouragesWhereCaptain) {
         myEntourages[user.entouragesWhereCaptain[key]] = entourages[user.entouragesWhereCaptain[key]];
-      }
-
+      };
       return myEntourages;
     },
     member: function(user) {
       var memberEntourages = {};
-      for (key in user.partiesWhereCohost) {
+      for (key in user.entouragesWhereMember) {
         memberEntourages[user.entouragesWhereMember[key]] = entourages[user.entouragesWhereMember[key]];
       }
 
@@ -38,7 +37,6 @@ angular.module('entourage.services', [])
     },
     addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
-      console.log(newCaptain);
       newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain, 'date': date}, function() {
         newEntourage.once('value', function(snapshot) {
           currentEntourage = snapshot.val(); 

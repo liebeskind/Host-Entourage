@@ -21,9 +21,10 @@ angular.module('entourage.controllers', [])
 })
 
 .controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages, User) {
-	$scope.myentourages = MyEntourages.all();
-	$scope.memberentourages = MemberEntourages.all()
-  if (User.get()) $scope.user = User.get().facebookInfo.first_name + "'s"
+	var user = User.get();
+  $scope.myentourages = MyEntourages.mine(user);
+	$scope.memberentourages = MyEntourages.member(user);
+  if (user) $scope.user = user.facebookInfo.first_name + "'s"
 })
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
