@@ -20,7 +20,7 @@ angular.module('entourage.controllers', [])
   };
 })
 
-.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, MemberEntourages, User) {
+.controller('ViewEntouragesCtrl', function($scope, $location, MyEntourages, User) {
 	var user = User.get();
   $scope.myentourages = MyEntourages.mine(user);
 	$scope.memberentourages = MyEntourages.member(user);
@@ -29,8 +29,8 @@ angular.module('entourage.controllers', [])
 
 .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+  MyEntourages.setCurrent($scope.entourage);
 
-  console.log($scope.entourage)
   $scope.findParties = function(entourage) {
   	$location.path('/main/entourage/findparties');
   }

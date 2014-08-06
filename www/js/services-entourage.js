@@ -4,7 +4,7 @@ angular.module('entourage.services', [])
   var entourageRef = new Firebase('https://host-entourage.firebaseio.com/entourages')
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties')
   var entourages = {};
-  var currentEntourage = {};
+  var currentEntourage = currentEntourage || {};
   // entourageRef.once('value', function(snapshot) {
   //   entourages = snapshot.val();
   // })
@@ -38,30 +38,27 @@ angular.module('entourage.services', [])
     addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
       newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain, 'date': date}, function() {
-        newEntourage.once('value', function(snapshot) {
-          currentEntourage = snapshot.val(); 
-        })
 
-      var entourageInfo;
+        var entourageInfo;
 
-      //adds current entourage to Captain's user model
-      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
-      var currentUserRef = userRef.child(newCaptain.facebookInfo.id)
-      entourageInfo = currentUserRef.child('entouragesWhereCaptain');
-      entourageInfo.push(newEntourage.name());   
+        //adds current entourage to Captain's user model
+        var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+        var currentUserRef = userRef.child(newCaptain.facebookInfo.id)
+        entourageInfo = currentUserRef.child('entouragesWhereCaptain');
+        entourageInfo.push(newEntourage.name());   
 
-      //adds current entourage to each member's user model
-      for (key in members.cohosts) {
-        var currentMemberRef = userRef.child(members.cohosts[key].facebookInfo.id);
-        entourageInfo = currentMemberRef.child('entouragesWhereMember');
-        entourageInfo.push(newEntourage.name());  
-      } 
+        //adds current entourage to each member's user model
+        for (key in members) {
+          var currentMemberRef = userRef.child(members[key].facebookInfo.id);
+          entourageInfo = currentMemberRef.child('entouragesWhereMember');
+          entourageInfo.push(newEntourage.name());  
+        } 
 
-      // Add loading animation.  SetTimout implemented to give firebase time to set currentEntourage.
+        // Add loading animation.  SetTimout implemented to give firebase time to set currentEntourage.
         window.setTimeout(
           function(){
             $rootScope.$apply(function(){
-              $location.path('/main/entourage/findparties'); 
+              $location.path('/main/entourage/viewentourages'); 
             })
           }, 
         1000)
@@ -82,6 +79,19 @@ angular.module('entourage.services', [])
       entourageRef.child(entourage.id).child('partiesAppliedTo').push(party);
     }
   };
+})
+
+.factory('MemberEntourages', function() {
+  var memberentourages = {};
+
+  return {
+    all: function() {
+      return memberentourages;
+    },
+    get: function(entourageId) {
+      return memberentourages[entourageId];
+    }
+  }
 })
 
 .factory('PartySearchResults', function() {
