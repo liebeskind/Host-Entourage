@@ -1,6 +1,6 @@
 angular.module('entourage.services', [])
 
-.factory('MyEntourages', function($rootScope, $location) {
+.factory('MyEntourages', function($rootScope, $location, $firebase) {
   var entourageRef = new Firebase('https://host-entourage.firebaseio.com/entourages')
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties')
   var entourages = {};
@@ -12,6 +12,8 @@ angular.module('entourage.services', [])
   entourageRef.on('value', function(snapshot) {
     entourages = snapshot.val();
   })
+
+  // entourages = $firebase(entourageRef).$asObject();
 
   return {
     all: function() {

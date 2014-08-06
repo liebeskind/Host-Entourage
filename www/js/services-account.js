@@ -15,7 +15,7 @@ angular.module('account.services', [])
       
       currentUserRef = userRef.child(theUser.id)
 
-      currentUserRef.on('value', function(snapshot) {
+      currentUserRef.once('value', function(snapshot) {
         user = snapshot.val()
         console.log(user);
         getUserPicture()

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('host-entourage', ['ionic', 
   'host.controllers', 'general.controllers', 'entourage.controllers', 'account.controllers', 
-  'host.services', 'general.services', 'entourage.services', 'account.services', 'checklist-model'])
+  'host.services', 'general.services', 'entourage.services', 'account.services', 'checklist-model', 'firebase'])
 
 .run(function($ionicPlatform, $rootScope, $state, User) {
   $ionicPlatform.ready(function() {
