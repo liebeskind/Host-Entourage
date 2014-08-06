@@ -11,8 +11,28 @@
 	        {{party.partyDetails.name}}
 	      </ion-item>
 	    </ion-list>
+
+	    <br>
+  		
+  		<h3>I'm a Cohost</h3>
+	    <ion-list>
+	      <ion-item ng-repeat="party in memberparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.partyID}}">
+	        <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
+	        {{party.partyDetails.name}}
+	      </ion-item>
+	    </ion-list>
+
+	    <br>
+
+	    <h3>I'm an Attendee</h3>
+	    <ion-list>
+	      <ion-item ng-repeat="party in attendeeparties" type="item-text-wrap" href="#/main/host/pendingparty/{{party.partyID}}">
+	        <img ng-src="{{party.partyDetails.imgUrl}}" class = "smallImg">
+	        {{party.partyDetails.name}}
+	      </ion-item>
+	    </ion-list>
   	</div>
-    
+
 		<!-- <div class="partyListFormat">
 	    <h3>Existing Parties</h3>
 	    <ion-list>

@@ -34,6 +34,14 @@
 		    <ion-item ng-repeat="entourages in pendingparties.entouragesApplied" href="#/main/host/acceptedentourage/{{entourages.id}}">
 		    	<img ng-src="{{entourages.captain.facebookInfo.picture.data.url}}" class = 'smallImg'>
 		    	{{entourages.name}}
+		    </ion-item>
+		    <br>
+
+		    <h3>Entourages Attending</h3>
+		    <ion-item ng-repeat="entourages in pendingparties.entouragesAttending" href="#/main/host/acceptedentourage/{{entourages.id}}">
+		    	<img ng-src="{{entourages.captain.facebookInfo.picture.data.url}}" class = 'smallImg'>
+		    	{{entourages.name}}
+		    </ion-item>
 		  </div>
 		</div>
   </ion-content>
