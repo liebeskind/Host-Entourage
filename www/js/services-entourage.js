@@ -37,9 +37,9 @@ angular.module('entourage.services', [])
     get: function(entourageId) {
       return entourages[entourageId]
     },
-    addEntourage: function(entourageName, members, newCaptain, date) {
+    addEntourage: function(entourageName, members, newCaptain) {
       var newEntourage = entourageRef.push();
-      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain, 'date': date}, function() {
+      newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain}, function() {
 
         var entourageInfo;
 
@@ -74,8 +74,6 @@ angular.module('entourage.services', [])
       return currentEntourage;
     },
     applyToParty: function(entourage, party) {
-      console.log(entourage);
-      console.log(party);
       var partyId = party.partyID;
       partyRef.child(partyId).child('entouragesApplied').push(entourage);
       entourageRef.child(entourage.id).child('partiesAppliedTo').push(party);
