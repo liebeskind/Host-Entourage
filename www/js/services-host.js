@@ -58,11 +58,10 @@ angular.module('host.services', [])
     mine: function(user) {
       var myParties = {};
       for (key in user.partiesWhereHost) {
-        myParties[user.partiesWhereHost[key]] = user.partiesWhereHost[key];
+        myParties[user.partiesWhereHost[key]] = allparties[user.partiesWhereHost[key]];
       }
-      console.log(myParties);
 
-      return allparties;
+      return myParties;
     },
     cohost: function(user) {
 
