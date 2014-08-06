@@ -222,15 +222,15 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
-    .state('main.entourage.memberspending', {
-      url: '/memberspending/:entourageId',
-      views: {
-        'tab-viewEntourages': {
-          templateUrl: 'templates/entourage/membersPending-detail.html',
-          controller: 'ViewMembersPendingCtrl'
-        }
-      }
-    })
+    // .state('main.entourage.memberspending', {
+    //   url: '/memberspending/:entourageId',
+    //   views: {
+    //     'tab-viewEntourages': {
+    //       templateUrl: 'templates/entourage/membersPending-detail.html',
+    //       controller: 'ViewMembersPendingCtrl'
+    //     }
+    //   }
+    // })
 
     .state('main.entourage.memberentourages', {
       url: '/memberofentourage/:entourageId',
