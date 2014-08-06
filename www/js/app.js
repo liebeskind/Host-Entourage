@@ -162,15 +162,15 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
-    .state('main.entourage.createentourage2', {
-      url: '/createentourage2',
-      views: {
-        'tab-createentourage': {
-          templateUrl: 'templates/entourage/createentourage2.html',
-          controller: 'CreateEntourageCtrl'
-        }
-      }
-    })
+    // .state('main.entourage.createentourage2', {
+    //   url: '/createentourage2',
+    //   views: {
+    //     'tab-createentourage': {
+    //       templateUrl: 'templates/entourage/createentourage2.html',
+    //       controller: 'CreateEntourageCtrl'
+    //     }
+    //   }
+    // })
 
     .state('main.entourage.findParties', {
       url: '/findparties',
@@ -294,35 +294,35 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
-    .state('main.host.findentourages', {
-      url: '/findentourages',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/host/tab-findentourages.html',
-          controller: 'FindEntouragesCtrl'
-        }
-      }
-    })
+    // .state('main.host.findentourages', {
+    //   url: '/findentourages',
+    //   views: {
+    //     'tab-findentourages': {
+    //       templateUrl: 'templates/host/tab-findentourages.html',
+    //       controller: 'FindEntouragesCtrl'
+    //     }
+    //   }
+    // })
 
-    .state('main.host.waitingentourage-detail', {
-      url: '/waitingentourage/:entourageId',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/host/waitingentourage-detail.html',
-          controller: 'WaitingEntourageDetailCtrl'
-        }
-      }
-    })
+    // .state('main.host.waitingentourage-detail', {
+    //   url: '/waitingentourage/:entourageId',
+    //   views: {
+    //     'tab-findentourages': {
+    //       templateUrl: 'templates/host/waitingentourage-detail.html',
+    //       controller: 'WaitingEntourageDetailCtrl'
+    //     }
+    //   }
+    // })
 
-    .state('main.host.acceptedentourage-detail', {
-      url: '/acceptedentourage/:entourageId',
-      views: {
-        'tab-findentourages': {
-          templateUrl: 'templates/host/acceptedentourage-detail.html',
-          controller: 'AcceptedEntourageDetailCtrl'
-        }
-      }
-    })
+    // .state('main.host.acceptedentourage-detail', {
+    //   url: '/acceptedentourage/:entourageId',
+    //   views: {
+    //     'tab-findentourages': {
+    //       templateUrl: 'templates/host/acceptedentourage-detail.html',
+    //       controller: 'AcceptedEntourageDetailCtrl'
+    //     }
+    //   }
+    // })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('main/login/logmein');

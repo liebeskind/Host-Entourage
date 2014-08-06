@@ -15,7 +15,6 @@ angular.module('entourage.controllers', [])
     var newArray = [];
     var newCaptain = User.get();
     var entourageName = newEntourage.name;
-    console.log(newEntourage);
     MyEntourages.addEntourage(entourageName, newEntourage.members, newCaptain, date);
   };
 })
@@ -27,19 +26,11 @@ angular.module('entourage.controllers', [])
   if (user) $scope.user = user.facebookInfo.first_name + "'s"
 })
 
-.controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
-  $scope.entourage = MyEntourages.get($stateParams.entourageId);
-  MyEntourages.setCurrent($scope.entourage);
-
-  $scope.findParties = function(entourage) {
-  	$location.path('/main/entourage/findparties');
-  }
-})
-
 .controller('ViewMembersLockedCtrl', function($scope, $location, $filter, $stateParams, MyEntourages) {
   //membersLocked-detail.html
   $scope.entourage = MyEntourages.get($stateParams.entourageId);
-  MyEntourages.setCurrent($scope.entourage);
+  console.log($scope.entourage);
+  MyEntourages.setCurrent($scope.entourage, $scope.entourage.date);
 
   $scope.findPartiesView = function() {
     $location.path('/main/entourage/findparties');
@@ -63,7 +54,6 @@ angular.module('entourage.controllers', [])
 		$location.path('main/entourage/partysearchresults');
     $scope.partyFilter = party;
     $scope.partyresults = PartySearchResults.all();
-    console.log($scope.partyresults)
 	} 
 
   //partySearchResults.html
@@ -75,3 +65,12 @@ angular.module('entourage.controllers', [])
     $location.path('main/entourage/partysearchresults');
   }
 })
+
+// .controller('ViewMembersPendingCtrl', function($scope, $location, $stateParams, MyEntourages) {
+//   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+//   MyEntourages.setCurrent($scope.entourage);
+
+//   $scope.findParties = function(entourage) {
+//    $location.path('/main/entourage/findparties');
+//   }
+// })

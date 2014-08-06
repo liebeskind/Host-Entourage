@@ -32,27 +32,6 @@ angular.module('host.controllers', [])
   };
 })
 
-.controller('CreateEntourageCtrl', function($scope) {
-})
-
-.controller('FindEntouragesCtrl', function($scope, AcceptedEntourages, WaitingEntourages) {
-  $scope.acceptedentourages = AcceptedEntourages.all();
-  $scope.waitingentourages = WaitingEntourages.all();
-})
-
-.controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, MyEntourages) {
-  $scope.entourage = MyEntourages.get($stateParams.entourageId);
-})
-
-.controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
-  $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
-  $scope.acceptEntourage = function(entourage) {
-    $location.path('main/host/findentourages');
-    AcceptedEntourages.addToAccepted(entourage);
-    WaitingEntourages.removeAccepted(entourage);
-  }
-})
-
 .controller('ViewPartiesCtrl', function($scope, PendingParties, User) {
 	var currentUser = User.get();
   $scope.pendingparties = PendingParties.mine(currentUser);
@@ -63,8 +42,25 @@ angular.module('host.controllers', [])
 
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
 	$scope.pendingparties = PendingParties.get($stateParams.partyId);
-  console.log($scope.pendingparties);
 })
+
+// .controller('FindEntouragesCtrl', function($scope, AcceptedEntourages, WaitingEntourages) {
+//   $scope.acceptedentourages = AcceptedEntourages.all();
+//   $scope.waitingentourages = WaitingEntourages.all();
+// })
+
+// .controller('AcceptedEntourageDetailCtrl', function($scope, $stateParams, MyEntourages) {
+//   $scope.entourage = MyEntourages.get($stateParams.entourageId);
+// })
+
+// .controller('WaitingEntourageDetailCtrl', function($scope, $location, $stateParams, WaitingEntourages, AcceptedEntourages) {
+//   $scope.entourage = WaitingEntourages.get($stateParams.entourageId);
+//   $scope.acceptEntourage = function(entourage) {
+//     $location.path('main/host/findentourages');
+//     AcceptedEntourages.addToAccepted(entourage);
+//     WaitingEntourages.removeAccepted(entourage);
+//   }
+// })
 
 // .controller('CreatedPartyDetailsCtrl', function($scope, $stateParams, CreatedParties) {
 // 	$scope.createdparties = CreatedParties.get($stateParams.partyId);
