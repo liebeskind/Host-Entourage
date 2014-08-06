@@ -17,15 +17,48 @@ angular.module('entourage.services', [])
     all: function() {
       return entourages;
     },
+    mine: function(user) {
+      var myEntourages = {};
+      for (key in user.partiesWhereCaptain) {
+        myEntourages[user.entouragesWhereCaptain[key]] = entourages[user.entouragesWhereCaptain[key]];
+      }
+
+      return myEntourages;
+    },
+    member: function(user) {
+      var memberEntourages = {};
+      for (key in user.partiesWhereCohost) {
+        memberEntourages[user.entouragesWhereMember[key]] = entourages[user.entouragesWhereMember[key]];
+      }
+
+      return memberEntourages;
+    },
     get: function(entourageId) {
       return entourages[entourageId]
     },
     addEntourage: function(entourageName, members, newCaptain, date) {
       var newEntourage = entourageRef.push();
+      console.log(newCaptain);
       newEntourage.set({'id': newEntourage.name(), 'name': entourageName, 'members': members, 'captain': newCaptain, 'date': date}, function() {
         newEntourage.once('value', function(snapshot) {
           currentEntourage = snapshot.val(); 
         })
+
+      var entourageInfo;
+
+      //adds current entourage to Captain's user model
+      var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
+      var currentUserRef = userRef.child(newCaptain.facebookInfo.id)
+      entourageInfo = currentUserRef.child('entouragesWhereCaptain');
+      entourageInfo.push(newEntourage.name());   
+
+      //adds current entourage to each member's user model
+      for (key in members.cohosts) {
+        var currentMemberRef = userRef.child(members.cohosts[key].facebookInfo.id);
+        entourageInfo = currentMemberRef.child('entouragesWhereMember');
+        entourageInfo.push(newEntourage.name());  
+      } 
+
       // Add loading animation.  SetTimout implemented to give firebase time to set currentEntourage.
         window.setTimeout(
           function(){
@@ -67,26 +100,7 @@ angular.module('entourage.services', [])
 })
 
 .factory('PartySearchResults', function() {
-  var parties = [
-    { id: 0, name: 'Sick Upcoming Party', date: '6/26/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg', 
-      host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      cohosts: [
-        { id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
-        { id: 1, name: 'Buck Wallander', accepted: true, imgUrl: 'buckwallander.jpg', facebook: 'https://www.facebook.com/buck.wallander'}, 
-        { id: 2, name: 'Derek Gillaspy', accepted: false, imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'}, 
-        { id: 3, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ]
-    },
-    { id: 1, name: 'Party I Created a Week Ago', date: '6/27/14', time: '8:15 PM', attendeeRange: '20-40', address: '1902 Leavenworth, SF', type: 'Party', theme: 'Dance Party', imgUrl: 'sickparty.jpg',
-      host: {name: 'Daniel Liebeskind', imgUrl: 'danliebeskind.jpg', facebook: 'https://www.facebook.com/daniel.liebeskind'},
-      cohosts: [
-        { id: 0, name: 'Danielle Diamond', accepted: true, imgUrl: 'daniellediamond.jpg', facebook: 'https://www.facebook.com/danielle.deanne'},
-        { id: 1, name: 'Buck Wallander', accepted: true, imgUrl: 'buckwallander.jpg', facebook: 'https://www.facebook.com/buck.wallander'}, 
-        { id: 2, name: 'Derek Gillaspy', accepted: true, imgUrl: 'derekgillaspy.jpg', facebook: 'fb://'}, 
-        { id: 3, name: 'Rayna Roumie', accepted: true, imgUrl: 'raynaroumie.jpg', facebook: 'https://www.facebook.com/rayna.roumie'}
-      ]
-    }
-  ];
+  var parties = {};
 
   var partiesRef = new Firebase('https://host-entourage.firebaseio.com/parties')
   partiesRef.once('value', function(snapshot) {

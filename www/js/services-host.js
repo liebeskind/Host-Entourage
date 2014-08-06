@@ -55,6 +55,9 @@ angular.module('host.services', [])
   })
 
   return {
+    all: function() {
+      return allparties;
+    },
     mine: function(user) {
       var myParties = {};
       for (key in user.partiesWhereHost) {
@@ -92,10 +95,9 @@ angular.module('host.services', [])
       partyInfo.push(newParty.name());      
 
       //Adds party reference to each cohost user model
-      console.log(party.cohostGroup);
       for (key in party.cohostGroup.cohosts) {
         var currentCohostRef = userRef.child(party.cohostGroup.cohosts[key].facebookInfo.id);
-        partyInfo = currentUserRef.child('partiesWhereCohost');
+        partyInfo = currentCohostRef.child('partiesWhereCohost');
         partyInfo.push(newParty.name());  
       }
     }
