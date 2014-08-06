@@ -21,6 +21,7 @@ angular.module('host.controllers', [])
 .controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   $scope.party = {}
   $scope.party.cohostGroup = CohostGroups.getCurrent();
+  $scope.party.name = $scope.party.cohostGroup.name + "'s Party"
   // $scope.party.time = recentParty.time;
   // $scope.party.address = recentParty.address;
   // $scope.party.attendeeRange = '31-40';

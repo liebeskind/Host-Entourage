@@ -62,6 +62,7 @@
 -Should we use full object or just reference to object?  Using full object would be easier and would make member / host / cohost / captain static whereas using reference would allow dynamic changing.
 -For entourage membersPending-detail, create dynamic css so names are red if pending and green if accepted.
 -Add Parties Already Applied To in entourage search results
+-Change wording to be like talking to a layman.  Instead of "Switch to Host" change to "Host a Party".  Instead of Date, say "what date will you hold your party".
 
 Possible Features
 -Option to enable attendees to invite people.  Can set limit per person.

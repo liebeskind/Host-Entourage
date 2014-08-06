@@ -1,19 +1,19 @@
-<ion-view title="Fill In the Details">
+<ion-view title="A {{party.cohostGroup.name}} Production">
   <ion-content class="has-header padding">
-    <h3>2. Create Your Party!</h3>
+    <h3>Create Your Party!</h3>
 	  <div class="list">
 		  <label class="item item-input">
-		    <span class="input-label">Party Name</span>
+		    <span class="input-label">Name</span>
 		    <input type="text" ng-model="party.name">
 		  </label>
 			
-			<label class="item item-input">
+			<!-- <label class="item item-input">
 		    <span class="input-label">  Cohost Group: {{party.cohostGroup.name}}</span>
-  		</label>
+  		</label> -->
 
 		  <label class="item item-input">
 		    <span class="input-label">Date</span>
-		    <input type="Date" ng-model="party.date">
+		    <input type="Date" placeholder = "Date" ng-model="party.date">
 		  </label>
 		  <label class="item item-input">
 		    <span class="input-label">Time</span>

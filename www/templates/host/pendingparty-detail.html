@@ -18,19 +18,19 @@
 		    <p></p>
 		    Theme: {{pendingparties.partyDetails.theme}}
 		    <p></p>
-		    <h3>Cohosts (Accepted?)</h3>
+		    <h3>Cohosts</h3>
 		    <p></p>
 		    <ion-item ng-repeat="cohosts in pendingparties.cohostGroup.cohosts">
 		    	{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}
-		    	<span ng-show="{{cohosts.accepted}}">
+		    	<!-- <span ng-show="{{cohosts.accepted}}">
 		    		<img ng-src="img/greencheck.png" class = 'acceptedImg'>
 		    	</span>
 		    	<span ng-show="!{{cohosts.accepted}}">
 		    		<img ng-src="img/redX.png" class = 'acceptedImg'>
-		    	</span>
+		    	</span> -->
 		  	</ion-item>
 		    <p></p>
-		    <h3>Entourages Attending</h3>
+		    <h3>Entourages Awaiting Reply</h3>
 		    <ion-item ng-repeat="entourages in pendingparties.entouragesApplied" href="#/main/host/acceptedentourage/{{entourages.id}}">
 		    	<img ng-src="{{entourages.captain.facebookInfo.picture.data.url}}" class = 'smallImg'>
 		    	{{entourages.name}}
