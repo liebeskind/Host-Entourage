@@ -66,9 +66,9 @@ angular.module('host.services', [])
       newParty.set({'cohostGroup': party.cohostGroup,'partyID': newParty.name(), 'partyDetails': party})
 
       //Adds party reference to current cohost model
-      var cohostRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
-      var currentCohostRef = cohostRef.child(party.cohostGroup.id)
-      var partyInfo = currentCohostRef.child('hostedParties');
+      var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+      var currentCohostGroupRef = cohostGroupRef.child(party.cohostGroup.id)
+      var partyInfo = currentCohostGroupRef.child('hostedParties');
       partyInfo.push(newParty.name());
 
       //Adds party reference to user model
@@ -77,6 +77,13 @@ angular.module('host.services', [])
       partyInfo = currentUserRef.child('partiesWhereHost');
       partyInfo.push(newParty.name());      
 
+      //Adds party reference to each cohost user model
+      console.log(party.cohostGroup);
+      for (key in party.cohostGroup.cohosts) {
+        var currentCohostRef = userRef.child(party.cohostGroup.cohosts[key].facebookInfo.id);
+        partyInfo = currentUserRef.child('partiesWhereCohost');
+        partyInfo.push(newParty.name());  
+      }
     }
   }
 })
