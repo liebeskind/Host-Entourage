@@ -162,16 +162,6 @@ angular.module('host-entourage', ['ionic',
       }
     })
 
-    // .state('main.entourage.createentourage2', {
-    //   url: '/createentourage2',
-    //   views: {
-    //     'tab-createentourage': {
-    //       templateUrl: 'templates/entourage/createentourage2.html',
-    //       controller: 'CreateEntourageCtrl'
-    //     }
-    //   }
-    // })
-
     .state('main.entourage.findParties', {
       url: '/findparties',
       views: {
@@ -221,16 +211,6 @@ angular.module('host-entourage', ['ionic',
         }
       }
     })
-
-    // .state('main.entourage.memberspending', {
-    //   url: '/memberspending/:entourageId',
-    //   views: {
-    //     'tab-viewEntourages': {
-    //       templateUrl: 'templates/entourage/membersPending-detail.html',
-    //       controller: 'ViewMembersPendingCtrl'
-    //     }
-    //   }
-    // })
 
     .state('main.entourage.memberentourages', {
       url: '/memberofentourage/:entourageId',
@@ -293,6 +273,26 @@ angular.module('host-entourage', ['ionic',
         }
       }
     })
+
+    // .state('main.entourage.createentourage2', {
+    //   url: '/createentourage2',
+    //   views: {
+    //     'tab-createentourage': {
+    //       templateUrl: 'templates/entourage/createentourage2.html',
+    //       controller: 'CreateEntourageCtrl'
+    //     }
+    //   }
+    // })
+
+    // .state('main.entourage.memberspending', {
+    //   url: '/memberspending/:entourageId',
+    //   views: {
+    //     'tab-viewEntourages': {
+    //       templateUrl: 'templates/entourage/membersPending-detail.html',
+    //       controller: 'ViewMembersPendingCtrl'
+    //     }
+    //   }
+    // })
 
     // .state('main.host.findentourages', {
     //   url: '/findentourages',

@@ -28,7 +28,8 @@ angular.module('account.controllers', [])
 
 .controller('LoginCtrl', function($scope, $location, User, CohostGroups, FriendsOfUser) {
 	//CohostGroups and FriendsOfUser injected so that they ping Firebase before the data is necessary.
-	if (User.get().facebookInfo) $scope.user = User.get();
+	var user = User.get();
+	if (user.facebookInfo) $scope.user = user;
 	$scope.login = function() {
 		User.login();
 	};
