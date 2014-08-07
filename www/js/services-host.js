@@ -45,10 +45,10 @@ angular.module('host.services', [])
   };
 })
 
-.factory('PendingParties', function() {
+.factory('PendingParties', function($rootScope, $location) {
   var currentUserId;
   var partyRef = new Firebase('https://host-entourage.firebaseio.com/parties/');
-  var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+  // var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
   var allparties;
   partyRef.on('value', function(snapshot) {
     allparties = snapshot.val();
@@ -77,29 +77,34 @@ angular.module('host.services', [])
     get: function(partyId) {
       return allparties[partyId];
     },
-    createParty: function(party) {
+    createParty: function(party, host) {
+      console.log(party);
       var newParty = partyRef.push();
       party['imgUrl'] = 'http://dyersoundworks.com/wp-content/uploads/2014/05/photodune-2755655-party-time-m.jpg' //should this be host picture?
-      newParty.set({'cohostGroup': party.cohostGroup,'partyID': newParty.name(), 'partyDetails': party})
+      newParty.set({'partyID': newParty.name(), 'host': host.facebookInfo.id, 'partyDetails': party}, function(){
+        $rootScope.$apply(function(){
+          $location.path("/main/host/viewparties")  
+        });
+      })
 
       //Adds party reference to current cohost model
-      var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
-      var currentCohostGroupRef = cohostGroupRef.child(party.cohostGroup.id)
-      var partyInfo = currentCohostGroupRef.child('hostedParties');
-      partyInfo.push(newParty.name());
+      // var cohostGroupRef = new Firebase('https://host-entourage.firebaseio.com/cohostgroups');
+      // var currentCohostGroupRef = cohostGroupRef.child(party.cohostGroup.id)
+      // var partyInfo = currentCohostGroupRef.child('hostedParties');
+      // partyInfo.push(newParty.name());
 
       //Adds party reference to user model
       var userRef = new Firebase('https://host-entourage.firebaseio.com/users');
-      var currentUserRef = userRef.child(party.cohostGroup.host)
+      var currentUserRef = userRef.child(host.facebookInfo.id)
       partyInfo = currentUserRef.child('partiesWhereHost');
       partyInfo.push(newParty.name());      
 
       //Adds party reference to each cohost user model
-      for (key in party.cohostGroup.cohosts) {
-        var currentCohostRef = userRef.child(party.cohostGroup.cohosts[key].facebookInfo.id);
-        partyInfo = currentCohostRef.child('partiesWhereCohost');
-        partyInfo.push(newParty.name());  
-      }
+      // for (key in party.cohostGroup.cohosts) {
+      //   var currentCohostRef = userRef.child(party.cohostGroup.cohosts[key].facebookInfo.id);
+      //   partyInfo = currentCohostRef.child('partiesWhereCohost');
+      //   partyInfo.push(newParty.name());  
+      // }
     }
   }
 })

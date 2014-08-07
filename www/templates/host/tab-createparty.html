@@ -1,35 +1,48 @@
-<ion-view title="Create Party">
+<ion-view title="Party Creation">
 	<ion-nav-buttons side="left">
-      <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
-   </ion-nav-buttons>
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h3>Select Cohosts</h3>
-		  
-		  <h4>Either Select Existing Group</h4>
-		  <label class="item item-input item-select">
+    <h3>Create Your Party!</h3>
+	  <div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Name</span>
+		    <input type="text" ng-model="party.name">
+		  </label>
+
+		  <label class="item item-input">
+		    <span class="input-label">Date</span>
+		    <input type="Date" placeholder = "Date" ng-model="party.date">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Time</span>
+		    <input type="Time" ng-model="party.time">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Address</span>
+		    <input type="text" ng-model="party.address">
+		  </label>
+  		<label class="item item-input item-select">
 		    <div class="input-label">
-		      Existing Group
-		    </div> 
-		    <select ng-change = "selectExistingCohostGroup(cohostGroup)" ng-model = "cohostGroup" ng-options = "cohostGroup.name for (name , cohostGroup) in myCohostGroups"></select>
+		      Type of Party
+		    </div>
+		    <select ng-model = "party.type">
+		      <option>Birthday</option>
+		      <option>Apartment</option>
+		      <option>Dinner</option>
+		      <option>Hot Tub</option>
+		      <option>Rave</option>
+		      <option>Outdoor</option>
+		   	</select>
   		</label>
+  		<label class="item item-input">
+		    <span class="input-label">Theme</span>
+		    <input type="text" placeholder = "Optional" ng-model="party.theme">
+		  </label>
+		</div>
 
-		  <h4>Or Create A New Group</h4>
-		  <form name = "nameForm">
-			  <label class="item item-input">
-			    <input name = "cohostGroupName" type="text" ng-model="newCohostGroup.name" ng-required="true">
-			    	<span class="error" ng-show="nameForm.cohostGroupName.$error.required">Required!</span><br>
-			  </label>
-			</form>
-
-			<br>
-
-		  <label ng-repeat="(user, cohosts) in cohostList">
-  			<input type="checkbox" checklist-model="newCohostGroup.cohosts" checklist-value="cohosts"> 
-  			{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}<br>
-			</label>
-
-			<button class="button button-block button-positive" ng-click="nameForm.$valid && addCohostGroup(newCohostGroup)">
-	  		<h4 style="color: white;">GO!</h4>
-			</button>
+		<button class="button button-block button-positive" ng-click="addParty(party)">
+  	<h4 style="color: white;">Create {{party.name}}!</h4>
+		</button>
   </ion-content>
 </ion-view>

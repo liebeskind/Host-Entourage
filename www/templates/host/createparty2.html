@@ -1,62 +1,17 @@
-<ion-view title="A {{party.cohostGroup.name}} Production">
+<ion-view title="Create Party">
+	<ion-nav-buttons side="left">
+      <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+   </ion-nav-buttons>
   <ion-content class="has-header padding">
-    <h3>Create Your Party!</h3>
-	  <div class="list">
-		  <label class="item item-input">
-		    <span class="input-label">Name</span>
-		    <input type="text" ng-model="party.name">
-		  </label>
-			
-			<!-- <label class="item item-input">
-		    <span class="input-label">  Cohost Group: {{party.cohostGroup.name}}</span>
-  		</label> -->
 
-		  <label class="item item-input">
-		    <span class="input-label">Date</span>
-		    <input type="Date" placeholder = "Date" ng-model="party.date">
-		  </label>
-		  <label class="item item-input">
-		    <span class="input-label">Time</span>
-		    <input type="Time" ng-model="party.time">
-		  </label>
-		  <label class="item item-input">
-		    <span class="input-label">Address</span>
-		    <input type="text" ng-model="party.address">
-		  </label>
-		  <label class="item item-input item-select">
-		    <div class="input-label">
-		      # Attendees Expected
-		    </div>
-		    <select ng-model = "party.attendeeRange">
-		      <option>10-20</option>
-		      <option>21-40</option>
-		      <option>41-60</option>
-		      <option>61-100</option>
-		      <option>101-200</option>
-		      <option>201-500</option>
-		      <option>500+</option>
-		   	</select>
-  		</label>
-  		<label class="item item-input item-select">
-		    <div class="input-label">
-		      Type of Party
-		    </div>
-		    <select ng-model = "party.type">
-		      <option>Birthday</option>
-		      <option>Apartment</option>
-		      <option>Dinner</option>
-		      <option>Rave</option>
-		      <option>Outdoor</option>
-		   	</select>
-  		</label>
-  		<label class="item item-input">
-		    <span class="input-label">Theme (Optional)</span>
-		    <input type="text" ng-model="party.theme">
-		  </label>
-		</div>
+  	<h3>Invite People To Your Party!</h3
+	  <label ng-repeat="(user, cohosts) in cohostList">
+			<input type="checkbox" checklist-model="newCohostGroup.cohosts" checklist-value="cohosts"> 
+			{{cohosts.facebookInfo.first_name}} {{cohosts.facebookInfo.last_name}}<br>
+		</label>
 
-		<button class="button button-block button-positive" ng-click="addParty(party)">
-  	<h4 style="color: white;">CREATE MY PARTY!</h4>
+		<button class="button button-block button-positive" ng-click="addCohostGroup(newCohostGroup)">
+  		<h4 style="color: white;">GO!</h4>
 		</button>
   </ion-content>
 </ion-view>

@@ -1,34 +1,18 @@
 angular.module('host.controllers', [])
 
-.controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups, FriendsOfUser) {
-  $scope.myCohostGroups = CohostGroups.all();
-  $scope.newCohostGroup = {};
-  $scope.cohostList = FriendsOfUser.all();
-
-  $scope.selectExistingCohostGroup = function(cohostGroup) {
-    CohostGroups.setCurrent(cohostGroup)
-    $location.path('/main/host/createparty2')
-  };
-
-  $scope.addCohostGroup = function(newCohostGroup) {
-    var newArray = [];
-    var newHost = User.get();
-    var groupName = newCohostGroup.name;
-    CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
-  };
-})
-
 .controller('CreatePartyCtrl', function($scope, $location, PendingParties, User, CohostGroups) {
   $scope.party = {}
-  $scope.party.cohostGroup = CohostGroups.getCurrent();
-  $scope.party.name = $scope.party.cohostGroup.name + "'s Party"
+  var currentUser = User.get();
+  // $scope.party.cohostGroup = CohostGroups.getCurrent();
+  $scope.party.name = currentUser.facebookInfo.first_name + "'s Party";
+  // $scope.party.date = new Date();
   // $scope.party.time = recentParty.time;
   // $scope.party.address = recentParty.address;
   // $scope.party.attendeeRange = '31-40';
 
   $scope.addParty = function(party) {
-    PendingParties.createParty(party);
-    $location.path("/main/host/viewparties")
+    var host = User.get();
+    PendingParties.createParty(party, host);
   };
 })
 
@@ -43,6 +27,24 @@ angular.module('host.controllers', [])
 .controller('PendingPartyDetailsCtrl', function($scope, $stateParams, PendingParties) {
 	$scope.pendingparties = PendingParties.get($stateParams.partyId);
 })
+
+// .controller('CreateCohostGroupCtrl', function($scope, $location, PendingParties, User, CohostGroups, FriendsOfUser) {
+//   $scope.myCohostGroups = CohostGroups.all();
+//   $scope.newCohostGroup = {};
+//   $scope.cohostList = FriendsOfUser.all();
+
+//   $scope.selectExistingCohostGroup = function(cohostGroup) {
+//     CohostGroups.setCurrent(cohostGroup)
+//     $location.path('/main/host/createparty2')
+//   };
+
+//   $scope.addCohostGroup = function(newCohostGroup) {
+//     var newArray = [];
+//     var newHost = User.get();
+//     var groupName = newCohostGroup.name;
+//     CohostGroups.addCohostGroup(groupName, newCohostGroup.cohosts, newHost);
+//   };
+// })
 
 // .controller('FindEntouragesCtrl', function($scope, AcceptedEntourages, WaitingEntourages) {
 //   $scope.acceptedentourages = AcceptedEntourages.all();
